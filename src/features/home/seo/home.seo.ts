@@ -2,25 +2,23 @@ import { env } from '@/lib/env'
 import type { PageMeta } from '@/types'
 
 /**
- * Feature-level SEO preset.
- *
- * Each feature owns its metadata in `seo/`. Pages import this and pass
- * it to <Seo />, keeping head management discoverable per feature.
+ * Single Click Home Page SEO Preset.
  */
 export const homeSeo: PageMeta & { jsonLd: Record<string, unknown> } = {
-  title: 'Home',
+  title: 'Connect, Collaborate, Get Things Done',
   description:
-    'SingleClik is a high-performance React boilerplate: Vite, TypeScript, Tailwind v4, code-split routes, and React Query — ready to ship.',
+    'Single Click connects you with verified businesses and professionals without sharing your personal contact. Enquire, chat, and get things done – all in one secure platform.',
   path: '/',
   jsonLd: {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'SingleClik — Home',
+    name: 'Single Click — Connect. Collaborate. Get Things Done.',
     url: `${env.siteUrl}/`,
     isPartOf: {
       '@type': 'WebSite',
-      name: env.siteName,
+      name: 'Single Click',
       url: env.siteUrl,
     },
   },
 }
+

@@ -1,33 +1,52 @@
 import { Seo } from '@/components/seo'
-import { Heading, Section } from '@/components/semantic'
 import { homeSeo } from '../seo/home.seo'
-import { PostList } from '../components/PostList'
+import {
+  HeroSection,
+  AboutSection,
+  HowItWorksSection,
+  VideoShowcaseSection,
+  TopCategoriesSection,
+  PrivacySection,
+  TestimonialsSection,
+  CtaBannerSection,
+  FaqSection,
+} from '../components'
 
 /**
- * Home page — composes the SEO preset, an H1, and the PostList section.
- *
- * Document outline:
- *   <h1>  SingleClik               ← exactly one per page
- *     <h2>  Latest posts           ← from <Section title="…" />
- *       <h3> per <PostCard />       ← from <PostCard />
+ * Single Click Home Page — Pixel-perfect matching the UI design
  */
-export const HomePage = () => (
-  <>
-    <Seo {...homeSeo} />
+export const HomePage = () => {
+  return (
+    <>
+      <Seo {...homeSeo} />
 
-    <Section id="hero" className="pt-16 pb-8">
-      <Heading level="h1" size="4xl" className="max-w-3xl">
-        Ship a fast, SEO-friendly React app in minutes.
-      </Heading>
-      <p className="mt-4 max-w-2xl text-lg text-muted">
-        A modular Vite + TypeScript + Tailwind v4 starter with code-split
-        routes, server-state caching, semantic HTML helpers, and a built-in
-        sitemap generator.
-      </p>
-    </Section>
+      {/* 1. Hero with mode selector, app downloads, phone mockup & stats bar */}
+      <HeroSection />
 
-    <Section id="latest" title="Latest posts" eyebrow="From the demo API">
-      <PostList />
-    </Section>
-  </>
-)
+      {/* 2. About Us with 3 key pillars & interactive badges */}
+      <AboutSection />
+
+      {/* 3. How Single Click Works (5-Step connected process) */}
+      <HowItWorksSection />
+
+      {/* 4. Video Showcase / Action CTA block */}
+      <VideoShowcaseSection />
+
+      {/* 5. Top Categories with 7 interactive service cards */}
+      <TopCategoriesSection />
+
+      {/* 6. Privacy & Priority Security Section */}
+      <PrivacySection />
+
+      {/* 7. Testimonials / User Reviews Carousel */}
+      <TestimonialsSection />
+
+      {/* 8. Ready to Get Started CTA Banner */}
+      <CtaBannerSection />
+
+      {/* 9. Frequently Asked Questions Accordion */}
+      <FaqSection />
+    </>
+  )
+}
+

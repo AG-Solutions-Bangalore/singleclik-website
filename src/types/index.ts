@@ -5,6 +5,17 @@ export interface Post {
   body: string
 }
 
+export interface CategoryItem {
+  category: string
+  category_image: string | null
+}
+
+export interface CategoriesResponse {
+  data: CategoryItem[]
+  image_url: string
+  no_image_url: string
+}
+
 export interface PageMeta {
   /** Used for both <title> and og:title (if not overridden). */
   title: string
@@ -18,3 +29,4 @@ export interface PageMeta {
   /** Set to true on pages that should not be indexed. */
   noindex?: boolean
 }
+
