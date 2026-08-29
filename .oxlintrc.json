@@ -1,8 +1,37 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
+  "plugins": ["react", "typescript", "jsx-a11y", "import", "oxc"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "perf": "warn"
+  },
   "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
+    "no-unused-vars": "error",
+    "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
+    "eqeqeq": ["error", "smart"],
+    "no-var": "error",
+    "prefer-const": "error",
+    "react/jsx-key": "error",
+    "react/jsx-no-duplicate-props": "error",
+    "react/self-closing-comp": "error",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-no-literals": "off",
+    "react/no-unescaped-entities": "off",
+    "react/no-array-index-key": "off",
+    "react/forbid-component-props": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "jsx-a11y/prefer-tag-over-role": "off",
+    "jsx-a11y/anchor-has-content": "error",
+    "typescript/no-explicit-any": "warn",
+    "typescript/consistent-type-imports": "warn",
+    "typescript/explicit-module-boundary-types": "off",
+    "typescript/explicit-function-return-type": "off",
+    "import/no-default-export": "off",
+    "import/no-relative-parent-imports": "off",
+    "import/no-unassigned-import": "off",
+    "react/set-state-in-effect": "off"
+  },
+  "ignorePatterns": ["dist", "node_modules", "*.config.ts", "*.config.js", "scripts/**", "**/*.d.ts"]
 }

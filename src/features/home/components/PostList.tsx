@@ -25,7 +25,7 @@ export const PostList = () => {
       <Card className="p-6" role="alert">
         <p className="font-medium text-fg">Couldn't load posts.</p>
         <p className="mt-1 text-sm text-muted">
-          {error instanceof Error ? error.message : 'Unknown error'}
+          {error instanceof Error ? error.message : 'Unknown error.'}
         </p>
         <button
           type="button"
