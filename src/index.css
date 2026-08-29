@@ -1,2 +1,108 @@
-/* Re-exports the canonical Tailwind v4 theme + tokens. */
-@import './styles/theme.css';
+/* SingleClick — Tailwind v4 color theme
+   Pattern (per v4 docs):
+     @import "tailwindcss"          → v4 single-import
+     @custom-variant dark           → enable .dark class
+     @theme { --color-* }           → raw tokens (auto-generate utilities)
+     @theme inline { --color-* }    → semantic aliases (resolve at use site)
+     @layer base { .dark { ... } }  → override raw tokens; aliases auto-flip
+*/
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================
+   RAW COLOR TOKENS
+   Each --color-* auto-generates utilities:
+     bg-brand, text-brand, border-brand, ring-brand
+     bg-accent-green, text-accent-amber, …
+   ============================================================ */
+@theme {
+  /* Brand */
+  --color-brand: #2563EB;
+  --color-brand-hover: #1D4ED8;
+  --color-brand-soft: #DBEAFE;
+  --color-brand-softer: #EFF6FF;
+  --color-brand-fg: #FFFFFF;
+
+  /* Ink (dark surfaces — footer, video block, CTA) */
+  --color-ink: #1E1B4B;
+  --color-ink-soft: #312E81;
+  --color-ink-fg: #FFFFFF;
+
+  /* Neutrals */
+  --color-bg: #FFFFFF;
+  --color-surface: #F9FAFB;
+  --color-surface-2: #F3F4F6;
+  --color-border: #E5E7EB;
+  --color-fg: #0F172A;
+  --color-muted: #64748B;
+  --color-eyebrow: #2563EB;
+
+  /* Accent palette (categories / step icons) */
+  --color-accent-blue: #3B82F6;
+  --color-accent-purple: #8B5CF6;
+  --color-accent-green: #10B981;
+  --color-accent-orange: #F97316;
+  --color-accent-amber: #F59E0B;
+  --color-accent-red: #EF4444;
+  --color-accent-pink: #EC4899;
+
+  /* Functional */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --color-info: #3B82F6;
+}
+
+/* ============================================================
+   SEMANTIC ALIASES
+   `inline` makes the utility class resolve to the *current* value
+   of the referenced variable, so dark-mode overrides below flow
+   through automatically.
+   ============================================================ */
+@theme inline {
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-fg);
+  --color-card: var(--color-bg);
+  --color-card-foreground: var(--color-fg);
+  --color-popover: var(--color-bg);
+  --color-popover-foreground: var(--color-fg);
+  --color-primary: var(--color-brand);
+  --color-primary-foreground: var(--color-brand-fg);
+  --color-secondary: var(--color-surface);
+  --color-secondary-foreground: var(--color-fg);
+  --color-muted-foreground: var(--color-muted);
+  --color-accent-foreground: var(--color-fg);
+  --color-destructive: var(--color-danger);
+  --color-destructive-foreground: var(--color-brand-fg);
+  --color-input: var(--color-border);
+  --color-ring: var(--color-brand);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  /* Dark mode: only the raw tokens need to be re-pointed.
+     Every semantic alias above updates automatically. */
+  .dark {
+    --color-bg: var(--color-ink);
+    --color-fg: var(--color-brand-fg);
+    --color-surface: var(--color-ink-soft);
+    --color-border: var(--color-ink-soft);
+    --color-muted: #94A3B8;
+
+    color-scheme: dark;
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
