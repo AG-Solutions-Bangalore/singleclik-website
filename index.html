@@ -10,9 +10,17 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href="https://singleclik.example.com/" />
 
-    <!-- Performance: preconnect to likely API/CDN origins -->
-    <link rel="preconnect" href="https://api.singleclik.example.com" crossorigin />
+    <!-- Performance: preconnect to image CDN (saves ~330ms on LCP) -->
+    <link rel="preconnect" href="https://singleclik.com" />
     <link rel="dns-prefetch" href="https://jsonplaceholder.typicode.com" />
+
+    <!-- LCP hint: preload the hero mobile image so it's discovered immediately -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://singleclik.com/api/public/assets/images/web_images/mobile.webp"
+      fetchpriority="high"
+    />
 
     <!-- Primary meta — overridden per-route by <Seo /> from react-helmet-async -->
     <title>SingleClik — High-performance React Boilerplate</title>

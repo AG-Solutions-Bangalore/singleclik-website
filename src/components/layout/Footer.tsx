@@ -10,7 +10,7 @@ export const Footer = () => {
   return (
     <footer
       role="contentinfo"
-      className="border-t border-slate-800 bg-[#0A0F1D] text-slate-400 transition-colors"
+      className="border-t border-slate-800 bg-[#0A0F1D] text-slate-300 transition-colors"
     >
       <div className="mx-auto max-w-7xl px-4 pt-16 pb-12 sm:px-6 lg:px-8">
         {/* Main Footer Grid */}
@@ -39,7 +39,7 @@ export const Footer = () => {
               </span>
             </a>
 
-            <p className="mt-4 text-xs leading-relaxed text-slate-400 max-w-sm">
+            <p className="mt-4 text-xs leading-relaxed text-slate-300 max-w-sm">
               Connecting people and businesses, getting things done – the smart way.
             </p>
 
@@ -125,7 +125,7 @@ export const Footer = () => {
                     <a
                       href={link.href}
                       title={link.label}
-                      className="text-slate-400 transition hover:text-white hover:underline"
+                      className="text-slate-300 transition hover:text-white hover:underline"
                     >
                       {link.label}
                     </a>
@@ -137,11 +137,11 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-slate-800/80 pt-6 text-xs text-slate-500 sm:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-slate-800/80 pt-6 text-xs text-slate-300 sm:flex-row">
           <p>© 2024 Single Click. All rights reserved.</p>
 
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1 text-slate-400" title="Language selection">
+            <div className="flex items-center gap-1 text-slate-300" title="Language selection">
               <Globe className="h-3.5 w-3.5" aria-hidden="true" />
               <span>English ▾</span>
             </div>

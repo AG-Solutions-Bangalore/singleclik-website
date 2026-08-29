@@ -51,7 +51,7 @@ export const HeroSection = () => {
             {/* Pill Tag */}
             <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-softer px-4 py-1.5 text-xs font-semibold text-brand dark:bg-brand-soft/20"
+              className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand-softer px-4 py-1.5 text-xs font-bold text-brand-dark dark:bg-brand-soft/30 dark:text-white"
               title="All Your Needs, One Connection"
             >
               <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
@@ -137,11 +137,12 @@ export const HeroSection = () => {
                 src={ASSETS.mobile}
                 alt="Single Click Mobile Application displaying verified services and in-app chat"
                 title="Single Click Mobile App Interface"
-                width="500"
-                height="600"
+                width="1239"
+                height="1269"
                 loading="eager"
                 decoding="async"
-                className="relative z-10 w-full drop-shadow-[0_24px_60px_rgba(37,99,235,0.22)] transition-transform duration-500 hover:scale-[1.01]"
+                fetchPriority="high"
+                className="relative z-10 h-auto w-full aspect-[1239/1269] drop-shadow-[0_24px_60px_rgba(37,99,235,0.22)] transition-transform duration-500 hover:scale-[1.01]"
                 onError={(e) => {
                   const target = e.currentTarget
                   if (!target.dataset.triedFallback) {

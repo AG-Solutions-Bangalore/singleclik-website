@@ -111,7 +111,7 @@ export const TopCategoriesSection = () => {
             onClick={() => setShowAll((prev) => !prev)}
             title={showAll ? 'Show top categories' : 'View all service categories'}
             aria-label={showAll ? 'Show Top Categories' : 'View All Categories'}
-            className="self-start rounded-lg border border-brand/80 px-4 py-1.5 text-xs font-semibold text-brand transition hover:bg-brand/10 active:scale-95 sm:self-auto"
+            className="self-start rounded-lg border border-brand px-4 py-1.5 text-xs font-bold text-brand-dark transition hover:bg-brand/10 active:scale-95 sm:self-auto dark:text-brand-light"
           >
             {showAll ? 'Show Featured' : 'View All Categories'}
           </button>

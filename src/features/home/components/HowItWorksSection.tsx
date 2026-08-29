@@ -26,8 +26,8 @@ export const HowItWorksSection = () => {
           </p>
         </motion.div>
 
-        {/* 5-Step Process Grid / Flow */}
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        {/* 5-Step Process Grid / Flow (2-columns on mobile, 5-columns on desktop) */}
+        <div className="mt-10 sm:mt-14 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-5">
           {HOW_IT_WORKS_STEPS.map((item, index) => (
             <motion.div
               key={item.step}
@@ -35,7 +35,7 @@ export const HowItWorksSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative flex flex-col items-center text-center group"
+              className="relative flex flex-col items-center text-center group last:col-span-2 last:max-w-xs last:mx-auto lg:last:col-span-1"
             >
               {/* Dashed connector line with arrow between steps for desktop */}
               {index < HOW_IT_WORKS_STEPS.length - 1 && (
@@ -48,27 +48,29 @@ export const HowItWorksSection = () => {
               {/* Step Circle with Badge Number */}
               <div className="relative">
                 <div
-                  className={`flex h-14 w-14 items-center justify-center rounded-full border-2 shadow-sm transition-transform duration-300 group-hover:scale-110 ${item.color}`}
+                  className={`flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border-2 shadow-sm transition-transform duration-300 group-hover:scale-110 ${item.color}`}
                   title={`Step ${item.step}: ${item.title}`}
                 >
-                  {item.icon === 'file-text' && <FileText className="h-6 w-6" aria-hidden="true" />}
-                  {item.icon === 'building' && <Building className="h-6 w-6" aria-hidden="true" />}
-                  {item.icon === 'message-circle' && <MessageCircle className="h-6 w-6" aria-hidden="true" />}
-                  {item.icon === 'handshake' && <Handshake className="h-6 w-6" aria-hidden="true" />}
-                  {item.icon === 'shield-check' && <ShieldCheck className="h-6 w-6" aria-hidden="true" />}
+                  {item.icon === 'file-text' && <FileText className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />}
+                  {item.icon === 'building' && <Building className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />}
+                  {item.icon === 'message-circle' && <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />}
+                  {item.icon === 'handshake' && <Handshake className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />}
+                  {item.icon === 'shield-check' && <ShieldCheck className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />}
                 </div>
 
                 {/* Step Number Badge */}
                 <span
-                  className={`absolute -top-7 right-4 flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold shadow-sm ${item.badgeBg}`}
+                  className={`absolute -top-1.5 -right-1.5 flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full text-[10px] sm:text-[11px] font-bold shadow-sm ring-2 ring-bg ${item.badgeBg}`}
                 >
                   {item.step}
                 </span>
               </div>
 
               {/* Title & Description */}
-              <h3 className="mt-5 text-base font-bold text-fg">{item.title}</h3>
-              <p className="mt-2 text-xs leading-relaxed text-muted max-w-[200px]">
+              <h3 className="mt-3.5 sm:mt-5 text-sm sm:text-base font-bold text-fg leading-tight">
+                {item.title}
+              </h3>
+              <p className="mt-1 sm:mt-2 text-xs leading-relaxed text-muted max-w-[200px]">
                 {item.description}
               </p>
             </motion.div>

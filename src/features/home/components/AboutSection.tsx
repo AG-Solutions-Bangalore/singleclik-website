@@ -83,11 +83,11 @@ export const AboutSection = () => {
                 src={ASSETS.about}
                 alt="Single Click Community - Bridging People and Verified Businesses"
                 title="Empowering Connections with Single Click"
-                width="600"
-                height="500"
+                width="1227"
+                height="1024"
                 loading="lazy"
                 decoding="async"
-                className="w-full rounded-2xl object-cover"
+                className="h-auto w-full aspect-[1227/1024] rounded-2xl object-cover"
                 onError={(e) => {
                   e.currentTarget.src =
                     'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&auto=format&fit=crop&q=80'

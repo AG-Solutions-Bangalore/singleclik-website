@@ -30,9 +30,11 @@ export const PrivacySection = () => {
                   src={ASSETS.privacy}
                   alt="Single Click Zero Phone Sharing Security Shield"
                   title="Your Privacy is Our Priority"
+                  width="600"
+                  height="600"
                   loading="lazy"
                   decoding="async"
-                  className="w-full max-w-sm sm:max-w-md lg:max-w-lg h-auto aspect-auto drop-shadow-[0_20px_50px_rgba(37,99,235,0.25)] transition-transform duration-500 hover:scale-105 object-contain"
+                  className="w-full max-w-sm sm:max-w-md lg:max-w-lg h-auto aspect-square drop-shadow-[0_20px_50px_rgba(37,99,235,0.25)] transition-transform duration-500 hover:scale-105 object-contain"
                   onError={(e) => {
                     e.currentTarget.src =
                       'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&auto=format&fit=crop&q=80'

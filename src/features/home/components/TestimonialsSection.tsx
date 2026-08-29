@@ -67,7 +67,8 @@ export const TestimonialsSection = () => {
                     <div
                       className="flex items-center gap-1 text-accent-amber"
                       title={`${item.rating} out of 5 stars`}
-                      aria-label={`${item.rating} stars`}
+                      role="img"
+                      aria-label={`${item.rating} out of 5 stars`}
                     >
                       {Array.from({ length: item.rating }).map((_, i) => (
                         <Star key={i} className="h-4 w-4 fill-current" aria-hidden="true" />
@@ -93,7 +94,7 @@ export const TestimonialsSection = () => {
                       className="h-11 w-11 rounded-full object-cover ring-2 ring-brand/10"
                     />
                     <div>
-                      <h4 className="text-sm font-bold text-fg">{item.name}</h4>
+                      <h3 className="text-sm font-bold text-fg">{item.name}</h3>
                       <p className="text-xs text-muted">{item.role}</p>
                     </div>
                   </div>
@@ -115,18 +116,24 @@ export const TestimonialsSection = () => {
         </div>
 
         {/* Indicator dots */}
-        <div className="mt-8 flex justify-center gap-2" aria-label="Review pagination">
+        <div className="mt-8 flex justify-center gap-1" aria-label="Review pagination">
           {TESTIMONIALS.map((item, idx) => (
             <button
               key={item.id}
               type="button"
               onClick={() => setActiveTab(idx)}
-              className={`h-2 rounded-full transition-all ${
-                activeTab === idx ? 'w-6 bg-brand' : 'w-2 bg-border'
+              className={`flex h-8 min-w-8 items-center justify-center rounded-full p-2 transition-all ${
+                activeTab === idx ? 'bg-brand/10' : ''
               }`}
               title={`View review from ${item.name}`}
               aria-label={`Go to testimonial from ${item.name}`}
-            />
+            >
+              <span
+                className={`block h-2 rounded-full transition-all ${
+                  activeTab === idx ? 'w-6 bg-brand' : 'w-2 bg-border'
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>

@@ -37,7 +37,7 @@ export const STATS = [
 export const ABOUT_PILLARS = [
   {
     title: 'Secure & Private',
-    description: 'No phone numbers shared ever.',
+    description: 'No numbers shared.',
     icon: 'lock',
     color: 'text-[#4F46E5] bg-[#EEF2FF] dark:bg-indigo-950/60 dark:text-indigo-400',
   },
