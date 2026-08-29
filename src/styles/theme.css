@@ -1,0 +1,88 @@
+/* =====================================================================
+   Tailwind v4 design tokens
+   Tailwind v4 uses the `@theme` directive to expose CSS variables as
+   utility classes (text-fg, bg-bg, rounded-card, etc.) without a
+   separate tailwind.config.js. Brand tokens live here in one place.
+   ===================================================================== */
+
+@import "tailwindcss";
+
+/* App-level base — applied before Tailwind preflight outputs. */
+@layer base {
+  :root {
+    color-scheme: light dark;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Skip-to-content for keyboard / screen-reader users. */
+  .skip-link {
+    @apply sr-only;
+  }
+  .skip-link:focus {
+    @apply not-sr-only fixed top-2 left-2 z-50 rounded-md bg-fg px-3 py-2 text-bg;
+  }
+
+  /* Reduce motion: respect OS-level preference. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@theme {
+  /* Color tokens (light mode) */
+  --color-bg: #ffffff;
+  --color-fg: #0f172a;            /* slate-900 */
+  --color-muted: #64748b;          /* slate-500 */
+  --color-border: #e2e8f0;         /* slate-200 */
+  --color-brand: #4f46e5;          /* indigo-600 */
+  --color-brand-fg: #ffffff;
+  --color-accent: #f59e0b;         /* amber-500 */
+  --color-surface: #f8fafc;        /* slate-50 */
+  --color-danger: #dc2626;
+
+  /* Dark-mode tokens (toggled by `next-themes` via .dark on <html>) */
+  --color-dark-bg: #0b1220;
+  --color-dark-fg: #f1f5f9;
+  --color-dark-muted: #94a3b8;
+  --color-dark-border: #1e293b;
+  --color-dark-surface: #111a2e;
+
+  /* Type scale — fluid, clamps between mobile & desktop. */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace;
+
+  /* Radii */
+  --radius-card: 0.875rem;
+  --radius-button: 0.625rem;
+
+  /* Shadows (light) */
+  --shadow-card: 0 1px 2px 0 rgb(15 23 42 / 0.04), 0 1px 3px 0 rgb(15 23 42 / 0.06);
+  --shadow-elevated: 0 10px 30px -10px rgb(15 23 42 / 0.2);
+
+  /* Container */
+  --container-prose: 65ch;
+}
+
+/* Dark mode mappings — use `dark:` variant. */
+@layer base {
+  .dark {
+    --color-bg: var(--color-dark-bg);
+    --color-fg: var(--color-dark-fg);
+    --color-muted: var(--color-dark-muted);
+    --color-border: var(--color-dark-border);
+    --color-surface: var(--color-dark-surface);
+  }
+}
