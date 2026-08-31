@@ -1,23 +1,43 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react'
 import { TESTIMONIALS } from '../constant'
 
 export const TestimonialsSection = () => {
-  const [activeTab, setActiveTab] = useState(0)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [itemsPerPage, setItemsPerPage] = useState(3)
+
+  // Responsive items per page
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      if (window.innerWidth < 640) setItemsPerPage(1)
+      else if (window.innerWidth < 1024) setItemsPerPage(2)
+      else setItemsPerPage(3)
+    }
+    updateItemsPerPage()
+    window.addEventListener('resize', updateItemsPerPage)
+    return () => window.removeEventListener('resize', updateItemsPerPage)
+  }, [])
+
+  const totalPages = Math.ceil(TESTIMONIALS.length / itemsPerPage)
 
   const handlePrev = () => {
-    setActiveTab((prev) => (prev === 0 ? TESTIMONIALS.length - 1 : prev - 1))
+    setActiveIndex((prev) => (prev === 0 ? totalPages - 1 : prev - 1))
   }
 
   const handleNext = () => {
-    setActiveTab((prev) => (prev === TESTIMONIALS.length - 1 ? 0 : prev + 1))
+    setActiveIndex((prev) => (prev === totalPages - 1 ? 0 : prev + 1))
   }
+
+  const currentItems = TESTIMONIALS.slice(
+    activeIndex * itemsPerPage,
+    activeIndex * itemsPerPage + itemsPerPage,
+  )
 
   return (
     <section
       aria-label="User Reviews and Testimonials"
-      className="py-8 bg-surface/30"
+      className="py-12 bg-surface/30 sm:py-16 lg:py-20"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
@@ -31,18 +51,18 @@ export const TestimonialsSection = () => {
           <h2 className="text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">
             What Our Users Say
           </h2>
-          <p className="mt-2 text-sm text-muted">
+          <p className="mt-2 text-sm text-muted sm:text-base">
             Read authentic feedback from individuals and verified businesses using Single Click.
           </p>
         </motion.div>
 
-        {/* Carousel / Grid Wrapper */}
+        {/* Carousel Wrapper */}
         <div className="relative mt-12">
           {/* Previous Button */}
           <button
             type="button"
             onClick={handlePrev}
-            className="absolute -left-3 top-1/2 -translate-y-1/2 z-10 hidden h-10 w-10 items-center justify-center rounded-full border border-border bg-bg text-fg shadow-md transition hover:bg-surface-2 lg:flex"
+            className="absolute left-2 top-1/2 z-20 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg/90 backdrop-blur-sm text-fg shadow-lg transition hover:bg-brand hover:text-white hover:border-brand sm:left-0 sm:-translate-x-1/2 lg:left-2 lg:translate-x-0"
             aria-label="Previous review"
             title="Previous Review"
           >
@@ -50,56 +70,70 @@ export const TestimonialsSection = () => {
           </button>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="overflow-hidden px-2 sm:px-12 lg:px-16">
             <AnimatePresence mode="wait">
-              {TESTIMONIALS.map((item, idx) => (
-                <motion.div
-                  key={item.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  whileHover={{ y: -4 }}
-                  className="flex flex-col justify-between rounded-2xl border border-border bg-bg p-6 shadow-sm transition-all duration-300 hover:border-brand/30 hover:shadow-md"
-                >
-                  <div>
-                    {/* Star Ratings */}
-                    <div
-                      className="flex items-center gap-1 text-accent-amber"
-                      title={`${item.rating} out of 5 stars`}
-                      role="img"
-                      aria-label={`${item.rating} out of 5 stars`}
-                    >
-                      {Array.from({ length: item.rating }).map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-current" aria-hidden="true" />
-                      ))}
-                    </div>
-
-                    {/* Quote */}
-                    <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
-                      "{item.quote}"
-                    </p>
-                  </div>
-
-                  {/* User Info */}
-                  <div className="mt-6 flex items-center gap-3 pt-4 border-t border-border/60">
-                    <img
-                      src={item.avatar}
-                      alt={`Portrait of ${item.name} - ${item.role}`}
-                      title={`${item.name} (${item.role})`}
-                      width="44"
-                      height="44"
-                      loading="lazy"
-                      decoding="async"
-                      className="h-11 w-11 rounded-full object-cover ring-2 ring-brand/10"
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -30 }}
+                transition={{ duration: 0.4, ease: 'easeInOut' }}
+                className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+              >
+                {currentItems.map((item, idx) => (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: idx * 0.1 }}
+                    whileHover={{ y: -4 }}
+                    className="relative flex flex-col justify-between rounded-2xl border border-border bg-bg p-6 shadow-sm transition-all duration-300 hover:border-brand/30 hover:shadow-md"
+                  >
+                    {/* Decorative Quote Icon */}
+                    <Quote
+                      className="absolute right-4 top-4 h-8 w-8 text-brand/10"
+                      aria-hidden="true"
                     />
+
                     <div>
-                      <h3 className="text-sm font-bold text-fg">{item.name}</h3>
-                      <p className="text-xs text-muted">{item.role}</p>
+                      {/* Star Ratings */}
+                      <div
+                        className="flex items-center gap-1 text-accent-amber"
+                        title={`${item.rating} out of 5 stars`}
+                        role="img"
+                        aria-label={`${item.rating} out of 5 stars`}
+                      >
+                        {Array.from({ length: item.rating }).map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-current" aria-hidden="true" />
+                        ))}
+                      </div>
+
+                      {/* Quote */}
+                      <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
+                        "{item.quote}"
+                      </p>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+
+                    {/* User Info */}
+                    <div className="mt-6 flex items-center gap-3 pt-4 border-t border-border/60">
+                      <img
+                        src={item.avatar}
+                        alt={`Portrait of ${item.name} - ${item.role}`}
+                        title={`${item.name} (${item.role})`}
+                        width="44"
+                        height="44"
+                        loading="lazy"
+                        decoding="async"
+                        className="h-11 w-11 rounded-full object-cover ring-2 ring-brand/10"
+                      />
+                      <div>
+                        <h3 className="text-sm font-bold text-fg">{item.name}</h3>
+                        <p className="text-xs text-muted">{item.role}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
             </AnimatePresence>
           </div>
 
@@ -107,7 +141,7 @@ export const TestimonialsSection = () => {
           <button
             type="button"
             onClick={handleNext}
-            className="absolute -right-3 top-1/2 -translate-y-1/2 z-10 hidden h-10 w-10 items-center justify-center rounded-full border border-border bg-bg text-fg shadow-md transition hover:bg-surface-2 lg:flex"
+            className="absolute right-2 top-1/2 z-20 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg/90 backdrop-blur-sm text-fg shadow-lg transition hover:bg-brand hover:text-white hover:border-brand sm:right-0 sm:translate-x-1/2 lg:right-2 lg:translate-x-0"
             aria-label="Next review"
             title="Next Review"
           >
@@ -116,22 +150,23 @@ export const TestimonialsSection = () => {
         </div>
 
         {/* Indicator dots */}
-        <div className="mt-8 flex justify-center gap-1" aria-label="Review pagination">
-          {TESTIMONIALS.map((item, idx) => (
+        <div
+          className="mt-10 flex justify-center gap-2"
+          aria-label="Review pagination"
+          role="tablist"
+        >
+          {Array.from({ length: totalPages }).map((_, idx) => (
             <button
-              key={item.id}
+              key={idx}
               type="button"
-              onClick={() => setActiveTab(idx)}
-              className={`flex h-8 min-w-8 items-center justify-center rounded-full p-2 transition-all ${activeTab === idx ? 'bg-brand/10' : ''
-                }`}
-              title={`View review from ${item.name}`}
-              aria-label={`Go to testimonial from ${item.name}`}
-            >
-              <span
-                className={`block h-2 rounded-full transition-all ${activeTab === idx ? 'w-6 bg-brand' : 'w-2 bg-border'
-                  }`}
-              />
-            </button>
+              onClick={() => setActiveIndex(idx)}
+              role="tab"
+              aria-selected={activeIndex === idx}
+              aria-label={`Go to review page ${idx + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                activeIndex === idx ? 'w-8 bg-brand' : 'w-2 bg-border hover:bg-muted'
+              }`}
+            />
           ))}
         </div>
       </div>

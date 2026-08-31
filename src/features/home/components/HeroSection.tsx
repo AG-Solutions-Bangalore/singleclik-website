@@ -4,6 +4,7 @@ import { Search, Building2, Users, ShieldCheck, Briefcase, Star, Sparkles } from
 import { ASSETS, STATS } from '../constant'
 import { Button } from '@/components/ui/Button'
 import { StoreBadge } from '@/components/ui/store-badge'
+import { FlipLink } from '@/components/ui/FlipLink'
 
 
 const containerVariants: Variants = {
@@ -36,8 +37,87 @@ export const HeroSection = () => {
       aria-label="Single Click Hero Section"
       className="relative overflow-hidden pt-8 pb-16 lg:pt-14 lg:pb-24"
     >
-      {/* Background radial glow */}
+      {/* Hero background — large blue curved blob (right side, matching reference) */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-0 top-0 -z-10 h-full w-[55%] hidden lg:block"
+      >
+        <svg
+          viewBox="0 0 700 700"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-full w-full"
+          preserveAspectRatio="xMaxYMid slice"
+        >
+          <ellipse cx="520" cy="320" rx="380" ry="340" fill="url(#heroBlob)" />
+          <defs>
+            <radialGradient id="heroBlob" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#BFDBFE" stopOpacity="0.65" />
+              <stop offset="55%" stopColor="#93C5FD" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="#DBEAFE" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+
+      {/* Background radial glow + connection lines */}
       <div className="hero-glow pointer-events-none absolute inset-0 -z-10" />
+      <div className="hero-lines pointer-events-none absolute inset-0 -z-10 opacity-70 hidden md:block" />
+
+      {/* Floating decorative spheres on the left side */}
+      <motion.div
+        aria-hidden="true"
+        animate={{ y: [0, -14, 0], x: [0, 6, 0] }}
+        transition={{ repeat: Infinity, duration: 7, ease: 'easeInOut' }}
+        className="pointer-events-none absolute left-[6%] top-[18%] -z-10 h-3 w-3 rounded-full bg-gradient-to-br from-blue-300 to-blue-500 shadow-lg shadow-blue-400/40"
+      />
+      <motion.div
+        aria-hidden="true"
+        animate={{ y: [0, 10, 0], x: [0, -8, 0] }}
+        transition={{ repeat: Infinity, duration: 8, ease: 'easeInOut', delay: 0.6 }}
+        className="pointer-events-none absolute left-[14%] bottom-[28%] -z-10 h-4 w-4 rounded-full bg-gradient-to-br from-cyan-300 to-blue-400 shadow-lg shadow-cyan-400/40"
+      />
+      <motion.div
+        aria-hidden="true"
+        animate={{ y: [0, -10, 0] }}
+        transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut', delay: 1.2 }}
+        className="pointer-events-none absolute left-[2%] bottom-[40%] -z-10 h-2 w-2 rounded-full bg-gradient-to-br from-sky-300 to-blue-500 shadow-md shadow-blue-400/40"
+      />
+      <motion.div
+        aria-hidden="true"
+        animate={{ y: [0, 12, 0], x: [0, 4, 0] }}
+        transition={{ repeat: Infinity, duration: 9, ease: 'easeInOut', delay: 0.3 }}
+        className="pointer-events-none absolute left-[22%] top-[40%] -z-10 h-3 w-3 rounded-full bg-gradient-to-br from-blue-200 to-cyan-400 shadow-md shadow-cyan-400/30"
+      />
+
+      {/* Connection lines + small dots (decorative network) on left side */}
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 hidden md:block"
+        viewBox="0 0 800 600"
+        preserveAspectRatio="xMinYMid slice"
+        fill="none"
+      >
+        <line x1="40" y1="120" x2="180" y2="200" stroke="rgba(96,165,250,0.35)" strokeWidth="1" />
+        <line x1="120" y1="380" x2="260" y2="320" stroke="rgba(96,165,250,0.3)" strokeWidth="1" />
+        <line x1="20" y1="320" x2="160" y2="280" stroke="rgba(147,197,253,0.35)" strokeWidth="1" />
+        <circle cx="40" cy="120" r="2.5" fill="rgba(96,165,250,0.55)" />
+        <circle cx="180" cy="200" r="2" fill="rgba(96,165,250,0.5)" />
+        <circle cx="120" cy="380" r="2.5" fill="rgba(96,165,250,0.55)" />
+        <circle cx="260" cy="320" r="2" fill="rgba(96,165,250,0.45)" />
+      </svg>
+
+      {/* Right-side dot grid (matching reference) */}
+      <div className="subtle-dots pointer-events-none absolute right-[2%] top-[8%] -z-10 h-48 w-48 rounded-2xl opacity-80 hidden md:block" />
+      <div className="subtle-dots pointer-events-none absolute right-[6%] bottom-[18%] -z-10 h-32 w-32 rounded-2xl opacity-70 hidden md:block" />
+
+      {/* Right-side floating sphere */}
+      <motion.div
+        aria-hidden="true"
+        animate={{ y: [0, -10, 0], x: [0, -6, 0] }}
+        transition={{ repeat: Infinity, duration: 7.5, ease: 'easeInOut', delay: 0.5 }}
+        className="pointer-events-none absolute right-[10%] top-[20%] -z-10 h-3 w-3 rounded-full bg-gradient-to-br from-sky-200 to-blue-400 shadow-lg shadow-blue-300/40 hidden md:block"
+      />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
@@ -89,10 +169,12 @@ export const HeroSection = () => {
                 aria-pressed={activeTab === 'customer'}
                 variant={activeTab === 'customer' ? 'default' : 'outline'}
                 size="lg"
-                className="rounded-xl px-5 font-semibold"
+                className="group rounded-xl px-5 font-semibold"
               >
                 <Search className="h-4 w-4" aria-hidden="true" />
-                I'm Looking for a Service
+                <FlipLink href="#hero" className="font-semibold">
+                  I'm Looking for a Service
+                </FlipLink>
               </Button>
 
               <Button
@@ -103,10 +185,12 @@ export const HeroSection = () => {
                 aria-pressed={activeTab === 'business'}
                 variant={activeTab === 'business' ? 'default' : 'outline'}
                 size="lg"
-                className="rounded-xl px-5 font-semibold"
+                className="group rounded-xl px-5 font-semibold"
               >
                 <Building2 className="h-4 w-4" aria-hidden="true" />
-                I'm a Business
+                <FlipLink href="#signup" className="font-semibold">
+                  I'm a Business
+                </FlipLink>
               </Button>
             </motion.div>
 
@@ -163,7 +247,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="mt-14 rounded-2xl border border-slate-100 dark:border-slate-800 bg-bg p-5 shadow-[0_10px_35px_rgba(0,0,0,0.05)] sm:p-6 lg:mt-18"
         >
-          <div className="grid grid-cols-2 gap-4 divide-y divide-border/60 sm:grid-cols-4 sm:divide-y-0 sm:divide-x">
+          <div className="grid grid-cols-2 gap-4 sm:divide-y divide-border/60 sm:grid-cols-4 sm:divide-y-0 sm:divide-x">
             {STATS.map((stat, idx) => (
               <div
                 key={stat.label}
@@ -172,7 +256,7 @@ export const HeroSection = () => {
                 }`}
               >
                 <div
-                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-bold ${stat.color}`}
+                  className={`apple-border-shine flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-bold ${stat.color}`}
                 >
                   {stat.iconType === 'users' && <Users className="h-5 w-5" aria-hidden="true" />}
                   {stat.iconType === 'shield' && <ShieldCheck className="h-5 w-5" aria-hidden="true" />}

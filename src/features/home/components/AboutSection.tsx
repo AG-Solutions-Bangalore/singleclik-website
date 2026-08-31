@@ -51,7 +51,7 @@ export const AboutSection = () => {
                   title={`${pillar.title} - ${pillar.description}`}
                 >
                   <div
-                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-semibold shadow-sm ${pillar.color}`}
+                    className={`apple-border-shine flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-semibold shadow-sm ${pillar.color}`}
                   >
                     {pillar.icon === 'lock' && <Lock className="h-4 w-4" aria-hidden="true" />}
                     {pillar.icon === 'shield-check' && <ShieldCheck className="h-4 w-4" aria-hidden="true" />}

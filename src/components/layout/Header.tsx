@@ -210,16 +210,23 @@ export const Header = () => {
           {/* Action Buttons */}
           <div className="hidden items-center gap-3 md:flex">
             <ThemeToggle />
-            <Button asChild variant="outline" size="sm">
-              <a href="#login" title="Log in to your Single Click account" aria-label="Log In">
-                Log In
-              </a>
-            </Button>
-            <Button asChild variant="default" size="sm">
-              <a href="#signup" title="Create a new Single Click account" aria-label="Sign Up">
-                Sign Up
-              </a>
-            </Button>
+            <a
+              href="#login"
+              title="Log in to your Single Click account"
+              aria-label="Log In"
+              className="inline-flex items-center rounded-lg border border-border bg-bg px-4 py-2 text-sm font-semibold text-fg shadow-xs transition-all hover:border-brand/40 hover:text-brand hover:bg-brand-softer active:scale-95"
+            >
+              Log In
+            </a>
+            <a
+              href="#signup"
+              title="Create a new Single Click account"
+              aria-label="Sign Up"
+              className="group inline-flex items-center gap-1.5 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white shadow-md shadow-brand/25 transition-all hover:bg-brand-hover active:scale-95"
+            >
+              <span>Sign Up</span>
+              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-[-45deg]" aria-hidden="true" />
+            </a>
           </div>
 
           {/* Mobile menu button */}

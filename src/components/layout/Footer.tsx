@@ -1,6 +1,7 @@
 import { ArrowUp, Globe } from 'lucide-react'
 import { ASSETS, FOOTER_SECTIONS } from '@/features/home/constant'
 import { StoreBadge } from '@/components/ui/store-badge'
+import { FlipLink } from '@/components/ui/FlipLink'
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -51,7 +52,7 @@ export const Footer = () => {
               {/* Facebook */}
               <a
                 href="#facebook"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-brand hover:text-white"
+                className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-brand hover:text-white"
                 aria-label="Visit Single Click on Facebook"
                 title="Facebook"
               >
@@ -63,7 +64,7 @@ export const Footer = () => {
               {/* Instagram */}
               <a
                 href="#instagram"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-accent-pink hover:text-white"
+                className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-accent-pink hover:text-white"
                 aria-label="Visit Single Click on Instagram"
                 title="Instagram"
               >
@@ -75,7 +76,7 @@ export const Footer = () => {
               {/* LinkedIn */}
               <a
                 href="#linkedin"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-brand hover:text-white"
+                className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-brand hover:text-white"
                 aria-label="Visit Single Click on LinkedIn"
                 title="LinkedIn"
               >
@@ -87,7 +88,7 @@ export const Footer = () => {
               {/* YouTube */}
               <a
                 href="#youtube"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-red-600 hover:text-white"
+                className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-red-600 hover:text-white"
                 aria-label="Visit Single Click on YouTube"
                 title="YouTube"
               >
@@ -99,7 +100,7 @@ export const Footer = () => {
               {/* X */}
               <a
                 href="#twitter"
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-slate-700 hover:text-white"
+                className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-slate-700 hover:text-white"
                 aria-label="Visit Single Click on X"
                 title="X (Twitter)"
               >
@@ -119,13 +120,13 @@ export const Footer = () => {
               <ul className="mt-4 space-y-2.5 text-xs">
                 {section.links.map((link) => (
                   <li key={link.label}>
-                    <a
+                    <FlipLink
                       href={link.href}
                       title={link.label}
-                      className="text-slate-300 transition hover:text-white hover:underline"
+                      className="text-slate-400 hover:text-white transition-colors"
                     >
                       {link.label}
-                    </a>
+                    </FlipLink>
                   </li>
                 ))}
               </ul>
@@ -146,7 +147,7 @@ export const Footer = () => {
             <button
               type="button"
               onClick={scrollToTop}
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-white shadow-md hover:bg-brand-hover transition active:scale-95"
+              className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-brand text-white shadow-md hover:bg-brand-hover transition active:scale-95"
               aria-label="Back to top of page"
               title="Back to top"
             >

@@ -48,7 +48,7 @@ export const HowItWorksSection = () => {
               {/* Step Circle with Badge Number */}
               <div className="relative">
                 <div
-                  className={`flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border-2 shadow-sm transition-transform duration-300 group-hover:scale-110 ${item.color}`}
+                  className={`apple-border-shine flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border-2 shadow-sm transition-transform duration-300 group-hover:scale-110 ${item.color}`}
                   title={`Step ${item.step}: ${item.title}`}
                 >
                   {item.icon === 'file-text' && <FileText className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />}

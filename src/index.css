@@ -169,15 +169,72 @@
 
 /* Custom glow & pattern utilities */
 .hero-glow {
-  background: radial-gradient(circle at 60% 30%, rgba(37, 99, 235, 0.15) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 75%);
+  background:
+    radial-gradient(ellipse 60% 80% at 85% 50%, rgba(96, 165, 250, 0.45) 0%, rgba(59, 130, 246, 0.2) 35%, transparent 65%),
+    radial-gradient(circle at 15% 80%, rgba(147, 197, 253, 0.35) 0%, transparent 45%),
+    radial-gradient(circle at 5% 20%, rgba(191, 219, 254, 0.25) 0%, transparent 40%);
 }
 
 .dark .hero-glow {
-  background: radial-gradient(circle at 60% 30%, rgba(37, 99, 235, 0.25) 0%, rgba(30, 58, 138, 0.15) 50%, transparent 80%);
+  background:
+    radial-gradient(ellipse 60% 80% at 85% 50%, rgba(37, 99, 235, 0.4) 0%, rgba(30, 58, 138, 0.2) 35%, transparent 65%),
+    radial-gradient(circle at 15% 80%, rgba(59, 130, 246, 0.25) 0%, transparent 45%),
+    radial-gradient(circle at 5% 20%, rgba(96, 165, 250, 0.2) 0%, transparent 40%);
 }
 
 .subtle-dots {
-  background-image: radial-gradient(rgba(37, 99, 235, 0.18) 1.5px, transparent 1.5px);
-  background-size: 16px 16px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.55) 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
 }
 
+.dark .subtle-dots {
+  background-image: radial-gradient(rgba(147, 197, 253, 0.4) 1.5px, transparent 1.5px);
+}
+
+/* Connection lines for hero */
+.hero-lines {
+  background-image:
+    linear-gradient(45deg, transparent 49.5%, rgba(96, 165, 250, 0.15) 49.5%, rgba(96, 165, 250, 0.15) 50.5%, transparent 50.5%),
+    linear-gradient(-45deg, transparent 49.5%, rgba(96, 165, 250, 0.12) 49.5%, rgba(96, 165, 250, 0.12) 50.5%, transparent 50.5%);
+  background-size: 60px 60px;
+}
+
+
+
+
+/* ==========================================
+   Apple Border Shine Effect
+========================================== */
+.apple-border-shine {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.apple-border-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Stretches exactly to the edges of the parent */
+  border-radius: inherit;
+  /* Automatically matches the parent's rounded corners! */
+  padding: 1px;
+  /* This controls the thickness of your border */
+
+  /* The top-left and bottom-right shine colors */
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.05) 25%,
+      rgba(255, 255, 255, 0.05) 75%,
+      rgba(255, 255, 255, 0.5) 100%);
+  /* Modern CSS Masking to cut out the inside, leaving ONLY the border */
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  /* Ensures you can still click the button underneath the border */
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}

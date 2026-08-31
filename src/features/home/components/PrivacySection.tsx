@@ -69,7 +69,7 @@ export const PrivacySection = () => {
                     transition={{ duration: 0.35, delay: idx * 0.08 }}
                     className="flex items-center gap-3.5"
                   >
-                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand text-white shadow-sm shadow-brand/30">
+                    <div className="apple-border-shine flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand text-white shadow-sm shadow-brand/30">
                       <Check className="h-3.5 w-3.5 stroke-[3]" aria-hidden="true" />
                     </div>
                     <span className="text-sm sm:text-base font-medium text-fg/90">{point}</span>
