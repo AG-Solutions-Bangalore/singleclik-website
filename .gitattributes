@@ -1,0 +1,12 @@
+# Normalize line endings so the repo works the same on every OS.
+* text=auto eol=lf
+
+# Mark lockfiles as generated, so PRs only diff them when the deps actually change.
+package-lock.json linguist-generated=true
+bun.lock linguist-generated=true
+yarn.lock linguist-generated=true
+pnpm-lock.yaml linguist-generated=true
+
+# Don't diff generated build artifacts.
+dist/** -diff
+*.tsbuildinfo -diff

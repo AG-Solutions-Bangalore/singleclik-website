@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="light dark" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="https://singleclik.example.com/" />
+
+    <!-- Performance: preconnect to image CDN (saves ~330ms on LCP) -->
+    <link rel="preconnect" href="https://singleclik.com" />
+    <link rel="dns-prefetch" href="https://jsonplaceholder.typicode.com" />
+
+    <!-- LCP hint: preload the hero mobile image so it's discovered immediately -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://singleclik.com/api/public/assets/images/web_images/mobile.webp"
+      fetchpriority="high"
+    />
+
+    <!-- Primary meta — overridden per-route by <Seo /> from react-helmet-async -->
+    <title>SingleClik — High-performance React Boilerplate</title>
+    <meta
+      name="description"
+      content="A modular, SEO-first Vite + React + TypeScript + Tailwind starter built for speed and scale."
+    />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="generator" content="Vite + React" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SingleClik" />
+    <meta property="og:title" content="SingleClik — High-performance React Boilerplate" />
+    <meta
+      property="og:description"
+      content="A modular, SEO-first Vite + React + TypeScript + Tailwind starter built for speed and scale."
+    />
+    <meta property="og:url" content="https://singleclik.example.com/" />
+    <meta property="og:image" content="https://singleclik.example.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SingleClik — High-performance React Boilerplate" />
+    <meta
+      name="twitter:description"
+      content="A modular, SEO-first Vite + React + TypeScript + Tailwind starter built for speed and scale."
+    />
+    <meta name="twitter:image" content="https://singleclik.example.com/og-image.png" />
+
+    <!-- Structured data: site-level WebSite. Page-level JSON-LD is injected per route. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "SingleClik",
+        "url": "https://singleclik.example.com/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://singleclik.example.com/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <strong>This site requires JavaScript. Please enable it to continue.</strong>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
