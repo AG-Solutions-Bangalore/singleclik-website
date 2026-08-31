@@ -17,7 +17,7 @@ export const TestimonialsSection = () => {
   return (
     <section
       aria-label="User Reviews and Testimonials"
-      className="py-16 lg:py-24 bg-surface/30"
+      className="py-8 bg-surface/30"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
@@ -122,16 +122,14 @@ export const TestimonialsSection = () => {
               key={item.id}
               type="button"
               onClick={() => setActiveTab(idx)}
-              className={`flex h-8 min-w-8 items-center justify-center rounded-full p-2 transition-all ${
-                activeTab === idx ? 'bg-brand/10' : ''
-              }`}
+              className={`flex h-8 min-w-8 items-center justify-center rounded-full p-2 transition-all ${activeTab === idx ? 'bg-brand/10' : ''
+                }`}
               title={`View review from ${item.name}`}
               aria-label={`Go to testimonial from ${item.name}`}
             >
               <span
-                className={`block h-2 rounded-full transition-all ${
-                  activeTab === idx ? 'w-6 bg-brand' : 'w-2 bg-border'
-                }`}
+                className={`block h-2 rounded-full transition-all ${activeTab === idx ? 'w-6 bg-brand' : 'w-2 bg-border'
+                  }`}
               />
             </button>
           ))}

@@ -7,7 +7,7 @@ export const PrivacySection = () => {
     <section
       id="privacy"
       aria-label="Privacy and Security Standards"
-      className="py-16 bg-bg"
+      className="py-8 bg-bg"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
