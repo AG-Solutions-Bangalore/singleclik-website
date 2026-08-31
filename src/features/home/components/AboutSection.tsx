@@ -78,58 +78,19 @@ export const AboutSection = () => {
             <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-brand/10 to-accent-indigo/10 blur-xl -z-10" />
             <div className="subtle-dots absolute -bottom-6 -right-6 h-32 w-32 rounded-full opacity-40 pointer-events-none" />
 
-            <div className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-border/80 bg-bg p-2 shadow-2xl">
+            <div className="relative w-full max-w-lg overflow-hidden rounded-3xl border-none border-border/80 bg-bg p-2">
               <img
                 src={ASSETS.about}
                 alt="Single Click Community - Bridging People and Verified Businesses"
                 title="Empowering Connections with Single Click"
-                width="1227"
-                height="1024"
                 loading="lazy"
                 decoding="async"
-                className="h-auto w-full aspect-[1227/1024] rounded-2xl object-cover"
+                className="h-auto w-full rounded-2xl object-cover"
                 onError={(e) => {
                   e.currentTarget.src =
                     'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&auto=format&fit=crop&q=80'
                 }}
               />
-
-              {/* Floating Center Single Click Logo */}
-              <motion.div
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden sm:flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-brand to-accent-blue text-white font-bold text-xl shadow-xl shadow-brand/40 ring-4 ring-bg"
-                title="Single Click Logo"
-              >
-                S
-              </motion.div>
-
-              {/* Floating Badge Top Right */}
-              <motion.div
-                animate={{ y: [0, -5, 0] }}
-                transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut' }}
-                className="absolute top-6 right-6 hidden sm:flex items-center gap-2 rounded-full border border-border bg-bg/95 px-3.5 py-1.5 shadow-lg backdrop-blur-md"
-                title="Empowering Connections"
-              >
-                <Sparkles className="h-3.5 w-3.5 text-accent-purple" aria-hidden="true" />
-                <span className="text-xs font-semibold text-fg">Empowering Connections</span>
-              </motion.div>
-
-              {/* Floating Badge Bottom Left */}
-              <motion.div
-                animate={{ y: [0, 5, 0] }}
-                transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-                className="absolute bottom-6 left-6 hidden sm:flex items-center gap-2.5 rounded-2xl border border-border bg-bg/95 p-3 shadow-xl backdrop-blur-md"
-                title="Building Connections, Creating Opportunities"
-              >
-                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-brand text-white font-bold text-xs">
-                  S
-                </div>
-                <div>
-                  <div className="text-xs font-bold text-fg">Building Connections</div>
-                  <div className="text-[10px] text-muted">Creating Opportunities</div>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>

@@ -60,7 +60,7 @@ export const HowItWorksSection = () => {
 
                 {/* Step Number Badge */}
                 <span
-                  className={`absolute -top-1.5 -right-1.5 flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full text-[10px] sm:text-[11px] font-bold shadow-sm ring-2 ring-bg ${item.badgeBg}`}
+                  className={`absolute -top-4 right-4 flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full text-[10px] sm:text-[11px] font-bold shadow-sm ring-2 ring-bg ${item.badgeBg}`}
                 >
                   {item.step}
                 </span>
