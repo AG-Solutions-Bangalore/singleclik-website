@@ -124,24 +124,22 @@ export const Header = () => {
             aria-label="Single Click Homepage"
             className="flex items-center gap-2.5 transition-transform hover:scale-[1.02]"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand to-brand-light shadow-md shadow-brand/20">
-              <img
-                src={ASSETS.logo}
-                alt="Single Click Official Logo"
-                title="Single Click"
-                width="28"
-                height="28"
-                loading="eager"
-                decoding="async"
-                className="h-7 w-7 object-contain drop-shadow-sm"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none'
-                  const fallback = e.currentTarget.parentElement?.querySelector('.logo-fallback')
-                  if (fallback) (fallback as HTMLElement).style.display = 'flex'
-                }}
-              />
-              <span className="logo-fallback hidden text-lg font-bold text-white">S</span>
-            </div>
+            <img
+              src={ASSETS.logo}
+              alt="Single Click Official Logo"
+              title="Single Click"
+              width="48"
+              height="48"
+              loading="eager"
+              decoding="async"
+              className="h-12 w-12 object-contain drop-shadow-sm"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none'
+                const fallback = e.currentTarget.parentElement?.querySelector('.logo-fallback')
+                if (fallback) (fallback as HTMLElement).style.display = 'flex'
+              }}
+            />
+            <span className="logo-fallback hidden text-lg font-bold text-fg">S</span>
             <span className="text-xl font-bold tracking-tight text-fg">
               Single <span className="text-brand">Click</span>
             </span>
@@ -316,19 +314,17 @@ export const Header = () => {
                       aria-label="Single Click Homepage"
                       className="flex items-center gap-3"
                     >
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand to-brand-light shadow-md shadow-brand/25">
-                        <img
-                          src={ASSETS.logo}
-                          alt="Single Click Official Logo"
-                          title="Single Click"
-                          width="24"
-                          height="24"
-                          className="h-6 w-6 object-contain"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none'
-                          }}
-                        />
-                      </div>
+                      <img
+                        src={ASSETS.logo}
+                        alt="Single Click Official Logo"
+                        title="Single Click"
+                        width="48"
+                        height="48"
+                        className="h-12 w-12 object-contain"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none'
+                        }}
+                      />
                       <div className="flex flex-col">
                         <span className="text-lg font-extrabold tracking-tight text-fg leading-none">
                           Single <span className="text-brand">Click</span>

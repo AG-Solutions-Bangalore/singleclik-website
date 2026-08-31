@@ -9,21 +9,21 @@ export const VideoShowcaseSection = () => {
   return (
     <section
       aria-label="Single Click Video Demo"
-      className="py-12 lg:py-16 bg-bg"
+      className="py-6 lg:py-8 bg-bg"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, scale: 0.98, y: 20 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#0A1128] via-[#1C3FAA] to-[#161F6D] p-8 sm:p-12 lg:p-16 text-white shadow-2xl"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#0A1128] via-[#1C3FAA] to-[#161F6D] p-5 sm:p-7 lg:p-8 text-white shadow-2xl"
         >
           {/* Subtle background glow effect */}
           <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-brand/30 blur-3xl pointer-events-none" />
           <div className="absolute -left-20 -bottom-20 h-80 w-80 rounded-full bg-accent-indigo/20 blur-3xl pointer-events-none" />
 
-          <div className="relative grid items-center gap-10 lg:grid-cols-12">
+          <div className="relative grid items-center gap-6 lg:grid-cols-12">
             {/* Left Column: Text Content */}
             <div className="flex flex-col items-start lg:col-span-6">
               <span
@@ -34,13 +34,13 @@ export const VideoShowcaseSection = () => {
                 See Single Click in Action
               </span>
 
-              <h2 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-[38px] lg:leading-tight">
+              <h2 className="mt-3 text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-[34px] lg:leading-tight">
                 A Smarter Way to Connect
                 <br />
                 and Get Things Done
               </h2>
 
-              <p className="mt-4 text-sm leading-relaxed text-blue-100/80 sm:text-base">
+              <p className="mt-3 text-sm leading-relaxed text-blue-100/80 sm:text-base">
                 Watch how Single Click helps you connect with the right businesses, chat securely, and
                 get your work done – all without sharing your personal contact.
               </p>
@@ -50,7 +50,7 @@ export const VideoShowcaseSection = () => {
                 onClick={() => setIsPlaying(!isPlaying)}
                 title="Watch Single Click introductory video"
                 aria-label={isPlaying ? 'Pause Product Video' : 'Watch Product Video'}
-                className="mt-8 inline-flex items-center gap-2.5 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/40 transition hover:bg-brand-hover active:scale-95"
+                className="mt-5 inline-flex items-center gap-2.5 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/40 transition hover:bg-brand-hover active:scale-95"
               >
                 <span>Watch Video</span>
                 <Play className="h-4 w-4 fill-current" aria-hidden="true" />
@@ -61,7 +61,7 @@ export const VideoShowcaseSection = () => {
             <div className="lg:col-span-6">
               <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-slate-950/80 shadow-2xl backdrop-blur-md">
                 {/* Video Stage Area */}
-                <div className="relative flex aspect-video w-full flex-col items-center justify-center bg-gradient-to-b from-slate-900 via-[#0B1536] to-slate-950 p-6">
+                <div className="relative flex aspect-[21/9] w-full flex-col items-center justify-center bg-gradient-to-b from-slate-900 via-[#0B1536] to-slate-950 p-6">
                   {/* Central Logo */}
                   <div className="flex flex-col items-center gap-3">
                     <motion.button

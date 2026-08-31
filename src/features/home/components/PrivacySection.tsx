@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Check, ShieldCheck } from 'lucide-react'
+import { Check, Sparkles } from 'lucide-react'
 import { ASSETS, PRIVACY_POINTS } from '../constant'
 
 export const PrivacySection = () => {
@@ -7,7 +7,7 @@ export const PrivacySection = () => {
     <section
       id="privacy"
       aria-label="Privacy and Security Standards"
-      className="py-16 lg:py-24 bg-bg"
+      className="py-16 bg-bg"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -15,7 +15,7 @@ export const PrivacySection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="relative overflow-hidden rounded-3xl border border-brand/15 bg-gradient-to-br from-brand-softer/60 via-bg to-brand-softer/30 p-8 sm:p-12 lg:p-16 dark:from-brand-soft/10 dark:via-surface dark:to-surface"
+          className="relative overflow-hidden  p-8 rounded-3xl border border-brand/15 bg-gradient-to-br from-brand-softer/60 via-bg to-brand-softer/30 dark:from-brand-soft/10 dark:via-surface dark:to-surface"
         >
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
             {/* Left Column: 3D Shield / Security Illustration */}
@@ -34,7 +34,6 @@ export const PrivacySection = () => {
                   height="600"
                   loading="lazy"
                   decoding="async"
-                  className="w-full max-w-sm sm:max-w-md lg:max-w-lg h-auto aspect-square drop-shadow-[0_20px_50px_rgba(37,99,235,0.25)] transition-transform duration-500 hover:scale-105 object-contain"
                   onError={(e) => {
                     e.currentTarget.src =
                       'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&auto=format&fit=crop&q=80'
@@ -47,20 +46,20 @@ export const PrivacySection = () => {
             <div className="flex flex-col items-start lg:col-span-6">
               {/* Badge */}
               <div
-                className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-softer px-4 py-1.5 text-xs font-semibold text-brand dark:bg-brand-soft/20"
+                className="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand-softer px-4 py-1.5 text-xs font-semibold text-brand dark:bg-brand-soft/20"
                 title="Why Choose Single Click"
               >
-                <ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" />
+                <Sparkles className="h-3 w-3 text-brand" aria-hidden="true" />
                 <span>Why Choose Single Click?</span>
               </div>
 
               {/* Heading */}
-              <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">
+              <h2 className="mt-5 text-3xl text-nowrap font-extrabold tracking-tight text-fg sm:text-4xl lg:text-[42px] lg:leading-tight">
                 Your Privacy. Our Priority.
               </h2>
 
               {/* Checklist */}
-              <ul className="mt-6 space-y-3.5" aria-label="Privacy benefits list">
+              <ul className="mt-2 space-y-3" aria-label="Privacy benefits list">
                 {PRIVACY_POINTS.map((point, idx) => (
                   <motion.li
                     key={point}
@@ -68,9 +67,9 @@ export const PrivacySection = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.35, delay: idx * 0.08 }}
-                    className="flex items-center gap-3"
+                    className="flex items-center gap-3.5"
                   >
-                    <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand text-white shadow-sm">
+                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand text-white shadow-sm shadow-brand/30">
                       <Check className="h-3.5 w-3.5 stroke-[3]" aria-hidden="true" />
                     </div>
                     <span className="text-sm sm:text-base font-medium text-fg/90">{point}</span>
@@ -83,7 +82,7 @@ export const PrivacySection = () => {
                 type="button"
                 title="Learn more about Single Click's privacy architecture"
                 aria-label="Learn More About Privacy"
-                className="mt-8 inline-flex items-center justify-center rounded-lg bg-brand px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-hover active:scale-95"
+                className="mt-9 cursor-pointer inline-flex items-center justify-center rounded-lg bg-brand px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand/30 transition hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/40 active:scale-95"
               >
                 Learn More
               </button>

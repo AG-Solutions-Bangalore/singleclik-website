@@ -5,7 +5,7 @@ import { FAQS } from '../constant'
 
 export const FaqSection = () => {
   const [openIds, setOpenIds] = useState<Record<string, boolean>>({
-    'faq-1': true, // Keep first open for good UX
+    'faq-1': false, // Keep first open for good UX
   })
 
   const toggleFaq = (id: string) => {
@@ -58,7 +58,7 @@ export const FaqSection = () => {
                     title={`Question: ${faq.question}`}
                     aria-expanded={isOpen}
                     aria-controls={`faq-answer-${faq.id}`}
-                    className="flex w-full items-center justify-between p-5 text-left font-semibold text-fg transition hover:text-brand"
+                    className="flex w-full cursor-pointer items-center justify-between p-5 text-left font-semibold text-fg transition hover:text-brand"
                   >
                     <span className="text-sm sm:text-base">{faq.question}</span>
                     <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-surface-2 text-muted">

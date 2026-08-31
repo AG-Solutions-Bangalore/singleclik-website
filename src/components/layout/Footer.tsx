@@ -18,22 +18,19 @@ export const Footer = () => {
           {/* Brand & Description (2 cols on large) */}
           <div className="flex flex-col items-start lg:col-span-2">
             <a href="/" title="Single Click" aria-label="Single Click Homepage" className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-brand to-brand-light shadow-md shadow-brand/20">
-                <img
-                  src={ASSETS.logo}
-                  alt="Single Click Official Logo"
-                  title="Single Click"
-                  width="24"
-                  height="24"
-                  loading="lazy"
-                  decoding="async"
-                  className="h-6 w-6 object-contain"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none'
-                  }}
-                />
-                <span className="text-base font-bold text-white">S</span>
-              </div>
+              <img
+                src={ASSETS.logo}
+                alt="Single Click Official Logo"
+                title="Single Click"
+                width="44"
+                height="44"
+                loading="lazy"
+                decoding="async"
+                className="h-11 w-11 object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none'
+                }}
+              />
               <span className="text-xl font-bold tracking-tight text-white">
                 Single <span className="text-brand">Click</span>
               </span>
