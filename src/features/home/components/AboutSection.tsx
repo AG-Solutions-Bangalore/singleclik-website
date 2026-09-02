@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Lock, ShieldCheck, Users, Sparkles } from 'lucide-react'
+import { Lock, ShieldCheck, Users, } from 'lucide-react'
 import { ASSETS, ABOUT_PILLARS } from '../constant'
 
 export const AboutSection = () => {

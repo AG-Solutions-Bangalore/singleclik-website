@@ -1,26 +1,25 @@
+import { AnimatePresence, motion } from 'framer-motion'
+import {
+  ArrowRight,
+  ChevronDown,
+  ChevronRight,
+  CreditCard,
+  HelpCircle,
+  Home,
+  LayoutGrid,
+  Menu,
+  ShieldCheck,
+  Smartphone,
+  Sparkles,
+  Workflow,
+  X,
+} from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
-import {
-  ChevronDown,
-  ChevronRight,
-  Menu,
-  X,
-  Home,
-  Workflow,
-  Sparkles,
-  LayoutGrid,
-  ShieldCheck,
-  HelpCircle,
-  ArrowRight,
-  Smartphone,
-  CreditCard,
-} from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
 
-import { ThemeToggle } from '@/components/ui/theme-toggle'
-import { Button } from '@/components/ui/Button'
 import { StoreBadge } from '@/components/ui/store-badge'
+import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { ASSETS } from '@/features/home/constant'
 
 /**
