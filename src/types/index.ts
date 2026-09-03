@@ -28,5 +28,11 @@ export interface PageMeta {
   type?: 'website' | 'article' | 'profile'
   /** Set to true on pages that should not be indexed. */
   noindex?: boolean
+  /** Comma-separated meta keywords. */
+  keywords?: string
+  /** Content author meta tag. */
+  author?: string
+  /** Publisher meta tag. */
+  publisher?: string
 }
 

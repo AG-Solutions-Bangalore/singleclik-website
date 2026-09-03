@@ -28,6 +28,9 @@ export const Seo = ({
   image,
   type = 'website',
   noindex = false,
+  keywords,
+  author,
+  publisher,
   jsonLd,
 }: SeoProps) => {
   const fullTitle = title.includes(env.siteName) ? title : `${title} · ${env.siteName}`
@@ -39,6 +42,9 @@ export const Seo = ({
       {/* Primary */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      {keywords && <meta name="keywords" content={keywords} />}
+      {author && <meta name="author" content={author} />}
+      {publisher && <meta name="publisher" content={publisher} />}
       {noindex ? (
         <meta name="robots" content="noindex,nofollow" />
       ) : (

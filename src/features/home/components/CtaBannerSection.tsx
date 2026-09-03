@@ -47,7 +47,7 @@ export const CtaBannerSection = () => {
               <div className="mt-6 grid grid-cols-2 gap-2 sm:flex sm:w-auto sm:flex-row sm:gap-3 w-full">
                 <a
                   href="#hero"
-                  title="Find verified services on Single Click"
+                  title="SingleClik Homepage Hero Section"
                   aria-label="I Need a Service"
                   className="inline-flex items-center justify-center rounded-lg bg-white px-3 sm:px-6 py-2.5 text-xs sm:text-sm font-bold text-brand shadow-md transition hover:bg-slate-50 active:scale-95 text-center"
                 >
@@ -66,15 +66,35 @@ export const CtaBannerSection = () => {
 
               {/* App store badges — mobile only (below CTA buttons) */}
               <div className="mt-4 sm:mt-5 flex flex-wrap items-center gap-2.5 sm:gap-3 lg:hidden">
-                <StoreBadge store="play" iconSize="sm" />
-                <StoreBadge store="app" iconSize="sm" />
+                <StoreBadge
+                  store="play"
+                  iconSize="sm"
+                  imgAlt="Get the SingleClik app from Google Play"
+                  imgTitle="SingleClik Google Play App"
+                />
+                <StoreBadge
+                  store="app"
+                  iconSize="sm"
+                  imgAlt="Get the SingleClik app from Apple App Store"
+                  imgTitle="SingleClik Apple App Store"
+                />
               </div>
             </div>
 
             {/* Center Column: Store Badges — desktop only */}
             <div className="hidden lg:flex lg:col-span-4 items-center justify-start gap-3 z-10">
-              <StoreBadge store="play" iconSize="sm" />
-              <StoreBadge store="app" iconSize="sm" />
+              <StoreBadge
+                store="play"
+                iconSize="sm"
+                imgAlt="Download SingleClik mobile app from Google Play"
+                imgTitle="SingleClik Mobile App – Google Play"
+              />
+              <StoreBadge
+                store="app"
+                iconSize="sm"
+                imgAlt="Download SingleClik mobile app from App Store"
+                imgTitle="SingleClik Mobile App – App Store"
+              />
             </div>
 
             {/* Right Column: Character Illustration */}

@@ -172,7 +172,7 @@ export const HeroSection = () => {
                 className="group rounded-xl px-5 font-semibold"
               >
                 <Search className="h-4 w-4" aria-hidden="true" />
-                <FlipLink href="#hero" className="font-semibold">
+                <FlipLink href="#hero" title="SingleClik Homepage Hero Section" className="font-semibold">
                   I'm Looking for a Service
                 </FlipLink>
               </Button>
@@ -196,8 +196,18 @@ export const HeroSection = () => {
 
             {/* App Store Download Badges */}
             <motion.div variants={itemVariants} className="mt-8 flex flex-wrap items-center gap-3">
-              <StoreBadge store="play" iconSize="md" />
-              <StoreBadge store="app" iconSize="md" />
+              <StoreBadge
+                store="play"
+                iconSize="md"
+                imgAlt="Download SingleClik app on Google Play"
+                imgTitle="Download SingleClik on Google Play"
+              />
+              <StoreBadge
+                store="app"
+                iconSize="md"
+                imgAlt="Download SingleClik app on Apple App Store"
+                imgTitle="Download SingleClik on App Store"
+              />
             </motion.div>
           </motion.div>
 
