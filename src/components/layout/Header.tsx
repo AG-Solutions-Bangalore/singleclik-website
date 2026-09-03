@@ -408,8 +408,18 @@ export const Header = () => {
                         Zero spam, privacy-safe quotes on iOS & Android.
                       </p>
                       <div className="mt-3 flex items-center gap-2">
-                        <StoreBadge store="play" iconSize="sm" />
-                        <StoreBadge store="app" iconSize="sm" />
+                        <StoreBadge
+                          store="play"
+                          iconSize="sm"
+                          imgAlt="Download SingleClik app on Google Play"
+                          imgTitle="Download SingleClik on Google Play"
+                        />
+                        <StoreBadge
+                          store="app"
+                          iconSize="sm"
+                          imgAlt="Download SingleClik app on Apple App Store"
+                          imgTitle="Download SingleClik on App Store"
+                        />
                       </div>
                     </div>
                   </nav>

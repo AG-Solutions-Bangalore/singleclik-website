@@ -6,6 +6,8 @@ interface StoreBadgeProps {
   /** Visual size of the icon */
   iconSize?: 'sm' | 'md' | 'lg'
   className?: string
+  imgAlt?: string
+  imgTitle?: string
 }
 
 const playIcon = '/icons/icons8-google-play-48.png'
@@ -16,15 +18,19 @@ const content = {
     subtitle: 'GET IT ON',
     title: 'Google Play',
     icon: playIcon,
-    alt: 'Get it on Google Play',
-    defaultTitle: 'Download on Google Play Store',
+    alt: 'Download SingleClik app on Google Play',
+    defaultTitle: 'Download SingleClik on Google Play',
+    imgAlt: 'Download SingleClik app on Google Play',
+    imgTitle: 'Download SingleClik on Google Play',
   },
   app: {
     subtitle: 'Download on the',
     title: 'App Store',
     icon: appIcon,
-    alt: 'Download on the App Store',
-    defaultTitle: 'Download on the Apple App Store',
+    alt: 'Download SingleClik app on Apple App Store',
+    defaultTitle: 'Download SingleClik on App Store',
+    imgAlt: 'Download SingleClik app on Apple App Store',
+    imgTitle: 'Download SingleClik on App Store',
   },
 } as const
 
@@ -44,20 +50,25 @@ export const StoreBadge = ({
   title,
   iconSize = 'md',
   className = '',
+  imgAlt,
+  imgTitle,
 }: StoreBadgeProps) => {
   const c = content[store]
+  const resolvedImgAlt = imgAlt ?? c.imgAlt
+  const resolvedImgTitle = imgTitle ?? c.imgTitle
+  const resolvedLinkTitle = title ?? resolvedImgTitle ?? c.defaultTitle
 
   return (
     <a
       href={href}
-      title={title ?? c.defaultTitle}
-      aria-label={c.alt}
+      title={resolvedLinkTitle}
+      aria-label={resolvedImgAlt}
       className={`group flex items-center gap-2.5 rounded-xl border border-white/10 bg-black px-4 py-2 text-white shadow-md shadow-black/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-900 hover:shadow-lg hover:shadow-black/30 active:scale-95 ${className}`}
     >
       <img
         src={c.icon}
-        alt=""
-        aria-hidden="true"
+        alt={resolvedImgAlt}
+        title={resolvedImgTitle}
         width={48}
         height={48}
         loading="lazy"

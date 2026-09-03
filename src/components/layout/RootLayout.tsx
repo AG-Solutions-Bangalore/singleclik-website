@@ -13,6 +13,7 @@ export const RootLayout = () => (
   <>
     <a
       href="#main"
+      title="SingleClik Main Content"
       className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-md focus:bg-fg focus:px-3 focus:py-2 focus:text-bg focus:shadow-elevated focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 focus:ring-offset-bg"
     >
       Skip to main content

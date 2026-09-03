@@ -43,8 +43,18 @@ export const Footer = () => {
 
             {/* Download Badges */}
             <div className="mt-6 flex flex-wrap items-center gap-3" aria-label="Download our mobile app">
-              <StoreBadge store="play" iconSize="sm" />
-              <StoreBadge store="app" iconSize="sm" />
+              <StoreBadge
+                store="play"
+                iconSize="sm"
+                imgAlt="Install SingleClik app from Google Play"
+                imgTitle="Install SingleClik from Google Play"
+              />
+              <StoreBadge
+                store="app"
+                iconSize="sm"
+                imgAlt="Install SingleClik app from Apple App Store"
+                imgTitle="Install SingleClik from Apple App Store"
+              />
             </div>
 
             {/* Social Icons */}
@@ -122,7 +132,7 @@ export const Footer = () => {
                   <li key={link.label}>
                     <FlipLink
                       href={link.href}
-                      title={link.label}
+                      title={link.href === '#hero' ? 'SingleClik Homepage Hero Section' : link.label}
                       className="text-slate-400 hover:text-white transition-colors"
                     >
                       {link.label}
