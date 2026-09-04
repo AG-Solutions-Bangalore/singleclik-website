@@ -52,9 +52,8 @@ export const Header = () => {
   const desktopNavItems = [
     { to: '/', label: 'Home', end: true },
     { to: '#how-it-works', label: 'How It Works' },
-    { to: '#features', label: 'Features' },
+    { to: '#about', label: 'About Platform' },
     { to: '#categories', label: 'Categories' },
-    { to: '#pricing', label: 'Pricing' },
   ]
 
   const agencyNavItems = [
@@ -74,7 +73,7 @@ export const Header = () => {
     },
     {
       to: '#about',
-      label: 'Why Single Click',
+      label: 'About Platform',
       desc: 'Zero phone sharing & trust',
       icon: Sparkles,
       color: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400',
@@ -115,13 +114,13 @@ export const Header = () => {
         role="banner"
         className="sticky top-0 z-40 w-full border-b border-border/80 bg-bg/90 backdrop-blur-md transition-colors"
       >
-        <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-3 lg:px-8">
           {/* Brand Logo */}
           <Link
             to="/"
             title="Single Click - Homepage"
             aria-label="Single Click Homepage"
-            className="flex items-center gap-2.5 transition-transform hover:scale-[1.02]"
+            className="flex items-center gap-2 sm:gap-2.5 shrink-0 transition-transform hover:scale-[1.02]"
           >
             <img
               src={ASSETS.logo}
@@ -131,16 +130,16 @@ export const Header = () => {
               height="48"
               loading="eager"
               decoding="async"
-              className="h-12 w-12 object-contain drop-shadow-sm"
+              className="h-8 w-8 sm:h-11 sm:w-11 object-contain drop-shadow-sm shrink-0"
               onError={(e) => {
                 e.currentTarget.style.display = 'none'
                 const fallback = e.currentTarget.parentElement?.querySelector('.logo-fallback')
                 if (fallback) (fallback as HTMLElement).style.display = 'flex'
               }}
             />
-            <span className="logo-fallback hidden text-lg font-bold text-fg">S</span>
-            <span className="text-xl font-bold tracking-tight text-fg">
-              Single <span className="text-brand">Click</span>
+            <span className="logo-fallback hidden text-base font-bold text-fg">S</span>
+            <span className="font-brand-logo text-[15px] sm:text-xl md:text-2xl font-bold tracking-tight text-fg whitespace-nowrap">
+              Single <span className="text-brand">Clik</span>
             </span>
           </Link>
 
@@ -181,13 +180,6 @@ export const Header = () => {
               {resourcesOpen && (
                 <div className="absolute right-0 mt-2 w-48 rounded-2xl border border-border bg-bg p-2 shadow-xl animate-in fade-in zoom-in-95 z-50">
                   <a
-                    href="#about"
-                    title="About Platform"
-                    className="block rounded-xl px-3 py-2 text-sm text-fg/80 hover:bg-surface-2 hover:text-brand"
-                  >
-                    About Platform
-                  </a>
-                  <a
                     href="#faq"
                     title="Help Center and FAQs"
                     className="block rounded-xl px-3 py-2 text-sm text-fg/80 hover:bg-surface-2 hover:text-brand"
@@ -209,23 +201,6 @@ export const Header = () => {
           {/* Action Buttons */}
           <div className="hidden items-center gap-3 md:flex">
             <ThemeToggle />
-            <a
-              href="#login"
-              title="Log in to your Single Click account"
-              aria-label="Log In"
-              className="inline-flex items-center rounded-lg border border-border bg-bg px-4 py-2 text-sm font-semibold text-fg shadow-xs transition-all hover:border-brand/40 hover:text-brand hover:bg-brand-softer active:scale-95"
-            >
-              Log In
-            </a>
-            <a
-              href="#signup"
-              title="Create a new Single Click account"
-              aria-label="Sign Up"
-              className="group inline-flex items-center gap-1.5 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white shadow-md shadow-brand/25 transition-all hover:bg-brand-hover active:scale-95"
-            >
-              <span>Sign Up</span>
-              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-[-45deg]" aria-hidden="true" />
-            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -318,7 +293,7 @@ export const Header = () => {
                       onClick={() => setMobileMenuOpen(false)}
                       title="Single Click - Homepage"
                       aria-label="Single Click Homepage"
-                      className="flex items-center gap-3"
+                      className="flex items-center gap-2.5 shrink-0"
                     >
                       <img
                         src={ASSETS.logo}
@@ -326,16 +301,16 @@ export const Header = () => {
                         title="Single Click"
                         width="48"
                         height="48"
-                        className="h-12 w-12 object-contain"
+                        className="h-10 w-10 sm:h-12 sm:w-12 object-contain shrink-0"
                         onError={(e) => {
                           e.currentTarget.style.display = 'none'
                         }}
                       />
                       <div className="flex flex-col">
-                        <span className="text-lg font-extrabold tracking-tight text-fg leading-none">
-                          Single <span className="text-brand">Click</span>
+                        <span className="font-brand-logo text-lg sm:text-xl font-bold tracking-tight text-fg leading-none whitespace-nowrap">
+                          Single <span className="text-brand">Clik</span>
                         </span>
-                        <span className="mt-1 text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
+                        <span className="mt-1 text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
                           ● Verified Platform
                         </span>
                       </div>

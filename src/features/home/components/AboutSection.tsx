@@ -6,8 +6,8 @@ export const AboutSection = () => {
   return (
     <section
       id="about"
-      aria-label="About Single Click"
-      className="relative py-16  bg-surface/50"
+      aria-label="About Single Clik"
+      className="relative py-8 lg:py-10 bg-surface/50"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
@@ -38,8 +38,8 @@ export const AboutSection = () => {
               without the hassle of sharing personal contact details.
             </p>
 
-            {/* 3 Pillars - Clean icon-first row matching reference design */}
-            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-3">
+            {/* 3 Pillars - 2 in first row, 1 centered in second row on mobile; 3 in a row on desktop */}
+            <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-5 sm:grid-cols-3">
               {ABOUT_PILLARS.map((pillar, index) => (
                 <motion.div
                   key={pillar.title}
@@ -47,19 +47,23 @@ export const AboutSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: index * 0.1 }}
-                  className="flex items-start gap-3"
+                  className={`flex items-start gap-2.5 sm:gap-3 ${
+                    index === 2
+                      ? 'col-span-2 justify-self-center max-w-xs sm:col-span-1 sm:justify-self-auto sm:max-w-none'
+                      : ''
+                  }`}
                   title={`${pillar.title} - ${pillar.description}`}
                 >
                   <div
-                    className={`apple-border-shine flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-semibold shadow-sm ${pillar.color}`}
+                    className={`apple-border-shine flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full font-semibold shadow-sm ${pillar.color}`}
                   >
                     {pillar.icon === 'lock' && <Lock className="h-4 w-4" aria-hidden="true" />}
                     {pillar.icon === 'shield-check' && <ShieldCheck className="h-4 w-4" aria-hidden="true" />}
                     {pillar.icon === 'users' && <Users className="h-4 w-4" aria-hidden="true" />}
                   </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-fg leading-snug">{pillar.title}</h3>
-                    <p className="mt-0.5 text-xs text-muted leading-snug">{pillar.description}</p>
+                  <div className="min-w-0">
+                    <h3 className="text-xs sm:text-sm font-bold text-fg leading-snug">{pillar.title}</h3>
+                    <p className="mt-0.5 text-[11px] sm:text-xs text-muted leading-snug">{pillar.description}</p>
                   </div>
                 </motion.div>
               ))}

@@ -1,9 +1,26 @@
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowUp, Globe } from 'lucide-react'
 import { ASSETS, FOOTER_SECTIONS } from '@/features/home/constant'
 import { StoreBadge } from '@/components/ui/store-badge'
-import { FlipLink } from '@/components/ui/FlipLink'
 
 export const Footer = () => {
+  const [showGoTop, setShowGoTop] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 250) {
+        setShowGoTop(true)
+      } else {
+        setShowGoTop(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -11,59 +28,45 @@ export const Footer = () => {
   return (
     <footer
       role="contentinfo"
-      className="border-t border-slate-800 bg-[#0A0F1D] text-slate-300 transition-colors"
+      className="relative border-t border-slate-800 bg-[#0A0F1D] text-slate-300 transition-colors"
     >
-      <div className="mx-auto max-w-7xl px-4 pt-16 pb-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 pt-8 pb-6 sm:px-6 lg:px-8">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-6 lg:gap-8">
-          {/* Brand & Description (2 cols on large) */}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-5 lg:gap-8">
+          {/* Brand & Description (full on mobile, 2 cols on desktop) */}
           <div className="flex flex-col items-start lg:col-span-2">
-            <a href="/" title="Single Click" aria-label="Single Click Homepage" className="flex items-center gap-2.5">
+            <a href="/" title="Single Clik" aria-label="Single Clik Homepage" className="flex items-center gap-2 sm:gap-2.5 shrink-0">
               <img
                 src={ASSETS.logo}
-                alt="Single Click Official Logo"
-                title="Single Click"
+                alt="Single Clik Official Logo"
+                title="Single Clik"
                 width="44"
                 height="44"
                 loading="lazy"
                 decoding="async"
-                className="h-11 w-11 object-contain"
+                className="h-9 w-9 sm:h-11 sm:w-11 object-contain shrink-0"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none'
                 }}
               />
-              <span className="text-xl font-bold tracking-tight text-white">
-                Single <span className="text-brand">Click</span>
+              <span className="font-brand-logo text-xl sm:text-2xl font-bold tracking-tight text-white whitespace-nowrap">
+                Single <span className="text-brand">Clik</span>
               </span>
             </a>
 
-            <p className="mt-4 text-xs leading-relaxed text-slate-300 max-w-sm">
+            <p className="mt-3 text-xs leading-relaxed text-slate-300 max-w-sm">
               Connecting people and businesses, getting things done – the smart way.
             </p>
 
-            {/* Download Badges */}
-            <div className="mt-6 flex flex-wrap items-center gap-3" aria-label="Download our mobile app">
-              <StoreBadge
-                store="play"
-                iconSize="sm"
-                imgAlt="Install SingleClik app from Google Play"
-                imgTitle="Install SingleClik from Google Play"
-              />
-              <StoreBadge
-                store="app"
-                iconSize="sm"
-                imgAlt="Install SingleClik app from Apple App Store"
-                imgTitle="Install SingleClik from Apple App Store"
-              />
-            </div>
-
-            {/* Social Icons */}
-            <div className="mt-6 flex items-center gap-2.5" aria-label="Social Media Channels">
+            {/* Social Icons (Facebook, Instagram, LinkedIn) */}
+            <div className="mt-4 sm:mt-6 flex items-center gap-2.5" aria-label="Social Media Channels">
               {/* Facebook */}
               <a
-                href="#facebook"
+                href="https://www.facebook.com/profile.php?id=61594009292985"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-brand hover:text-white"
-                aria-label="Visit Single Click on Facebook"
+                aria-label="Visit Single Clik on Facebook"
                 title="Facebook"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -73,9 +76,11 @@ export const Footer = () => {
 
               {/* Instagram */}
               <a
-                href="#instagram"
+                href="https://www.instagram.com/singleclik_official?igsi=MW9veGViNWhjZzQ0"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-accent-pink hover:text-white"
-                aria-label="Visit Single Click on Instagram"
+                aria-label="Visit Single Clik on Instagram"
                 title="Instagram"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -87,86 +92,95 @@ export const Footer = () => {
               <a
                 href="#linkedin"
                 className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-brand hover:text-white"
-                aria-label="Visit Single Click on LinkedIn"
+                aria-label="Visit Single Clik on LinkedIn"
                 title="LinkedIn"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
               </a>
-
-              {/* YouTube */}
-              <a
-                href="#youtube"
-                className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-red-600 hover:text-white"
-                aria-label="Visit Single Click on YouTube"
-                title="YouTube"
-              >
-                <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                </svg>
-              </a>
-
-              {/* X */}
-              <a
-                href="#twitter"
-                className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-slate-700 hover:text-white"
-                aria-label="Visit Single Click on X"
-                title="X (Twitter)"
-              >
-                <svg className="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </a>
             </div>
           </div>
 
-          {/* Links Columns */}
-          {FOOTER_SECTIONS.map((section) => (
-            <div key={section.title} className="flex flex-col">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-200">
-                {section.title}
-              </h3>
-              <ul className="mt-4 space-y-2.5 text-xs">
-                {section.links.map((link) => (
-                  <li key={link.label}>
-                    <FlipLink
-                      href={link.href}
-                      title={link.href === '#hero' ? 'SingleClik Homepage Hero Section' : link.label}
-                      className="text-slate-400 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </FlipLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Links Columns (3 columns on all screen sizes) */}
+          <div className="grid grid-cols-3 gap-2 sm:gap-6 lg:col-span-3">
+            {FOOTER_SECTIONS.map((section) => (
+              <div key={section.title} className="flex flex-col items-start">
+                <h3 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-200">
+                  {section.title}
+                </h3>
+                <ul className="mt-2.5 space-y-1.5 text-xs">
+                  {section.links.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        title={link.href === '#hero' ? 'SingleClik Homepage Hero Section' : link.label}
+                        className="text-slate-400 hover:text-white transition-colors text-[11px] sm:text-xs block"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Centered App Download Badges Row */}
+        <div className="mt-5 sm:mt-7 flex flex-nowrap items-center justify-center gap-2 sm:gap-3 w-full" aria-label="Download our mobile app">
+          <StoreBadge
+            store="play"
+            iconSize="sm"
+            imgAlt="Install SingleClik app from Google Play"
+            imgTitle="Install SingleClik from Google Play"
+          />
+          <StoreBadge
+            store="app"
+            iconSize="sm"
+            imgAlt="Install SingleClik app from Apple App Store"
+            imgTitle="Install SingleClik from Apple App Store"
+          />
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-slate-800/80 pt-6 text-xs text-slate-300 sm:flex-row">
-          <p>© 2024 Single Click. All rights reserved.</p>
+        <div className="mt-6 flex flex-col items-center justify-between gap-3 border-t border-slate-800/80 pt-4 text-xs text-slate-300 sm:flex-row">
+          <p>© 2024 Single Clik. All rights reserved.</p>
 
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1 text-slate-300" title="Language selection">
-              <Globe className="h-3.5 w-3.5" aria-hidden="true" />
-              <span>English ▾</span>
-            </div>
-
+          <div className="flex items-center gap-4 sm:mr-18">
             <button
               type="button"
-              onClick={scrollToTop}
-              className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-brand text-white shadow-md hover:bg-brand-hover transition active:scale-95"
-              aria-label="Back to top of page"
-              title="Back to top"
+              className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors cursor-pointer"
+              title="Language selection"
             >
-              <ArrowUp className="h-4 w-4" aria-hidden="true" />
+              <Globe className="h-3.5 w-3.5" aria-hidden="true" />
+              <span>English ▾</span>
             </button>
           </div>
         </div>
       </div>
+
+      {/* Fixed Floating Go To Top Button */}
+      <AnimatePresence>
+        {showGoTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.7, y: 16 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.7, y: 16 }}
+            whileHover={{ scale: 1.1, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            type="button"
+            onClick={scrollToTop}
+            className="fixed bottom-7 right-7 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-brand text-white shadow-[0_10px_28px_rgba(37,99,235,0.45)] ring-4 ring-white/20 transition-all hover:bg-brand-hover hover:shadow-[0_14px_34px_rgba(37,99,235,0.6)] focus:outline-none"
+            aria-label="Back to top of page"
+            title="Back to top"
+          >
+            <ArrowUp className="h-6 w-6 stroke-[2.5]" aria-hidden="true" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </footer>
   )
 }
+
 
