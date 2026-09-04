@@ -1,9 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import {
-  ArrowRight,
   ChevronDown,
   ChevronRight,
-  CreditCard,
   HelpCircle,
   Home,
   LayoutGrid,
@@ -49,6 +47,8 @@ export const Header = () => {
     }
   }, [mobileMenuOpen])
 
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(true)
+
   const desktopNavItems = [
     { to: '/', label: 'Home', end: true },
     { to: '#how-it-works', label: 'How It Works' },
@@ -56,7 +56,7 @@ export const Header = () => {
     { to: '#categories', label: 'Categories' },
   ]
 
-  const agencyNavItems = [
+  const mobileNavItems = [
     {
       to: '/',
       label: 'Home',
@@ -80,31 +80,27 @@ export const Header = () => {
     },
     {
       to: '#categories',
-      label: 'Top Categories',
+      label: 'Categories',
       desc: '30+ verified service domains',
       icon: LayoutGrid,
       color: 'bg-orange-50 text-orange-600 dark:bg-orange-950/60 dark:text-orange-400',
     },
-    {
-      to: '#pricing',
-      label: 'Pricing & Plans',
-      desc: 'For users and verified businesses',
-      icon: CreditCard,
-      color: 'bg-purple-50 text-purple-600 dark:bg-purple-950/60 dark:text-purple-400',
-    },
-    {
-      to: '#privacy',
-      label: 'Privacy & Security',
-      desc: 'Bank-grade encrypted chat',
-      icon: ShieldCheck,
-      color: 'bg-teal-50 text-teal-600 dark:bg-teal-950/60 dark:text-teal-400',
-    },
+  ]
+
+  const mobileResourceItems = [
     {
       to: '#faq',
       label: 'Help Center & FAQs',
       desc: '24/7 answers & support',
       icon: HelpCircle,
       color: 'bg-rose-50 text-rose-600 dark:bg-rose-950/60 dark:text-rose-400',
+    },
+    {
+      to: '#privacy',
+      label: 'Privacy & Trust',
+      desc: 'Bank-grade encrypted chat',
+      icon: ShieldCheck,
+      color: 'bg-teal-50 text-teal-600 dark:bg-teal-950/60 dark:text-teal-400',
     },
   ]
 
@@ -114,13 +110,13 @@ export const Header = () => {
         role="banner"
         className="sticky top-0 z-40 w-full border-b border-border/80 bg-bg/90 backdrop-blur-md transition-colors"
       >
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-3 lg:px-8">
+        <div className="mx-auto flex h-20 sm:h-20 md:h-[74px] lg:h-[76px] w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Brand Logo */}
           <Link
             to="/"
             title="Single Click - Homepage"
             aria-label="Single Click Homepage"
-            className="flex items-center gap-2 sm:gap-2.5 shrink-0 transition-transform hover:scale-[1.02]"
+            className="flex items-center gap-2.5 sm:gap-2.5 shrink-0 transition-transform hover:scale-[1.02]"
           >
             <img
               src={ASSETS.logo}
@@ -130,7 +126,7 @@ export const Header = () => {
               height="48"
               loading="eager"
               decoding="async"
-              className="h-8 w-8 sm:h-11 sm:w-11 object-contain drop-shadow-sm shrink-0"
+              className="h-10 w-10 sm:h-11 sm:w-11 md:h-11 md:w-11 object-contain drop-shadow-sm shrink-0"
               onError={(e) => {
                 e.currentTarget.style.display = 'none'
                 const fallback = e.currentTarget.parentElement?.querySelector('.logo-fallback')
@@ -138,13 +134,13 @@ export const Header = () => {
               }}
             />
             <span className="logo-fallback hidden text-base font-bold text-fg">S</span>
-            <span className="font-brand-logo text-[15px] sm:text-xl md:text-2xl font-bold tracking-tight text-fg whitespace-nowrap">
+            <span className="font-brand-logo text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-fg whitespace-nowrap">
               Single <span className="text-brand">Clik</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav aria-label="Primary Navigation" className="hidden items-center gap-1 md:flex lg:gap-3">
+          <nav aria-label="Primary Navigation" className="hidden items-center gap-2 md:flex lg:gap-4">
             {desktopNavItems.map((item, index) => {
               const isHome = index === 0
               return (
@@ -152,9 +148,9 @@ export const Header = () => {
                   key={item.label}
                   href={item.to}
                   title={item.label}
-                  className={`relative px-3 py-2 text-sm font-medium transition-colors ${
+                  className={`relative px-3.5 py-2 text-sm md:text-[15px] font-medium transition-colors ${
                     isHome
-                      ? 'text-brand font-semibold after:absolute after:bottom-0 after:left-3 after:right-3 after:h-0.5 after:bg-brand after:rounded-full'
+                      ? 'text-brand font-semibold after:absolute after:bottom-0 after:left-3.5 after:right-3.5 after:h-0.5 after:bg-brand after:rounded-full'
                       : 'text-slate-600 dark:text-slate-300 hover:text-brand'
                   }`}
                 >
@@ -169,27 +165,27 @@ export const Header = () => {
                 type="button"
                 onClick={() => setResourcesOpen(!resourcesOpen)}
                 onBlur={() => setTimeout(() => setResourcesOpen(false), 200)}
-                className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 transition-colors hover:text-brand"
+                className="flex items-center gap-1.5 px-3.5 py-2 text-sm md:text-[15px] font-medium text-slate-600 dark:text-slate-300 transition-colors hover:text-brand"
                 aria-expanded={resourcesOpen}
                 aria-haspopup="true"
                 title="View resources"
               >
                 <span>Resources</span>
-                <ChevronDown className="h-3.5 w-3.5 text-muted transition-transform duration-200" aria-hidden="true" />
+                <ChevronDown className="h-4 w-4 text-muted transition-transform duration-200" aria-hidden="true" />
               </button>
               {resourcesOpen && (
-                <div className="absolute right-0 mt-2 w-48 rounded-2xl border border-border bg-bg p-2 shadow-xl animate-in fade-in zoom-in-95 z-50">
+                <div className="absolute right-0 mt-2 w-52 rounded-2xl border border-border bg-bg p-2 shadow-xl animate-in fade-in zoom-in-95 z-50">
                   <a
                     href="#faq"
                     title="Help Center and FAQs"
-                    className="block rounded-xl px-3 py-2 text-sm text-fg/80 hover:bg-surface-2 hover:text-brand"
+                    className="block rounded-xl px-3.5 py-2.5 text-sm text-fg/80 hover:bg-surface-2 hover:text-brand transition-colors"
                   >
                     Help Center & FAQs
                   </a>
                   <a
                     href="#privacy"
                     title="Privacy and Trust"
-                    className="block rounded-xl px-3 py-2 text-sm text-fg/80 hover:bg-surface-2 hover:text-brand"
+                    className="block rounded-xl px-3.5 py-2.5 text-sm text-fg/80 hover:bg-surface-2 hover:text-brand transition-colors"
                   >
                     Privacy & Trust
                   </a>
@@ -204,12 +200,12 @@ export const Header = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-2.5 md:hidden">
             <ThemeToggle />
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface text-fg transition-colors hover:bg-surface-2"
+              className="relative flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface text-fg transition-colors hover:bg-surface-2"
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-sidebar"
@@ -271,14 +267,14 @@ export const Header = () => {
                   aria-hidden="true"
                 />
 
-                {/* Sidebar Drawer Panel */}
+                {/* Sidebar Drawer Panel (Slide from Right) */}
                 <motion.aside
                   id="mobile-sidebar"
-                  initial={{ x: '-100%', opacity: 0.8 }}
+                  initial={{ x: '100%', opacity: 0.8 }}
                   animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: '-100%', opacity: 0.8 }}
+                  exit={{ x: '100%', opacity: 0.8 }}
                   transition={{ type: 'spring', stiffness: 340, damping: 34 }}
-                  className="fixed inset-y-0 left-0 flex w-[88vw] max-w-[360px] flex-col border-r border-slate-200/80 bg-white/95 text-fg shadow-[25px_0_60px_rgba(0,0,0,0.3)] backdrop-blur-2xl dark:border-slate-800/90 dark:bg-[#0B1120]/95"
+                  className="fixed inset-y-0 right-0 flex w-[88vw] max-w-[360px] flex-col border-l border-slate-200/80 bg-white/95 text-fg shadow-[-25px_0_60px_rgba(0,0,0,0.3)] backdrop-blur-2xl dark:border-slate-800/90 dark:bg-[#0B1120]/95"
                   role="dialog"
                   aria-modal="true"
                   aria-label="Mobile navigation"
@@ -331,18 +327,19 @@ export const Header = () => {
                   {/* Scrollable Navigation List */}
                   <nav className="relative flex-1 overflow-y-auto px-4 py-5 scrollbar-thin">
                     <div className="mb-2 px-2 text-[11px] font-bold uppercase tracking-wider text-muted">
-                      Navigation
+                      Menu
                     </div>
 
+                    {/* Primary Desktop-Aligned Navigation */}
                     <div className="flex flex-col gap-1.5">
-                      {agencyNavItems.map((item, idx) => {
+                      {mobileNavItems.map((item, idx) => {
                         const Icon = item.icon
                         return (
                           <motion.a
                             key={item.label}
                             href={item.to}
                             onClick={() => setMobileMenuOpen(false)}
-                            initial={{ opacity: 0, x: -16 }}
+                            initial={{ opacity: 0, x: 16 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.04 + idx * 0.035, duration: 0.25, ease: 'easeOut' }}
                             whileTap={{ scale: 0.98 }}
@@ -371,6 +368,76 @@ export const Header = () => {
                           </motion.a>
                         )
                       })}
+
+                      {/* Resources Section / Dropdown matching Desktop */}
+                      <div className="mt-1 rounded-2xl border border-border/60 bg-surface/40 p-1.5 transition-colors">
+                        <button
+                          type="button"
+                          onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}
+                          className="flex w-full items-center justify-between rounded-xl px-2.5 py-2 text-left transition-colors hover:bg-surface-2/60"
+                          aria-expanded={mobileResourcesOpen}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-purple-50 text-purple-600 font-semibold shadow-xs dark:bg-purple-950/60 dark:text-purple-400">
+                              <HelpCircle className="h-5 w-5" aria-hidden="true" />
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="text-sm font-bold text-fg">Resources</span>
+                              <span className="text-[11px] text-muted">Support & privacy guidelines</span>
+                            </div>
+                          </div>
+                          <ChevronDown
+                            className={`h-4 w-4 text-muted transition-transform duration-200 ${
+                              mobileResourcesOpen ? 'rotate-180 text-brand' : ''
+                            }`}
+                            aria-hidden="true"
+                          />
+                        </button>
+
+                        <AnimatePresence initial={false}>
+                          {mobileResourcesOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="flex flex-col gap-1 pt-1.5 pl-2">
+                                {mobileResourceItems.map((item) => {
+                                  const Icon = item.icon
+                                  return (
+                                    <a
+                                      key={item.label}
+                                      href={item.to}
+                                      onClick={() => setMobileMenuOpen(false)}
+                                      className="group flex items-center justify-between rounded-xl p-2 transition-all hover:bg-surface-2 hover:text-brand"
+                                    >
+                                      <div className="flex items-center gap-2.5">
+                                        <div
+                                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${item.color}`}
+                                        >
+                                          <Icon className="h-4 w-4" aria-hidden="true" />
+                                        </div>
+                                        <div className="flex flex-col text-left">
+                                          <span className="text-xs font-semibold text-fg group-hover:text-brand">
+                                            {item.label}
+                                          </span>
+                                          <span className="text-[10px] text-muted">{item.desc}</span>
+                                        </div>
+                                      </div>
+                                      <ChevronRight
+                                        className="h-3.5 w-3.5 text-muted/60 transition-transform group-hover:translate-x-0.5 group-hover:text-brand"
+                                        aria-hidden="true"
+                                      />
+                                    </a>
+                                  )
+                                })}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
                     </div>
 
                     {/* App Download Mini-Card in Sidebar */}
@@ -399,29 +466,10 @@ export const Header = () => {
                     </div>
                   </nav>
 
-                  {/* Footer Actions (Sign Up & Log In) */}
-                  <div className="relative border-t border-border/80 bg-surface/50 p-5 backdrop-blur-md">
-                    <div className="flex flex-col gap-2.5">
-                      <a
-                        href="#signup"
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="group flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand font-bold text-white shadow-md shadow-brand/25 transition-all hover:bg-brand-hover active:scale-98"
-                      >
-                        <span>Join Single Click</span>
-                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </a>
-
-                      <a
-                        href="#login"
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="flex h-11 w-full items-center justify-center rounded-xl border border-border bg-bg font-semibold text-fg transition-all hover:bg-surface-2 active:scale-98"
-                      >
-                        <span>Sign In</span>
-                      </a>
-                    </div>
-
-                    <div className="mt-3 flex items-center justify-between text-[11px] text-muted">
-                      <span>© 2024 Single Click</span>
+                  {/* Clean Drawer Footer */}
+                  <div className="relative border-t border-border/80 bg-surface/50 px-6 py-4 backdrop-blur-md">
+                    <div className="flex items-center justify-between text-xs text-muted">
+                      <span>© {new Date().getFullYear()} Single Click</span>
                       <span className="text-brand font-medium">100% Private</span>
                     </div>
                   </div>
