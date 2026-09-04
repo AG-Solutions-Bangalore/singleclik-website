@@ -28,7 +28,7 @@ export const Footer = () => {
   return (
     <footer
       role="contentinfo"
-      className="relative border-t border-slate-800 bg-[#0A0F1D] text-slate-300 transition-colors"
+      className="relative border-t border-slate-800 bg-[#0A0F1D] text-slate-300 transition-colors w-full overflow-hidden"
     >
       <div className="mx-auto max-w-7xl px-4 pt-8 pb-6 sm:px-6 lg:px-8">
         {/* Main Footer Grid */}

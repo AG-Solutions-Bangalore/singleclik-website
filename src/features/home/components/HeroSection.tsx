@@ -120,49 +120,8 @@ export const HeroSection = () => {
           />
         </svg>
 
-        {/* Floating Glass Bubbles & Spheres (Visible across Mobile & Desktop) */}
-        {/* 1. Medium Glass Sphere with Specular Highlight */}
-        <motion.div
-          animate={{ y: [0, -10, 0], x: [0, 4, 0] }}
-          transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
-          className="absolute right-[8%] top-[10%] sm:right-[12%] lg:left-[38%] lg:top-[28%] z-1 h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-gradient-to-br from-white/90 via-sky-200/70 to-blue-500/80 shadow-[inset_-3px_-3px_8px_rgba(29,78,216,0.45),0_10px_25px_rgba(59,130,246,0.35)] backdrop-blur-[2px] block"
-        >
-          <div className="absolute left-2 top-1.5 h-3 w-3 rounded-full bg-white/90 blur-[0.5px]" />
-          <div className="absolute right-2 bottom-1.5 h-1.5 w-1.5 rounded-full bg-white/40" />
-        </motion.div>
-
-        {/* 2. Small Glass Sphere */}
-        <motion.div
-          animate={{ y: [0, 8, 0], x: [0, -3, 0] }}
-          transition={{ repeat: Infinity, duration: 7, ease: 'easeInOut', delay: 0.7 }}
-          className="absolute left-[4%] top-[22%] sm:left-[6%] lg:left-[34%] lg:top-[45%] z-1 h-5 w-5 rounded-full bg-gradient-to-br from-white/90 via-sky-200/70 to-blue-400/80 shadow-[inset_-2px_-2px_5px_rgba(29,78,216,0.4),0_6px_15px_rgba(59,130,246,0.3)] backdrop-blur-[2px] block"
-        >
-          <div className="absolute top-1 left-1 h-1.5 w-1.5 rounded-full bg-white/90" />
-        </motion.div>
-
-        {/* 3. Glass Bubble on the far left */}
-        <motion.div
-          animate={{ y: [0, -8, 0], x: [0, 3, 0] }}
-          transition={{ repeat: Infinity, duration: 7.5, ease: 'easeInOut' }}
-          className="absolute left-[5%] top-[8%] lg:left-[6%] lg:top-[22%] z-1 h-4 w-4 rounded-full bg-gradient-to-br from-sky-200 to-blue-500 shadow-md shadow-blue-400/30 block"
-        />
-        <motion.div
-          animate={{ y: [0, 9, 0], x: [0, -4, 0] }}
-          transition={{ repeat: Infinity, duration: 8, ease: 'easeInOut', delay: 0.5 }}
-          className="absolute left-[8%] bottom-[20%] sm:left-[10%] lg:left-[13%] lg:bottom-[35%] z-1 h-3.5 w-3.5 rounded-full bg-gradient-to-br from-cyan-300 to-blue-400 shadow-md shadow-cyan-400/30 block"
-        />
-
-        {/* 4. Glass Bubble on the right side */}
-        <motion.div
-          animate={{ y: [0, -8, 0], x: [0, -4, 0] }}
-          transition={{ repeat: Infinity, duration: 8, ease: 'easeInOut', delay: 1.2 }}
-          className="absolute right-[5%] bottom-[30%] sm:right-[6%] lg:right-[4%] lg:top-[50%] z-1 h-6 w-6 sm:h-7 sm:w-7 rounded-full bg-gradient-to-br from-white/90 via-sky-200/60 to-blue-400/75 shadow-[inset_-2px_-2px_6px_rgba(29,78,216,0.35),0_8px_20px_rgba(59,130,246,0.25)] backdrop-blur-[2px] block"
-        >
-          <div className="absolute top-1.5 left-2 h-2 w-2 rounded-full bg-white/90" />
-        </motion.div>
-
-        {/* 5. Right 3x6 Dot Matrix (matching reference) */}
-        <div className="absolute right-[3%] top-[18%] z-1 grid grid-cols-3 gap-2.5 opacity-70 hidden md:grid">
+        {/* Right 3x6 Dot Matrix near image */}
+        <div className="absolute right-[2%] top-[18%] lg:right-[3%] lg:top-[16%] z-1 grid grid-cols-3 gap-2.5 opacity-70 hidden md:grid">
           {Array.from({ length: 18 }).map((_, i) => (
             <div key={i} className="h-1.5 w-1.5 rounded-full bg-sky-400/80" />
           ))}
@@ -317,6 +276,34 @@ export const HeroSection = () => {
               transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut' }}
               className="relative flex w-full max-w-xl items-center justify-center p-3 sm:p-5 lg:p-0"
             >
+              {/* 1. Left of Phones (Placed on the blue wave slope, close to the phone image) */}
+              <motion.div
+                animate={{ y: [0, -7, 0], x: [0, 2, 0] }}
+                transition={{ repeat: Infinity, duration: 6.5, ease: 'easeInOut' }}
+                className="absolute left-[1%] top-[42%] sm:left-[0%] sm:top-[40%] lg:left-[-2%] lg:top-[42%] z-20 h-8 w-8 sm:h-8 sm:w-8 md:h-8 md:w-8 rounded-full bg-gradient-to-br from-white/95 via-sky-200/75 to-blue-500/85 shadow-[inset_-2px_-2px_6px_rgba(29,78,216,0.45),0_8px_20px_rgba(37,99,235,0.3)] backdrop-blur-[2px]"
+              >
+                <div className="absolute left-1.5 top-1.5 h-2 w-2 rounded-full bg-white/90 blur-[0.5px]" />
+                <div className="absolute right-1.5 bottom-1.5 h-1 w-1 rounded-full bg-white/40" />
+              </motion.div>
+
+              {/* 2. Upper-Mid Right Sphere (Inside blue wave background) */}
+              <motion.div
+                animate={{ y: [0, 7, 0], x: [0, -2, 0] }}
+                transition={{ repeat: Infinity, duration: 7, ease: 'easeInOut', delay: 0.5 }}
+                className="absolute top-[36%] right-[1%] sm:right-[1%] lg:right-[-1%] z-20 h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-gradient-to-br from-white/90 via-sky-200/70 to-blue-400/85 shadow-[inset_-2px_-2px_6px_rgba(29,78,216,0.35),0_8px_20px_rgba(59,130,246,0.25)] backdrop-blur-[2px]"
+              >
+                <div className="absolute top-1 left-1.5 h-2 w-2 rounded-full bg-white/90" />
+              </motion.div>
+
+              {/* 3. Lower Right Sphere (Inside blue wave background) */}
+              <motion.div
+                animate={{ y: [0, -7, 0], x: [0, -2, 0] }}
+                transition={{ repeat: Infinity, duration: 7.5, ease: 'easeInOut', delay: 1.2 }}
+                className="absolute bottom-[20%] right-[2%] sm:right-[2%] lg:right-[1%] z-20 h-6 w-6 sm:h-7 sm:w-7 rounded-full bg-gradient-to-br from-cyan-300 via-sky-200/70 to-blue-500 shadow-[inset_-2px_-2px_5px_rgba(29,78,216,0.4),0_8px_18px_rgba(59,130,246,0.3)] backdrop-blur-[2px]"
+              >
+                <div className="absolute top-1 left-1.5 h-1.5 w-1.5 rounded-full bg-white/90" />
+              </motion.div>
+
               <img
                 src={heroPhonesImg}
                 alt="Single Clik Mobile Application displaying verified members and categories"

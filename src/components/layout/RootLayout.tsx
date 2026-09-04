@@ -52,9 +52,9 @@ export const RootLayout = () => {
       >
         Skip to main content
       </a>
-      <div className="flex min-h-screen flex-col bg-bg text-fg">
+      <div className="flex min-h-screen flex-col bg-bg text-fg overflow-x-hidden w-full max-w-full">
         <Header />
-        <main id="main" tabIndex={-1} className="flex-1 outline-none">
+        <main id="main" tabIndex={-1} className="flex-1 outline-none w-full overflow-x-hidden">
           <Suspense fallback={<PageFallback />}>
             <Outlet />
           </Suspense>
