@@ -6,7 +6,7 @@ export const AboutPage = () => (
   <>
     <Seo {...aboutSeo} />
 
-    <Section id="about-hero" className="pt-16 pb-8">
+    <Section id="about-hero" className="pt-5 pb-6">
       <Heading level="h1" size="4xl">
         About SingleClik
       </Heading>

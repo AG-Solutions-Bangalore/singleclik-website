@@ -1,7 +1,7 @@
 export const ASSETS = {
   baseUrl: 'https://singleclik.com/api/public/assets/images/web_images/',
   logo: 'https://singleclik.com/api/public/assets/images/web_images/logo.webp',
-  mobile: 'https://singleclik.com/api/public/assets/images/web_images/mobile.webp',
+  mobile: '/hero-phones.png',
   app: 'https://singleclik.com/api/public/assets/images/web_images/app.webp',
   about: 'https://singleclik.com/api/public/assets/images/web_images/about.webp',
   privacy: 'https://singleclik.com/api/public/assets/images/web_images/privacy.webp',
@@ -9,27 +9,27 @@ export const ASSETS = {
 
 export const STATS = [
   {
-    value: '10K+',
-    label: 'Happy Users',
-    iconType: 'users',
+    value: '100+',
+    label: 'Categories',
+    iconType: 'categories',
     color: 'text-brand bg-brand-softer dark:bg-brand-soft/90',
   },
   {
-    value: '5K+',
+    value: '100+',
     label: 'Verified Businesses',
-    iconType: 'shield',
+    iconType: 'business',
     color: 'text-accent-blue bg-accent-blue-soft dark:bg-accent-blue-soft/90',
   },
   {
-    value: '25K+',
-    label: 'Enquiries Completed',
-    iconType: 'briefcase',
+    value: '98%',
+    label: 'Satisfaction Rate',
+    iconType: 'satisfaction',
     color: 'text-accent-orange bg-accent-orange-soft dark:bg-accent-orange-soft/90',
   },
   {
-    value: '4.9★',
-    label: 'User Ratings',
-    iconType: 'star',
+    value: '100%',
+    label: 'Secure and Safe',
+    iconType: 'shield',
     color: 'text-accent-amber bg-accent-amber-soft dark:bg-accent-amber-soft/90',
   },
 ] as const
@@ -68,8 +68,8 @@ export const HOW_IT_WORKS_STEPS = [
     step: '02',
     title: 'Businesses Respond',
     description: 'Relevant businesses will receive your enquiry.',
-    color: 'border-accent-indigo text-accent-indigo bg-accent-indigo-soft',
-    badgeBg: 'bg-accent-indigo text-white',
+    color: 'border-accent-purple text-accent-purple bg-accent-purple-soft',
+    badgeBg: 'bg-accent-purple text-white',
     icon: 'building',
   },
   {
@@ -229,40 +229,27 @@ export const FAQS = [
 
 export const FOOTER_SECTIONS = [
   {
-    title: 'For Users',
+    title: 'Navigation',
     links: [
-      { label: 'Post an Enquiry', href: '#hero' },
-      { label: 'My Enquiries', href: '#hero' },
-      { label: 'Favourites', href: '#categories' },
-      { label: 'Login', href: '#login' },
-      { label: 'Sign Up', href: '#signup' },
+      { label: 'Home', href: '#hero' },
+      { label: 'About', href: '#about' },
+      { label: 'Categories', href: '#categories' },
     ],
   },
   {
-    title: 'For Businesses',
+    title: 'Platform',
+    links: [
+      { label: 'How It Works', href: '#how-it-works' },
+      { label: 'Why Choose', href: '#privacy' },
+      { label: 'Review', href: '#testimonials' },
+    ],
+  },
+  {
+    title: 'Support & Legal',
     links: [
       { label: 'Join as Business', href: '#cta' },
-      { label: 'Dashboard', href: '#cta' },
-      { label: 'Enquiries', href: '#hero' },
-      { label: 'Pricing', href: '#pricing' },
-      { label: 'Resources', href: '#resources' },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      { label: 'About Us', href: '#about' },
-      { label: 'Blog', href: '#blog' },
-      { label: 'Careers', href: '#careers' },
-      { label: 'Contact Us', href: '#contact' },
-    ],
-  },
-  {
-    title: 'Support',
-    links: [
-      { label: 'Help Center', href: '#faq' },
-      { label: 'Terms of Service', href: '#terms' },
-      { label: 'Privacy Policy', href: '#privacy' },
+      { label: 'FAQ', href: '#faq' },
+      { label: 'Policy', href: '/privacy-policy' },
     ],
   },
 ] as const

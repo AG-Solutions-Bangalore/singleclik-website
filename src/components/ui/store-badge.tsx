@@ -46,7 +46,7 @@ const iconSizes = {
  */
 export const StoreBadge = ({
   store,
-  href = '#download',
+  href,
   title,
   iconSize = 'md',
   className = '',
@@ -58,12 +58,21 @@ export const StoreBadge = ({
   const resolvedImgTitle = imgTitle ?? c.imgTitle
   const resolvedLinkTitle = title ?? resolvedImgTitle ?? c.defaultTitle
 
+  const defaultHref =
+    store === 'app'
+      ? 'https://apps.apple.com/in/app/single-clik/id6741411619'
+      : 'https://play.google.com/store/apps/details?id=com.singleclick.agsolution&pcampaignid=web_share'
+
+  const targetHref = href ?? defaultHref
+  const isExternal = targetHref.startsWith('http')
+
   return (
     <a
-      href={href}
+      href={targetHref}
+      {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       title={resolvedLinkTitle}
       aria-label={resolvedImgAlt}
-      className={`group flex items-center gap-2.5 rounded-xl border border-white/10 bg-black px-4 py-2 text-white shadow-md shadow-black/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-900 hover:shadow-lg hover:shadow-black/30 active:scale-95 ${className}`}
+      className={`group inline-flex items-center gap-2 sm:gap-2.5 rounded-xl border border-white/10 bg-black px-2.5 sm:px-4 py-1.5 sm:py-2 text-white shadow-md shadow-black/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-900 hover:shadow-lg hover:shadow-black/30 active:scale-95 whitespace-nowrap shrink-0 ${className}`}
     >
       <img
         src={c.icon}
@@ -75,11 +84,11 @@ export const StoreBadge = ({
         decoding="async"
         className={`${iconSizes[iconSize]} shrink-0 object-contain`}
       />
-      <div className="text-left leading-tight">
-        <div className="text-[9px] font-medium uppercase tracking-wider text-slate-300">
+      <div className="text-left leading-tight whitespace-nowrap">
+        <div className="text-[8px] sm:text-[9px] font-medium uppercase tracking-wider text-slate-300">
           {c.subtitle}
         </div>
-        <div className="mt-0.5 text-xs font-semibold tracking-tight text-white">
+        <div className="mt-0.5 text-[11px] sm:text-xs font-semibold tracking-tight text-white">
           {c.title}
         </div>
       </div>

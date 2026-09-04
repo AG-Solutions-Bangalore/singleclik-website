@@ -22,7 +22,7 @@ export const FaqSection = () => {
     <section
       id="faq"
       aria-label="Frequently Asked Questions"
-      className="py-16 lg:py-24 bg-surface/50"
+      className="py-8 lg:py-10 bg-surface/50"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
