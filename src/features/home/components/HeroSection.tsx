@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import { motion, type Variants } from 'framer-motion'
 import { Search, Building2, ShieldCheck, Star, Sparkles, LayoutGrid } from 'lucide-react'
-import { STATS } from '../constant'
+import { ASSETS, STATS } from '../constant'
 import { Button } from '@/components/ui/Button'
 import { StoreBadge } from '@/components/ui/store-badge'
 import { DownloadModal } from '@/components/ui/DownloadModal'
-
-import heroPhonesImg from '@/assets/hero-phones.png'
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -305,7 +303,7 @@ export const HeroSection = () => {
               </motion.div>
 
               <img
-                src={heroPhonesImg}
+                src={ASSETS.mobile}
                 alt="Single Clik Mobile Application displaying verified members and categories"
                 title="Single Clik App Interface"
                 width="1200"

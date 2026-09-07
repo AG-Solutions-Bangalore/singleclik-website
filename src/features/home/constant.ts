@@ -1,7 +1,7 @@
 export const ASSETS = {
   baseUrl: 'https://singleclik.com/api/public/assets/images/web_images/',
   logo: 'https://singleclik.com/api/public/assets/images/web_images/logo.webp',
-  mobile: '/hero-phones.png',
+  mobile: '/hero-phones.webp',
   app: 'https://singleclik.com/api/public/assets/images/web_images/app.webp',
   about: 'https://singleclik.com/api/public/assets/images/web_images/about.webp',
   privacy: 'https://singleclik.com/api/public/assets/images/web_images/privacy.webp',
