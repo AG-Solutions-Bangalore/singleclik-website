@@ -1,75 +1,63 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-    <meta name="color-scheme" content="light dark" />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href="https://singleclik.example.com/" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="color-scheme" content="light dark" />
 
-    <!-- Google Fonts for Brand Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,600;0,700;1,700;1,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+  <link rel="icon" type="image/webp" href="/logo.webp" />
+  <link rel="apple-touch-icon" href="/logo.webp" />
+  <link rel="canonical" href="https://singleclik.example.com/" />
 
-    <!-- Performance: preconnect to image CDN (saves ~330ms on LCP) -->
-    <link rel="preconnect" href="https://singleclik.com" />
-    <link rel="dns-prefetch" href="https://jsonplaceholder.typicode.com" />
+  <!-- Google Fonts for Brand Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,600;0,700;1,700;1,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+    rel="stylesheet" />
 
-    <!-- LCP hint: preload the hero mobile image so it's discovered immediately -->
-    <link
-      rel="preload"
-      as="image"
-      href="/hero-phones.webp"
-      fetchpriority="high"
-    />
+  <!-- Performance: preconnect to image CDN (saves ~330ms on LCP) -->
+  <link rel="preconnect" href="https://singleclik.com" />
+  <link rel="dns-prefetch" href="https://jsonplaceholder.typicode.com" />
 
-    <!-- Primary meta — overridden per-route by <Seo /> from react-helmet-async -->
-    <title>SingleClik – Connect With Trusted Businesses & Professionals</title>
-    <meta
-      name="description"
-      content="Connect with verified businesses and professionals on SingleClik. Discover trusted services, send enquiries, chat securely, and get things done with ease."
-    />
-    <meta
-      name="keywords"
-      content="SingleClik, verified businesses, professionals, business directory, connect with businesses, business services, local professionals"
-    />
-    <meta name="author" content="SingleClik" />
-    <meta name="publisher" content="SingleClik" />
-    <meta name="robots" content="index,follow,max-image-preview:large" />
-    <meta name="generator" content="Vite + React" />
+  <!-- LCP hint: preload the hero mobile image so it's discovered immediately -->
+  <link rel="preload" as="image" href="/hero-phones.png" fetchpriority="high" />
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="SingleClik" />
-    <meta property="og:title" content="SingleClik – Connect With Trusted Businesses & Professionals" />
-    <meta
-      property="og:description"
-      content="Connect with verified businesses and professionals on SingleClik. Discover trusted services, send enquiries, chat securely, and get things done with ease."
-    />
-    <meta property="og:url" content="https://singleclik.example.com/" />
-    <meta property="og:image" content="https://singleclik.example.com/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="en_US" />
+  <!-- Primary meta — overridden per-route by <Seo /> from react-helmet-async -->
+  <title>SingleClik – Connect With Trusted Businesses & Professionals</title>
+  <meta name="description"
+    content="Connect with verified businesses and professionals on SingleClik. Discover trusted services, send enquiries, chat securely, and get things done with ease." />
+  <meta name="keywords"
+    content="SingleClik, verified businesses, professionals, business directory, connect with businesses, business services, local professionals" />
+  <meta name="author" content="SingleClik" />
+  <meta name="publisher" content="SingleClik" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="generator" content="Vite + React" />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="SingleClik – Connect With Trusted Businesses & Professionals" />
-    <meta
-      name="twitter:description"
-      content="Connect with verified businesses and professionals on SingleClik. Discover trusted services, send enquiries, chat securely, and get things done with ease."
-    />
-    <meta name="twitter:image" content="https://singleclik.example.com/og-image.png" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SingleClik" />
+  <meta property="og:title" content="SingleClik – Connect With Trusted Businesses & Professionals" />
+  <meta property="og:description"
+    content="Connect with verified businesses and professionals on SingleClik. Discover trusted services, send enquiries, chat securely, and get things done with ease." />
+  <meta property="og:url" content="https://singleclik.example.com/" />
+  <meta property="og:image" content="https://singleclik.example.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
 
-    <!-- Structured data: site-level WebSite. Page-level JSON-LD is injected per route. -->
-    <script type="application/ld+json">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SingleClik – Connect With Trusted Businesses & Professionals" />
+  <meta name="twitter:description"
+    content="Connect with verified businesses and professionals on SingleClik. Discover trusted services, send enquiries, chat securely, and get things done with ease." />
+  <meta name="twitter:image" content="https://singleclik.example.com/og-image.png" />
+
+  <!-- Structured data: site-level WebSite. Page-level JSON-LD is injected per route. -->
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
@@ -82,12 +70,14 @@
         }
       }
     </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <noscript>
-      <strong>This site requires JavaScript. Please enable it to continue.</strong>
-    </noscript>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+</head>
+
+<body>
+  <div id="root"></div>
+  <noscript>
+    <strong>This site requires JavaScript. Please enable it to continue.</strong>
+  </noscript>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>
