@@ -27,9 +27,16 @@ export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [resourcesOpen, setResourcesOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
     setMounted(true)
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 8)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   // Lock body scroll and close on Escape when mobile sidebar is open
@@ -108,7 +115,11 @@ export const Header = () => {
     <>
       <header
         role="banner"
-        className="sticky top-0 z-40 w-full border-b border-border/80 bg-bg/90 backdrop-blur-md transition-colors"
+        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+          isScrolled
+            ? 'border-b border-border/90 bg-bg/95 backdrop-blur-md shadow-sm dark:shadow-black/20'
+            : 'border-b border-border/60 bg-bg/85 backdrop-blur-md'
+        }`}
       >
         <div className="mx-auto flex h-20 sm:h-20 md:h-[74px] lg:h-[76px] w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Brand Logo */}

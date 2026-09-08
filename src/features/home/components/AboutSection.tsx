@@ -23,7 +23,7 @@ export const AboutSection = () => {
               className="text-xs font-bold uppercase tracking-wider text-brand"
               title="About Single Click"
             >
-              ABOUT US
+              ABOUT THE SINGLE CLIK
             </span>
 
             <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-fg sm:text-4xl lg:text-[40px] lg:leading-tight">
