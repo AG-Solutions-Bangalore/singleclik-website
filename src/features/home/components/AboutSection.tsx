@@ -23,7 +23,7 @@ export const AboutSection = () => {
               className="text-xs font-bold uppercase tracking-wider text-brand"
               title="About Single Click"
             >
-              ABOUT THE SINGLE CLIK
+              ABOUT US
             </span>
 
             <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-fg sm:text-4xl lg:text-[40px] lg:leading-tight">
@@ -47,11 +47,10 @@ export const AboutSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: index * 0.1 }}
-                  className={`flex items-start gap-2.5 sm:gap-3 ${
-                    index === 2
+                  className={`flex items-start gap-2.5 sm:gap-3 ${index === 2
                       ? 'col-span-2 justify-self-center max-w-xs sm:col-span-1 sm:justify-self-auto sm:max-w-none'
                       : ''
-                  }`}
+                    }`}
                   title={`${pillar.title} - ${pillar.description}`}
                 >
                   <div
