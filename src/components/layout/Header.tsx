@@ -59,7 +59,7 @@ export const Header = () => {
   const desktopNavItems = [
     { to: '/', label: 'Home', end: true },
     { to: '#how-it-works', label: 'How It Works' },
-    { to: '#about', label: 'About Platform' },
+    { to: '#', label: 'About Platform' },
     { to: '#categories', label: 'Categories' },
   ]
 

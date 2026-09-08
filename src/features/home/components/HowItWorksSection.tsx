@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { FileText, Building, MessageCircle, Handshake, ShieldCheck } from 'lucide-react'
 import { HOW_IT_WORKS_STEPS } from '../constant'
@@ -7,7 +7,7 @@ export const HowItWorksSection = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [scrollProgress, setScrollProgress] = useState(0)
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     const el = scrollContainerRef.current
     if (!el) return
     const maxScroll = el.scrollWidth - el.clientWidth
@@ -17,11 +17,11 @@ export const HowItWorksSection = () => {
     }
     const progress = Math.min(Math.max(el.scrollLeft / maxScroll, 0), 1)
     setScrollProgress(progress)
-  }
+  }, [])
 
   useEffect(() => {
     handleScroll()
-  }, [])
+  }, [handleScroll])
 
   const renderStepContent = (item: (typeof HOW_IT_WORKS_STEPS)[number], isMobile: boolean = false) => (
     <>

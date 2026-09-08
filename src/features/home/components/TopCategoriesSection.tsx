@@ -30,7 +30,8 @@ export const TopCategoriesSection = () => {
     return (data?.data ?? [])
       .filter((item) => item.category && item.category.trim().toLowerCase() !== 'not in list')
       .map((item) => ({
-        ...item,
+        category: item.category,
+        category_image: item.category_image,
         resolvedImage: resolveCategoryImage(item, data),
       }))
   }, [data])
