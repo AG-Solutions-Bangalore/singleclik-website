@@ -13,7 +13,7 @@ import {
 } from '../components'
 
 /**
- * Single Clik Home Page — Pixel-perfect matching the UI design
+ * Single Click Home Page — Pixel-perfect matching the UI design
  */
 export const HomePage = () => {
   return (
@@ -26,7 +26,7 @@ export const HomePage = () => {
       {/* 2. About Us with 3 key pillars & interactive badges */}
       <AboutSection />
 
-      {/* 3. How Single Clik Works (5-Step connected process) */}
+      {/* 3. How Single Click Works (5-Step connected process) */}
       <HowItWorksSection />
 
       {/* 4. Video Showcase / Action CTA block */}

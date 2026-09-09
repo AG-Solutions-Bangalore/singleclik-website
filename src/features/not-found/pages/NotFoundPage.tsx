@@ -74,7 +74,7 @@ export const NotFoundPage = () => {
               <QuickLinkCard
                 to="/about"
                 label="About"
-                description="Learn more about SingleClik"
+                description="Learn more about SingleClick"
                 icon={<Info className="h-5 w-5" aria-hidden="true" />}
                 accentClassName="bg-accent-purple/15 text-accent-purple"
               />

@@ -1,6 +1,6 @@
-# Single Clik — Bridging People and Verified Businesses
+# Single Click — Bridging People and Verified Businesses
 
-> Single Clik is a privacy-first platform that connects people with verified local and digital businesses without sharing personal contact details. Users can post enquiries, chat securely in-app, and get things done — all in one secure platform.
+> Single Click is a privacy-first platform that connects people with verified local and digital businesses without sharing personal contact details. Users can post enquiries, chat securely in-app, and get things done — all in one secure platform.
 
 ## Key Pages
 
@@ -11,7 +11,7 @@
 - [Privacy](https://singleclik.com/#privacy): Understand how we protect your data with no phone number sharing and secure in-app communication.
 - [Testimonials](https://singleclik.com/#testimonials): Read authentic feedback from verified users and business owners.
 - [FAQ](https://singleclik.com/#faq): Find answers to common questions about the platform.
-- [Contact](https://singleclik.com/#contact): Get in touch with the Single Clik team.
+- [Contact](https://singleclik.com/#contact): Get in touch with the Single Click team.
 
 ## For Businesses
 
@@ -21,13 +21,13 @@
 
 ## Mobile App
 
-- [Google Play](https://play.google.com/store/apps/details?id=com.singleclik): Download the Single Clik app for Android.
-- [App Store](https://apps.apple.com/app/singleclik): Download the Single Clik app for iOS.
+- [Google Play](https://play.google.com/store/apps/details?id=com.singleclik): Download the Single Click app for Android.
+- [App Store](https://apps.apple.com/app/singleclik): Download the Single Click app for iOS.
 
 ## Company
 
 - [Blog](https://singleclik.com/#blog): Read the latest news, product updates, and industry insights.
-- [Careers](https://singleclik.com/#careers): Explore career opportunities at Single Clik.
+- [Careers](https://singleclik.com/#careers): Explore career opportunities at Single Click.
 - [Terms of Service](https://singleclik.com/#terms): Review our terms and conditions.
 - [Help Center](https://singleclik.com/#faq): Get support and find answers to common questions.
 

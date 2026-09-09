@@ -28,7 +28,7 @@ export const PrivacySection = () => {
               >
                 <img
                   src={ASSETS.privacy}
-                  alt="Single Clik Zero Phone Sharing Security Shield"
+                  alt="Single Click Zero Phone Sharing Security Shield"
                   title="Your Privacy is Our Priority"
                   width="600"
                   height="600"
@@ -47,10 +47,10 @@ export const PrivacySection = () => {
               {/* Badge */}
               <div
                 className="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand-softer px-4 py-1.5 text-xs font-semibold text-brand dark:bg-brand-soft/20"
-                title="Why Choose Single Clik"
+                title="Why Choose Single Click"
               >
                 <Sparkles className="h-3 w-3 text-brand" aria-hidden="true" />
-                <span>Why Choose Single Clik?</span>
+                <span>Why Choose Single Click?</span>
               </div>
 
               {/* Heading */}
@@ -80,7 +80,7 @@ export const PrivacySection = () => {
               {/* Action Button */}
               <button
                 type="button"
-                title="Learn more about Single Clik's privacy architecture"
+                title="Learn more about Single Click's privacy architecture"
                 aria-label="Learn More About Privacy"
                 className="mt-9 cursor-pointer inline-flex items-center justify-center rounded-lg bg-brand px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand/30 transition hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/40 active:scale-95"
               >

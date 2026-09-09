@@ -37,7 +37,7 @@ export const FaqSection = () => {
             Frequently Asked Questions
           </h2>
           <p className="mt-2 text-sm text-muted">
-            Everything you need to know about privacy, chatting, and connecting on Single Clik.
+            Everything you need to know about privacy, chatting, and connecting on Single Click.
           </p>
         </motion.div>
 

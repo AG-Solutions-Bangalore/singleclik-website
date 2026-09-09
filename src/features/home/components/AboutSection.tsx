@@ -6,7 +6,7 @@ export const AboutSection = () => {
   return (
     <section
       id="about"
-      aria-label="About Single Clik"
+      aria-label="About Single Click"
       className="relative py-16  bg-surface/50"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -21,7 +21,7 @@ export const AboutSection = () => {
           >
             <span
               className="text-xs font-bold uppercase tracking-wider text-brand"
-              title="About Single Clik"
+              title="About Single Click"
             >
               ABOUT US
             </span>
@@ -33,7 +33,7 @@ export const AboutSection = () => {
             </h2>
 
             <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
-              Single Clik was built with a simple idea – make connections easy, private, and
+              Single Click was built with a simple idea – make connections easy, private, and
               effective. We empower businesses to grow and help people find the right services
               without the hassle of sharing personal contact details.
             </p>
@@ -81,8 +81,8 @@ export const AboutSection = () => {
             <div className="relative w-full max-w-lg overflow-hidden rounded-3xl border-none border-border/80 bg-bg p-2">
               <img
                 src={ASSETS.about}
-                alt="Single Clik Community - Bridging People and Verified Businesses"
-                title="Empowering Connections with Single Clik"
+                alt="Single Click Community - Bridging People and Verified Businesses"
+                title="Empowering Connections with Single Click"
                 loading="lazy"
                 decoding="async"
                 className="h-auto w-full rounded-2xl object-cover"

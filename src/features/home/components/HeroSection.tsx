@@ -34,7 +34,7 @@ export const HeroSection = () => {
   return (
     <section
       id="hero"
-      aria-label="Single Clik Hero Section"
+      aria-label="Single Click Hero Section"
       className="relative overflow-hidden pt-8 pb-16 lg:pt-14 lg:pb-24"
     >
       {/* Hero background — large blue curved blob (right side, matching reference) */}
@@ -155,7 +155,7 @@ export const HeroSection = () => {
               variants={itemVariants}
               className="mt-5 text-base text-muted sm:text-lg lg:max-w-xl"
             >
-              Single Clik connects you with verified businesses and professionals without sharing your
+              Single Click connects you with verified businesses and professionals without sharing your
               personal contact. Enquire, chat, and get things done – all in one secure platform.
             </motion.p>
 
@@ -229,8 +229,8 @@ export const HeroSection = () => {
             >
               <img
                 src={ASSETS.mobile}
-                alt="Single Clik Mobile Application displaying verified services and in-app chat"
-                title="Single Clik Mobile App Interface"
+                alt="Single Click Mobile Application displaying verified services and in-app chat"
+                title="Single Click Mobile App Interface"
                 width="1239"
                 height="1269"
                 loading="eager"

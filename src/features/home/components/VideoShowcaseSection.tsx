@@ -185,7 +185,7 @@ export const VideoShowcaseSection = () => {
   return (
     <section
       ref={sectionRef}
-      aria-label="Single Clik Video Demo"
+      aria-label="Single Click Video Demo"
       className="py-6 lg:py-8 bg-bg"
     >
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
@@ -205,10 +205,10 @@ export const VideoShowcaseSection = () => {
             <div className="flex flex-col items-start lg:col-span-6">
               <span
                 className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3.5 py-1 text-xs font-medium text-blue-200 backdrop-blur-md"
-                title="Single Clik in Action"
+                title="Single Click in Action"
               >
                 <Sparkles className="h-3 w-3 text-blue-300" aria-hidden="true" />
-                See Single Clik in Action
+                See Single Click in Action
               </span>
 
               <h2 className="mt-3 text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-[34px] lg:leading-tight">
@@ -218,14 +218,14 @@ export const VideoShowcaseSection = () => {
               </h2>
 
               <p className="mt-3 text-sm leading-relaxed text-blue-100/80 sm:text-base">
-                Watch how Single Clik helps you connect with the right businesses, chat securely, and
+                Watch how Single Click helps you connect with the right businesses, chat securely, and
                 get your work done – all without sharing your personal contact.
               </p>
 
               <button
                 type="button"
                 onClick={togglePlay}
-                title="Watch Single Clik introductory video"
+                title="Watch Single Click introductory video"
                 aria-label={isPlaying ? 'Pause Product Video' : 'Watch Product Video'}
                 className="mt-5 inline-flex items-center gap-2.5 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/40 transition hover:bg-brand-hover active:scale-95"
               >
@@ -256,7 +256,7 @@ export const VideoShowcaseSection = () => {
                       fetchpriority="low"
                       decoding="async"
                       className="block aspect-[21/9] w-full object-cover"
-                      aria-label="Single Clik product showcase video"
+                      aria-label="Single Click product showcase video"
                     >
                       <track kind="captions" />
                     </video>
