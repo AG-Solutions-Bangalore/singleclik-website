@@ -1,13 +1,43 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ASSETS } from '../constant'
 import { StoreBadge } from '@/components/ui/store-badge'
+import { DownloadModal } from '@/components/ui/DownloadModal'
 
 export const CtaBannerSection = () => {
+  const [downloadModal, setDownloadModal] = useState<{
+    isOpen: boolean
+    title: string
+    subtitle: string
+  }>({
+    isOpen: false,
+    title: '',
+    subtitle: '',
+  })
+
+  const openDownload = (type: 'customer' | 'business') => {
+    if (type === 'customer') {
+      setDownloadModal({
+        isOpen: true,
+        title: 'Download Single Clik App',
+        subtitle:
+          'Get the app to search verified services, send enquiries, and chat securely without sharing your phone number.',
+      })
+    } else {
+      setDownloadModal({
+        isOpen: true,
+        title: 'Join Single Clik for Business',
+        subtitle:
+          'Download the app to register your business, receive client enquiries directly, and grow your revenue.',
+      })
+    }
+  }
+
   return (
     <section
       id="cta"
       aria-label="Ready to Get Started Call to Action"
-      className="py-10 lg:py-12 bg-bg"
+      className="py-6 lg:py-8 bg-bg"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -45,38 +75,42 @@ export const CtaBannerSection = () => {
 
               {/* Action Buttons */}
               <div className="mt-6 grid grid-cols-2 gap-2 sm:flex sm:w-auto sm:flex-row sm:gap-3 w-full">
-                <a
-                  href="#hero"
-                  title="SingleClik Homepage Hero Section"
+                <button
+                  type="button"
+                  onClick={() => openDownload('customer')}
+                  title="Download Single Clik app to find services"
                   aria-label="I Need a Service"
-                  className="inline-flex items-center justify-center rounded-lg bg-white px-3 sm:px-6 py-2.5 text-xs sm:text-sm font-bold text-brand shadow-md transition hover:bg-slate-50 active:scale-95 text-center"
+                  className="inline-flex items-center justify-center rounded-lg bg-white px-3 sm:px-6 py-2.5 text-xs sm:text-sm font-bold text-brand shadow-md transition hover:bg-slate-50 active:scale-95 text-center cursor-pointer"
                 >
                   <span>I Need a Service</span>
-                </a>
+                </button>
 
-                <a
-                  href="#signup"
-                  title="Join Single Click as a verified business"
+                <button
+                  type="button"
+                  onClick={() => openDownload('business')}
+                  title="Download Single Clik app to join as a verified business"
                   aria-label="Join as Business"
-                  className="inline-flex items-center justify-center rounded-lg border border-white/70 bg-transparent px-3 sm:px-6 py-2.5 text-xs sm:text-sm font-semibold text-white transition hover:bg-white/10 active:scale-95 text-center"
+                  className="inline-flex items-center justify-center rounded-lg border border-white/70 bg-transparent px-3 sm:px-6 py-2.5 text-xs sm:text-sm font-semibold text-white transition hover:bg-white/10 active:scale-95 text-center cursor-pointer"
                 >
                   <span>Join as Business</span>
-                </a>
+                </button>
               </div>
 
-              {/* App store badges — mobile only (below CTA buttons) */}
-              <div className="mt-4 sm:mt-5 flex flex-wrap items-center gap-2.5 sm:gap-3 lg:hidden">
+              {/* App store badges — mobile only (below CTA buttons, now in 1 line) */}
+              <div className="mt-4 sm:mt-5 flex flex-nowrap items-center gap-2 sm:gap-3 w-full sm:w-auto lg:hidden">
                 <StoreBadge
                   store="play"
                   iconSize="sm"
                   imgAlt="Get the SingleClik app from Google Play"
                   imgTitle="SingleClik Google Play App"
+                  className="flex-1 sm:flex-initial justify-center"
                 />
                 <StoreBadge
                   store="app"
                   iconSize="sm"
                   imgAlt="Get the SingleClik app from Apple App Store"
                   imgTitle="SingleClik Apple App Store"
+                  className="flex-1 sm:flex-initial justify-center"
                 />
               </div>
             </div>
@@ -116,6 +150,14 @@ export const CtaBannerSection = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Download Modal Popup */}
+      <DownloadModal
+        isOpen={downloadModal.isOpen}
+        onClose={() => setDownloadModal((prev) => ({ ...prev, isOpen: false }))}
+        title={downloadModal.title}
+        subtitle={downloadModal.subtitle}
+      />
     </section>
   )
 }

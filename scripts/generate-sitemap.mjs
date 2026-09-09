@@ -20,6 +20,7 @@ const OUTPUT = join(__dirname, '..', 'public', 'sitemap.xml')
 const ROUTES = [
   { path: '/', changefreq: 'weekly', priority: 1.0 },
   { path: '/about', changefreq: 'monthly', priority: 0.7 },
+  { path: '/privacy-policy', changefreq: 'monthly', priority: 0.6 },
 ]
 
 const lastmod = new Date().toISOString().slice(0, 10)

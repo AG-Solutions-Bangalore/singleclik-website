@@ -7,7 +7,7 @@ export const PrivacySection = () => {
     <section
       id="privacy"
       aria-label="Privacy and Security Standards"
-      className="py-8 bg-bg"
+      className="py-5 lg:py-6 bg-bg"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -54,7 +54,7 @@ export const PrivacySection = () => {
               </div>
 
               {/* Heading */}
-              <h2 className="mt-5 text-3xl text-nowrap font-extrabold tracking-tight text-fg sm:text-4xl lg:text-[42px] lg:leading-tight">
+              <h2 className="mt-5 text-2xl font-extrabold tracking-tight text-fg sm:text-4xl lg:text-[42px] lg:leading-tight">
                 Your Privacy. Our Priority.
               </h2>
 
@@ -76,16 +76,6 @@ export const PrivacySection = () => {
                   </motion.li>
                 ))}
               </ul>
-
-              {/* Action Button */}
-              <button
-                type="button"
-                title="Learn more about Single Click's privacy architecture"
-                aria-label="Learn More About Privacy"
-                className="mt-9 cursor-pointer inline-flex items-center justify-center rounded-lg bg-brand px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand/30 transition hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/40 active:scale-95"
-              >
-                Learn More
-              </button>
             </div>
           </div>
         </motion.div>

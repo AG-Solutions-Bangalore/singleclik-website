@@ -37,7 +37,7 @@ export const TestimonialsSection = () => {
   return (
     <section
       aria-label="User Reviews and Testimonials"
-      className="py-12 bg-surface/30 sm:py-16 lg:py-20"
+      className="py-8 lg:py-10 bg-surface/30"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}

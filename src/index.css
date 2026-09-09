@@ -160,11 +160,32 @@
     border-color: var(--color-border);
   }
 
+  html,
   body {
+    overflow-x: clip;
+    max-width: 100vw;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
+}
+
+/* Hero Background Blue Wave SVG */
+.hero-wave-svg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 65%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dark .hero-wave-svg {
+  opacity: 0.65;
 }
 
 /* Custom glow & pattern utilities */
@@ -237,4 +258,43 @@
   pointer-events: none;
   opacity: 1;
   transition: opacity 0.3s ease;
+}
+
+/* ==========================================
+   Brand Logo Custom Typography (Ethnocentric)
+========================================== */
+@font-face {
+  font-family: 'Ethnocentric';
+  src: url('/fonts/ethnocentric-rg.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-brand-logo {
+  font-family: 'Ethnocentric', system-ui, sans-serif;
+  letter-spacing: 0.03em;
+}
+
+/* ==========================================
+   Continuous Infinite Marquee Auto-Scroll
+========================================== */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll 75s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
