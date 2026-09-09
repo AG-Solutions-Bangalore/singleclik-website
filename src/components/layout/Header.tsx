@@ -74,7 +74,7 @@ export const Header = () => {
     },
     {
       to: '#about',
-      label: 'Why Single Click',
+      label: 'Why Single Clik',
       desc: 'Zero phone sharing & trust',
       icon: Sparkles,
       color: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400',
@@ -119,14 +119,14 @@ export const Header = () => {
           {/* Brand Logo */}
           <Link
             to="/"
-            title="Single Click - Homepage"
-            aria-label="Single Click Homepage"
+            title="Single Clik - Homepage"
+            aria-label="Single Clik Homepage"
             className="flex items-center gap-2.5 transition-transform hover:scale-[1.02]"
           >
             <img
               src={ASSETS.logo}
-              alt="Single Click Official Logo"
-              title="Single Click"
+              alt="Single Clik Official Logo"
+              title="Single Clik"
               width="48"
               height="48"
               loading="eager"
@@ -140,7 +140,7 @@ export const Header = () => {
             />
             <span className="logo-fallback hidden text-lg font-bold text-fg">S</span>
             <span className="text-xl font-bold tracking-tight text-fg">
-              Single <span className="text-brand">Click</span>
+              Single <span className="text-brand">Clik</span>
             </span>
           </Link>
 
@@ -211,7 +211,7 @@ export const Header = () => {
             <ThemeToggle />
             <a
               href="#login"
-              title="Log in to your Single Click account"
+              title="Log in to your Single Clik account"
               aria-label="Log In"
               className="inline-flex items-center rounded-lg border border-border bg-bg px-4 py-2 text-sm font-semibold text-fg shadow-xs transition-all hover:border-brand/40 hover:text-brand hover:bg-brand-softer active:scale-95"
             >
@@ -219,7 +219,7 @@ export const Header = () => {
             </a>
             <a
               href="#signup"
-              title="Create a new Single Click account"
+              title="Create a new Single Clik account"
               aria-label="Sign Up"
               className="group inline-flex items-center gap-1.5 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white shadow-md shadow-brand/25 transition-all hover:bg-brand-hover active:scale-95"
             >
@@ -316,14 +316,14 @@ export const Header = () => {
                     <Link
                       to="/"
                       onClick={() => setMobileMenuOpen(false)}
-                      title="Single Click - Homepage"
-                      aria-label="Single Click Homepage"
+                      title="Single Clik - Homepage"
+                      aria-label="Single Clik Homepage"
                       className="flex items-center gap-3"
                     >
                       <img
                         src={ASSETS.logo}
-                        alt="Single Click Official Logo"
-                        title="Single Click"
+                        alt="Single Clik Official Logo"
+                        title="Single Clik"
                         width="48"
                         height="48"
                         className="h-12 w-12 object-contain"
@@ -333,7 +333,7 @@ export const Header = () => {
                       />
                       <div className="flex flex-col">
                         <span className="text-lg font-extrabold tracking-tight text-fg leading-none">
-                          Single <span className="text-brand">Click</span>
+                          Single <span className="text-brand">Clik</span>
                         </span>
                         <span className="mt-1 text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
                           ● Verified Platform
@@ -402,7 +402,7 @@ export const Header = () => {
                     <div className="mt-5 rounded-2xl border border-brand/20 bg-gradient-to-br from-brand/10 via-brand-softer/40 to-transparent p-4 dark:from-brand-soft/20 dark:via-surface-2 dark:to-transparent">
                       <div className="flex items-center gap-2 text-xs font-bold text-brand">
                         <Smartphone className="h-4 w-4" />
-                        <span>Get Single Click App</span>
+                        <span>Get Single Clik App</span>
                       </div>
                       <p className="mt-1 text-[11px] text-muted">
                         Zero spam, privacy-safe quotes on iOS & Android.
@@ -432,7 +432,7 @@ export const Header = () => {
                         onClick={() => setMobileMenuOpen(false)}
                         className="group flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand font-bold text-white shadow-md shadow-brand/25 transition-all hover:bg-brand-hover active:scale-98"
                       >
-                        <span>Join Single Click</span>
+                        <span>Join Single Clik</span>
                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </a>
 
@@ -446,7 +446,7 @@ export const Header = () => {
                     </div>
 
                     <div className="mt-3 flex items-center justify-between text-[11px] text-muted">
-                      <span>© 2024 Single Click</span>
+                      <span>© 2024 Single Clik</span>
                       <span className="text-brand font-medium">100% Private</span>
                     </div>
                   </div>

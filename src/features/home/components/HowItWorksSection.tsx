@@ -6,7 +6,7 @@ export const HowItWorksSection = () => {
   return (
     <section
       id="how-it-works"
-      aria-label="How Single Click Works"
+      aria-label="How Single Clik Works"
       className="py-16 lg:py-24 bg-bg"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -19,7 +19,7 @@ export const HowItWorksSection = () => {
           className="text-center"
         >
           <h2 className="text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">
-            How <span className="text-brand">Single Click</span> Works?
+            How <span className="text-brand">Single Clik</span> Works?
           </h2>
           <p className="mt-2 text-sm text-muted">
             Simple 5-step process to get verified services without exposing your private contact details.

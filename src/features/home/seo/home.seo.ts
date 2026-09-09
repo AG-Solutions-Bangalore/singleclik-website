@@ -2,7 +2,7 @@ import { env } from '@/lib/env'
 import type { PageMeta } from '@/types'
 
 /**
- * Single Click Home Page SEO Preset.
+ * Single Clik Home Page SEO Preset.
  */
 export const homeSeo: PageMeta & { jsonLd: Record<string, unknown> } = {
   title: 'SingleClik – Connect With Trusted Businesses & Professionals',

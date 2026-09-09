@@ -183,7 +183,7 @@ export const TESTIMONIALS = [
     role: 'UI/UX Designer',
     rating: 5,
     quote:
-      'Single Click is a game changer for freelancers like me. I get quality enquiries every day.',
+      'Single Clik is a game changer for freelancers like me. I get quality enquiries every day.',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80',
   },
 ] as const
@@ -191,9 +191,9 @@ export const TESTIMONIALS = [
 export const FAQS = [
   {
     id: 'faq-1',
-    question: 'What is Single Click?',
+    question: 'What is Single Clik?',
     answer:
-      'Single Click is a privacy-first platform connecting users directly with verified local and digital businesses. You can send enquiries and communicate without ever revealing your personal phone number.',
+      'Single Clik is a privacy-first platform connecting users directly with verified local and digital businesses. You can send enquiries and communicate without ever revealing your personal phone number.',
   },
   {
     id: 'faq-2',
@@ -203,15 +203,15 @@ export const FAQS = [
   },
   {
     id: 'faq-3',
-    question: 'Is Single Click free to use?',
+    question: 'Is Single Clik free to use?',
     answer:
       'Yes, browsing services, posting enquiries, and chatting with verified service providers is completely free for individual customers.',
   },
   {
     id: 'faq-4',
-    question: 'Can I trust the businesses on Single Click?',
+    question: 'Can I trust the businesses on Single Clik?',
     answer:
-      'Every business on Single Click undergoes a verification process to ensure credibility, security, and quality of service for our community.',
+      'Every business on Single Clik undergoes a verification process to ensure credibility, security, and quality of service for our community.',
   },
   {
     id: 'faq-5',

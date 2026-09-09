@@ -18,11 +18,11 @@ export const Footer = () => {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-6 lg:gap-8">
           {/* Brand & Description (2 cols on large) */}
           <div className="flex flex-col items-start lg:col-span-2">
-            <a href="/" title="Single Click" aria-label="Single Click Homepage" className="flex items-center gap-2.5">
+            <a href="/" title="Single Clik" aria-label="Single Clik Homepage" className="flex items-center gap-2.5">
               <img
                 src={ASSETS.logo}
-                alt="Single Click Official Logo"
-                title="Single Click"
+                alt="Single Clik Official Logo"
+                title="Single Clik"
                 width="44"
                 height="44"
                 loading="lazy"
@@ -33,7 +33,7 @@ export const Footer = () => {
                 }}
               />
               <span className="text-xl font-bold tracking-tight text-white">
-                Single <span className="text-brand">Click</span>
+                Single <span className="text-brand">Clik</span>
               </span>
             </a>
 
@@ -63,7 +63,7 @@ export const Footer = () => {
               <a
                 href="#facebook"
                 className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-brand hover:text-white"
-                aria-label="Visit Single Click on Facebook"
+                aria-label="Visit Single Clik on Facebook"
                 title="Facebook"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -75,7 +75,7 @@ export const Footer = () => {
               <a
                 href="#instagram"
                 className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-accent-pink hover:text-white"
-                aria-label="Visit Single Click on Instagram"
+                aria-label="Visit Single Clik on Instagram"
                 title="Instagram"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -87,7 +87,7 @@ export const Footer = () => {
               <a
                 href="#linkedin"
                 className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-brand hover:text-white"
-                aria-label="Visit Single Click on LinkedIn"
+                aria-label="Visit Single Clik on LinkedIn"
                 title="LinkedIn"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -99,7 +99,7 @@ export const Footer = () => {
               <a
                 href="#youtube"
                 className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-red-600 hover:text-white"
-                aria-label="Visit Single Click on YouTube"
+                aria-label="Visit Single Clik on YouTube"
                 title="YouTube"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -111,7 +111,7 @@ export const Footer = () => {
               <a
                 href="#twitter"
                 className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-slate-700 hover:text-white"
-                aria-label="Visit Single Click on X"
+                aria-label="Visit Single Clik on X"
                 title="X (Twitter)"
               >
                 <svg className="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -146,7 +146,7 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-slate-800/80 pt-6 text-xs text-slate-300 sm:flex-row">
-          <p>© 2024 Single Click. All rights reserved.</p>
+          <p>© 2024 Single Clik. All rights reserved.</p>
 
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1 text-slate-300" title="Language selection">

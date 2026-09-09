@@ -65,7 +65,7 @@ export const TopCategoriesSection = () => {
             <div className="flex h-20 w-20 items-center justify-center rounded-2xl p-2.5 transition-transform duration-300 group-hover:scale-110">
               <img
                 src={item.resolvedImage}
-                alt={`${item.category} Services on Single Click`}
+                alt={`${item.category} Services on Single Clik`}
                 title={item.category}
                 width="128"
                 height="128"
@@ -129,7 +129,7 @@ export const TopCategoriesSection = () => {
         transition={{ duration: 0.35, delay: idx * 0.05 }}
         whileHover={{ y: -4 }}
         href={`#category-${encodeURIComponent(item.category.toLowerCase())}`}
-        title={`Explore verified ${item.category} professionals on Single Click`}
+        title={`Explore verified ${item.category} professionals on Single Clik`}
         aria-label={`Category: ${item.category}`}
         className={tileClass}
       >

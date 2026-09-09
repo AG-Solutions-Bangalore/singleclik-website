@@ -52,7 +52,7 @@ export const TestimonialsSection = () => {
             What Our Users Say
           </h2>
           <p className="mt-2 text-sm text-muted sm:text-base">
-            Read authentic feedback from individuals and verified businesses using Single Click.
+            Read authentic feedback from individuals and verified businesses using Single Clik.
           </p>
         </motion.div>
 

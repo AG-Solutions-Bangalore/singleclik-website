@@ -56,7 +56,7 @@ export const CtaBannerSection = () => {
 
                 <a
                   href="#signup"
-                  title="Join Single Click as a verified business"
+                  title="Join Single Clik as a verified business"
                   aria-label="Join as Business"
                   className="inline-flex items-center justify-center rounded-lg border border-white/70 bg-transparent px-3 sm:px-6 py-2.5 text-xs sm:text-sm font-semibold text-white transition hover:bg-white/10 active:scale-95 text-center"
                 >
@@ -102,8 +102,8 @@ export const CtaBannerSection = () => {
               <div className="relative flex items-end justify-center -mb-1 sm:-mb-2 lg:absolute lg:-bottom-12 lg:-right-12 lg:mb-0 shrink-0 pointer-events-none select-none max-sm:w-full max-sm:mt-2">
                 <img
                   src={ASSETS.app}
-                  alt="Single Click Community Collaboration"
-                  title="Get things done with Single Click"
+                  alt="Single Clik Community Collaboration"
+                  title="Get things done with Single Clik"
                   loading="lazy"
                   decoding="async"
                   className="h-40 sm:h-64 md:h-72 lg:h-[190px] xl:h-[210px] w-auto max-w-full sm:max-w-none object-contain object-bottom drop-shadow-2xl"
