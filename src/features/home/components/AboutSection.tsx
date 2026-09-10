@@ -21,7 +21,7 @@ export const AboutSection = () => {
           >
             <span
               className="text-xs font-bold uppercase tracking-wider text-brand"
-              title="About Single Click"
+              title="About Single Clik"
             >
               ABOUT US
             </span>
@@ -33,7 +33,7 @@ export const AboutSection = () => {
             </h2>
 
             <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
-              Single Click was built with a simple idea – make connections easy, private, and
+              Single Clik was built with a simple idea – make connections easy, private, and
               effective. We empower businesses to grow and help people find the right services
               without the hassle of sharing personal contact details.
             </p>
@@ -48,8 +48,8 @@ export const AboutSection = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: index * 0.1 }}
                   className={`flex items-start gap-2.5 sm:gap-3 ${index === 2
-                      ? 'col-span-2 justify-self-center max-w-xs sm:col-span-1 sm:justify-self-auto sm:max-w-none'
-                      : ''
+                    ? 'col-span-2 justify-self-center max-w-xs sm:col-span-1 sm:justify-self-auto sm:max-w-none'
+                    : ''
                     }`}
                   title={`${pillar.title} - ${pillar.description}`}
                 >
@@ -84,8 +84,8 @@ export const AboutSection = () => {
             <div className="relative w-full max-w-lg overflow-hidden rounded-3xl border-none border-border/80 bg-bg p-2">
               <img
                 src={ASSETS.about}
-                alt="Single Click Community - Bridging People and Verified Businesses"
-                title="Empowering Connections with Single Click"
+                alt="Single Clik Community - Bridging People and Verified Businesses"
+                title="Empowering Connections with Single Clik"
                 loading="lazy"
                 decoding="async"
                 className="h-auto w-full rounded-2xl object-cover"

@@ -1,4 +1,4 @@
-# SingleClick — Theme Palette
+# SingleClik — Theme Palette
 
 Extracted from the home-page design so the entire app stays visually consistent. Use these tokens in every component; never hard-code hex values in JSX.
 
@@ -36,7 +36,7 @@ Tailwind class examples: `bg-brand`, `text-brand`, `border-brand`, `bg-brand-sof
 
 ## Accent palette
 
-Used for **Top Categories** tiles and the **How Single Click Works** step icons. Apply via the matching utility class.
+Used for **Top Categories** tiles and the **How Single Clik Works** step icons. Apply via the matching utility class.
 
 | Token | Hex | Step / Category |
 |---|---|---|

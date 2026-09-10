@@ -47,7 +47,7 @@ export const PrivacyPolicyPage = () => {
             </h1>
 
             <p className="mt-3 text-sm sm:text-base text-muted max-w-3xl leading-relaxed">
-              This privacy policy applies to the <strong className="text-fg font-semibold">SINGLE CLIK</strong> app (hereby referred to as "Application") for mobile devices that was created by <strong className="text-fg font-semibold">Govind Garg</strong> (hereby referred to as "Service Provider") as a Free service. This service is intended for use "AS IS".
+              This privacy policy applies to the <strong className="text-fg font-semibold">Single Clik</strong> app (hereby referred to as "Application") for mobile devices that was created by <strong className="text-fg font-semibold">Govind Garg</strong> (hereby referred to as "Service Provider") as a Free service. This service is intended for use "AS IS".
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-4 text-xs font-medium text-muted border-t border-slate-100 dark:border-slate-800 pt-4">

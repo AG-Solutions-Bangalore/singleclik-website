@@ -21,8 +21,52 @@ const resolveCategoryImage = (
   return `${imageBase}${name}`
 }
 
+/**
+ * Parse the raw `category_type` flag from the getCategories API.
+ * - `"0"` → Business
+ * - `"1"` → Services
+ * - `"0,1"` / `"1,0"` → both
+ */
+const parseCategoryTypeFlags = (raw: CategoryItem['category_type']): Set<string> => {
+  if (raw === null || raw === undefined) return new Set()
+  return new Set(
+    String(raw)
+      .split(',')
+      .map((part) => part.trim())
+      .filter(Boolean),
+  )
+}
+
+const isBusinessCategory = (item: CategoryWithImage): boolean => {
+  const flags = parseCategoryTypeFlags(item.category_type)
+  // Unknown / missing type: keep visible in both sections so nothing disappears.
+  if (flags.size === 0) return true
+  return flags.has('0')
+}
+
+const isServicesCategory = (item: CategoryWithImage): boolean => {
+  const flags = parseCategoryTypeFlags(item.category_type)
+  // Unknown / missing type: keep visible in both sections so nothing disappears.
+  if (flags.size === 0) return true
+  return flags.has('1')
+}
+
+/**
+ * Label shown on the second line of each card, replacing the old
+ * "Verified Pros" text.
+ */
+const getCategoryTypeLabel = (item: CategoryWithImage): string => {
+  const flags = parseCategoryTypeFlags(item.category_type)
+  const isBusiness = flags.has('0')
+  const isServices = flags.has('1')
+  if (isBusiness && isServices) return 'Business & Services'
+  if (isBusiness) return 'Business'
+  if (isServices) return 'Services'
+  return ''
+}
+
 export const TopCategoriesSection = () => {
-  const { data, isPending, isError } = useCategories()
+  const { data, isPending, isError, refetch } = useCategories()
   const [showAll, setShowAll] = useState(false)
 
   // Filter out "not in list" entries from API
@@ -32,9 +76,20 @@ export const TopCategoriesSection = () => {
       .map((item) => ({
         category: item.category,
         category_image: item.category_image,
+        category_type: item.category_type,
         resolvedImage: resolveCategoryImage(item, data),
       }))
   }, [data])
+
+  const businessCategories = useMemo(
+    () => apiCategories.filter(isBusinessCategory),
+    [apiCategories],
+  )
+
+  const servicesCategories = useMemo(
+    () => apiCategories.filter(isServicesCategory),
+    [apiCategories],
+  )
 
   // Categories list for auto-scrolling (includes More Categories tile)
   const scrollCategories = useMemo<CategoryWithImage[]>(() => {
@@ -63,6 +118,7 @@ export const TopCategoriesSection = () => {
     isAutoScroll: boolean = false,
   ) => {
     const isMore = isMoreTile || item.category === 'more'
+    const typeLabel = isMore ? 'See All' : getCategoryTypeLabel(item)
 
     const tileContent = (
       <>
@@ -75,7 +131,11 @@ export const TopCategoriesSection = () => {
             <div className="flex h-20 w-20 items-center justify-center rounded-2xl p-2.5 transition-transform duration-300 group-hover:scale-110">
               <img
                 src={item.resolvedImage}
-                alt={`${item.category} Services on Single Click`}
+                alt={
+                  typeLabel
+                    ? `${item.category} ${typeLabel} on Single Clik`
+                    : `${item.category} on Single Clik`
+                }
                 title={item.category}
                 width="128"
                 height="128"
@@ -100,9 +160,9 @@ export const TopCategoriesSection = () => {
           <h3 className="text-xs sm:text-[13px] font-bold text-fg group-hover:text-brand transition-colors line-clamp-1">
             {isMore ? 'More Categories' : item.category}
           </h3>
-          <span className="mt-1 text-[11px] font-medium text-muted">
-            {isMore ? 'See All' : 'Verified Pros'}
-          </span>
+          {typeLabel ? (
+            <span className="mt-1 text-[11px] font-medium text-muted">{typeLabel}</span>
+          ) : null}
         </div>
       </>
     )
@@ -130,12 +190,31 @@ export const TopCategoriesSection = () => {
       <a
         key={`${item.category}-${idx}`}
         href={`#category-${encodeURIComponent(item.category.toLowerCase())}`}
-        title={`Explore verified ${item.category} professionals on Single Click`}
-        aria-label={`Category: ${item.category}`}
+        title={`Explore verified ${item.category} professionals on Single Clik`}
+        aria-label={`Category: ${item.category}${typeLabel ? ` (${typeLabel})` : ''}`}
         className={tileClass}
       >
         {tileContent}
       </a>
+    )
+  }
+
+  const renderCategoryGrid = (items: CategoryWithImage[], section: 'business' | 'services') => {
+    if (items.length === 0) {
+      return (
+        <p className="rounded-2xl border border-dashed border-border bg-surface px-4 py-8 text-center text-sm text-muted">
+          No {section === 'business' ? 'Business' : 'Services'} categories found.
+        </p>
+      )
+    }
+    return (
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-7 lg:gap-4">
+        <AnimatePresence>
+          {items.map((item: CategoryWithImage, idx: number) =>
+            renderCategoryTile(item, idx, false, false),
+          )}
+        </AnimatePresence>
+      </div>
     )
   }
 
@@ -190,26 +269,67 @@ export const TopCategoriesSection = () => {
           </div>
         )}
 
-        {/* Expanded All Categories Grid from API */}
+        {/* Expanded All Categories Grid from API, segregated by type */}
         {showAll && (
           <motion.div
             layout
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mt-8"
+            className="mt-8 space-y-10"
           >
             {isPending ? (
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-7">
                 {Array.from({ length: 14 }).map((_, i) => renderSkeleton(`all-skel-${i}`))}
               </div>
-            ) : (
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-7 lg:gap-4">
-                <AnimatePresence>
-                  {apiCategories.map((item: CategoryWithImage, idx: number) =>
-                    renderCategoryTile(item, idx, false, false),
-                  )}
-                </AnimatePresence>
+            ) : isError ? (
+              <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-surface px-4 py-10 text-center">
+                <p className="text-sm font-medium text-muted">
+                  Couldn&apos;t load categories. Please try again.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => refetch()}
+                  className="rounded-lg border border-brand px-4 py-1.5 text-xs font-bold text-brand-dark transition hover:bg-brand/10 active:scale-95 dark:text-brand-light cursor-pointer"
+                >
+                  Try Again
+                </button>
               </div>
+            ) : (
+              <>
+                <div aria-label="Business Categories">
+                  <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span
+                      aria-hidden="true"
+                      className="h-2.5 w-2.5 rounded-full bg-brand"
+                    />
+                    <h3 className="text-base font-bold tracking-tight text-fg sm:text-lg">
+                      Business
+                    </h3>
+                    <span className="rounded-full bg-brand-softer px-2.5 py-0.5 text-[11px] font-semibold text-brand-dark dark:text-brand-light">
+                      {businessCategories.length}{' '}
+                      {businessCategories.length === 1 ? 'category' : 'categories'}
+                    </span>
+                  </div>
+                  {renderCategoryGrid(businessCategories, 'business')}
+                </div>
+
+                <div aria-label="Services Categories">
+                  <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span
+                      aria-hidden="true"
+                      className="h-2.5 w-2.5 rounded-full bg-accent-green"
+                    />
+                    <h3 className="text-base font-bold tracking-tight text-fg sm:text-lg">
+                      Services
+                    </h3>
+                    <span className="rounded-full bg-accent-green-soft px-2.5 py-0.5 text-[11px] font-semibold text-accent-green">
+                      {servicesCategories.length}{' '}
+                      {servicesCategories.length === 1 ? 'category' : 'categories'}
+                    </span>
+                  </div>
+                  {renderCategoryGrid(servicesCategories, 'services')}
+                </div>
+              </>
             )}
           </motion.div>
         )}

@@ -8,6 +8,14 @@ export interface Post {
 export interface CategoryItem {
   category: string
   category_image: string | null
+  /**
+   * Raw type flag(s) from `getCategories` API.
+   * - `"0"` → Business
+   * - `"1"` → Services
+   * - `"0,1"` / `"1,0"` → both Business and Services
+   * Kept as string to match API; may be null/missing on older payloads.
+   */
+  category_type?: string | number | null
 }
 
 export interface CategoriesResponse {

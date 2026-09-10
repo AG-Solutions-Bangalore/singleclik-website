@@ -115,24 +115,23 @@ export const Header = () => {
     <>
       <header
         role="banner"
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-          isScrolled
+        className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled
             ? 'border-b border-border/90 bg-bg/95 backdrop-blur-md shadow-sm dark:shadow-black/20'
             : 'border-b border-border/60 bg-bg/85 backdrop-blur-md'
-        }`}
+          }`}
       >
         <div className="mx-auto flex h-20 sm:h-20 md:h-[74px] lg:h-[76px] w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Brand Logo */}
           <Link
             to="/"
-            title="Single Click - Homepage"
-            aria-label="Single Click Homepage"
+            title="Single Clik - Homepage"
+            aria-label="Single Clik Homepage"
             className="flex items-center gap-2.5 sm:gap-2.5 shrink-0 transition-transform hover:scale-[1.02]"
           >
             <img
               src={ASSETS.logo}
-              alt="Single Click Official Logo"
-              title="Single Click"
+              alt="Single Clik Official Logo"
+              title="Single Clik"
               width="48"
               height="48"
               loading="eager"
@@ -159,11 +158,10 @@ export const Header = () => {
                   key={item.label}
                   href={item.to}
                   title={item.label}
-                  className={`relative px-3.5 py-2 text-sm md:text-[15px] font-medium transition-colors ${
-                    isHome
+                  className={`relative px-3.5 py-2 text-sm md:text-[15px] font-medium transition-colors ${isHome
                       ? 'text-brand font-semibold after:absolute after:bottom-0 after:left-3.5 after:right-3.5 after:h-0.5 after:bg-brand after:rounded-full'
                       : 'text-slate-600 dark:text-slate-300 hover:text-brand'
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </a>
@@ -298,14 +296,14 @@ export const Header = () => {
                     <Link
                       to="/"
                       onClick={() => setMobileMenuOpen(false)}
-                      title="Single Click - Homepage"
-                      aria-label="Single Click Homepage"
+                      title="Single Clik - Homepage"
+                      aria-label="Single Clik Homepage"
                       className="flex items-center gap-2.5 shrink-0"
                     >
                       <img
                         src={ASSETS.logo}
-                        alt="Single Click Official Logo"
-                        title="Single Click"
+                        alt="Single Clik Official Logo"
+                        title="Single Clik"
                         width="48"
                         height="48"
                         className="h-10 w-10 sm:h-12 sm:w-12 object-contain shrink-0"
@@ -398,9 +396,8 @@ export const Header = () => {
                             </div>
                           </div>
                           <ChevronDown
-                            className={`h-4 w-4 text-muted transition-transform duration-200 ${
-                              mobileResourcesOpen ? 'rotate-180 text-brand' : ''
-                            }`}
+                            className={`h-4 w-4 text-muted transition-transform duration-200 ${mobileResourcesOpen ? 'rotate-180 text-brand' : ''
+                              }`}
                             aria-hidden="true"
                           />
                         </button>
@@ -455,7 +452,7 @@ export const Header = () => {
                     <div className="mt-5 rounded-2xl border border-brand/20 bg-gradient-to-br from-brand/10 via-brand-softer/40 to-transparent p-4 dark:from-brand-soft/20 dark:via-surface-2 dark:to-transparent">
                       <div className="flex items-center gap-2 text-xs font-bold text-brand">
                         <Smartphone className="h-4 w-4" />
-                        <span>Get Single Click App</span>
+                        <span>Get Single Clik App</span>
                       </div>
                       <p className="mt-1 text-[11px] text-muted">
                         Zero spam, privacy-safe quotes on iOS & Android.
@@ -480,7 +477,7 @@ export const Header = () => {
                   {/* Clean Drawer Footer */}
                   <div className="relative border-t border-border/80 bg-surface/50 px-6 py-4 backdrop-blur-md">
                     <div className="flex items-center justify-between text-xs text-muted">
-                      <span>© {new Date().getFullYear()} Single Click</span>
+                      <span>© {new Date().getFullYear()} Single Clik</span>
                       <span className="text-brand font-medium">100% Private</span>
                     </div>
                   </div>
