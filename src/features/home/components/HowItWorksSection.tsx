@@ -40,9 +40,8 @@ export const HowItWorksSection = () => {
 
         {/* Step Number Badge */}
         <span
-          className={`absolute ${
-            isMobile ? '-top-2 -right-2' : '-top-3 right-3 sm:-top-4 sm:right-4'
-          } flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full text-[10px] sm:text-[11px] font-bold shadow-sm ring-2 ring-bg ${item.badgeBg}`}
+          className={`absolute ${isMobile ? '-top-2 -right-2' : '-top-3 right-3 sm:-top-4 sm:right-4'
+            } flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full text-[10px] sm:text-[11px] font-bold shadow-sm ring-2 ring-bg ${item.badgeBg}`}
         >
           {item.step}
         </span>
@@ -74,7 +73,7 @@ export const HowItWorksSection = () => {
           className="text-center"
         >
           <h2 className="text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">
-            How <span className="text-brand">Single Click</span> Works?
+            How <span className="text-brand">Single Clik</span> Works?
           </h2>
           <p className="mt-2 text-sm text-muted">
             Simple 5-step process to get verified services without exposing your private contact details.

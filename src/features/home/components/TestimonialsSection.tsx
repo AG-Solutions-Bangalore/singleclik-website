@@ -52,7 +52,7 @@ export const TestimonialsSection = () => {
             What Our Users Say
           </h2>
           <p className="mt-2 text-sm text-muted sm:text-base">
-            Read authentic feedback from individuals and verified businesses using Single Click.
+            Read authentic feedback from individuals and verified businesses using Single Clik.
           </p>
         </motion.div>
 
@@ -163,9 +163,8 @@ export const TestimonialsSection = () => {
               role="tab"
               aria-selected={activeIndex === idx}
               aria-label={`Go to review page ${idx + 1}`}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                activeIndex === idx ? 'w-8 bg-brand' : 'w-2 bg-border hover:bg-muted'
-              }`}
+              className={`h-2 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-8 bg-brand' : 'w-2 bg-border hover:bg-muted'
+                }`}
             />
           ))}
         </div>

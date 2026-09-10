@@ -162,7 +162,7 @@ export const HeroSection = () => {
               variants={itemVariants}
               className="mt-5 text-base text-muted dark:text-slate-300 sm:text-lg lg:max-w-xl"
             >
-              Single Click connects you with verified businesses and professionals without sharing your
+              Single Clik connects you with verified businesses and professionals without sharing your
               personal contact. Enquire, chat, and get things done – all in one secure platform.
             </motion.p>
 

@@ -28,7 +28,7 @@ export const PrivacySection = () => {
               >
                 <img
                   src={ASSETS.privacy}
-                  alt="Single Click Zero Phone Sharing Security Shield"
+                  alt="Single Clik Zero Phone Sharing Security Shield"
                   title="Your Privacy is Our Priority"
                   width="600"
                   height="600"
@@ -47,10 +47,10 @@ export const PrivacySection = () => {
               {/* Badge */}
               <div
                 className="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand-softer px-4 py-1.5 text-xs font-semibold text-brand dark:bg-brand-soft/20"
-                title="Why Choose Single Click"
+                title="Why Choose Single Clik"
               >
                 <Sparkles className="h-3 w-3 text-brand" aria-hidden="true" />
-                <span>Why Choose Single Click?</span>
+                <span>Why Choose Single Clik?</span>
               </div>
 
               {/* Heading */}
