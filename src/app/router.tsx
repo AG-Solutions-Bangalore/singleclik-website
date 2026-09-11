@@ -1,5 +1,5 @@
 import { lazy } from 'react'
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 import { RootLayout } from '@/components/layout'
 
 /**
@@ -9,7 +9,25 @@ import { RootLayout } from '@/components/layout'
  * features like /about or /posts cost zero KB until visited.
  */
 const HomePage = lazy(() => import('@/features/home/pages/HomePage').then((m) => ({ default: m.HomePage })))
-const AboutPage = lazy(() => import('@/features/about/pages/AboutPage').then((m) => ({ default: m.AboutPage })))
+const AboutPlatformPage = lazy(() =>
+  import('@/features/home/pages/AboutPlatformPage').then((m) => ({ default: m.AboutPlatformPage })),
+)
+const HowItWorksPage = lazy(() =>
+  import('@/features/home/pages/HowItWorksPage').then((m) => ({ default: m.HowItWorksPage })),
+)
+const CategoriesPage = lazy(() =>
+  import('@/features/home/pages/CategoriesPage').then((m) => ({ default: m.CategoriesPage })),
+)
+const PrivacyTrustPage = lazy(() =>
+  import('@/features/home/pages/PrivacyTrustPage').then((m) => ({ default: m.PrivacyTrustPage })),
+)
+const FaqPage = lazy(() => import('@/features/home/pages/FaqPage').then((m) => ({ default: m.FaqPage })))
+const TestimonialsPage = lazy(() =>
+  import('@/features/home/pages/TestimonialsPage').then((m) => ({ default: m.TestimonialsPage })),
+)
+const JoinAsBusinessPage = lazy(() =>
+  import('@/features/home/pages/JoinAsBusinessPage').then((m) => ({ default: m.JoinAsBusinessPage })),
+)
 const PrivacyPolicyPage = lazy(() =>
   import('@/features/privacy/pages/PrivacyPolicyPage').then((m) => ({ default: m.PrivacyPolicyPage })),
 )
@@ -23,7 +41,20 @@ export const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'about', element: <AboutPage /> },
+      // Clean URLs (no #) — each former hash section is now a real route.
+      { path: 'about-platform', element: <AboutPlatformPage /> },
+      { path: 'how-it-works', element: <HowItWorksPage /> },
+      { path: 'categories', element: <CategoriesPage /> },
+      { path: 'privacy-trust', element: <PrivacyTrustPage /> },
+      { path: 'faq', element: <FaqPage /> },
+      { path: 'help-center', element: <FaqPage /> },
+      { path: 'testimonials', element: <TestimonialsPage /> },
+      { path: 'reviews', element: <TestimonialsPage /> },
+      { path: 'join-as-business', element: <JoinAsBusinessPage /> },
+      // Legacy: /about now redirects to the canonical /about-platform.
+      { path: 'about', element: <Navigate to="/about-platform" replace /> },
+      { path: 'Aboutplatform', element: <Navigate to="/about-platform" replace /> },
+      { path: 'aboutplatform', element: <Navigate to="/about-platform" replace /> },
       { path: 'privacy-policy', element: <PrivacyPolicyPage /> },
       { path: 'privacypolicy.html', element: <PrivacyPolicyPage /> },
       { path: 'privacypolicy', element: <PrivacyPolicyPage /> },

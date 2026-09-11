@@ -36,6 +36,7 @@ export const TestimonialsSection = () => {
 
   return (
     <section
+      id="testimonials"
       aria-label="User Reviews and Testimonials"
       className="py-8 lg:py-10 bg-surface/30"
     >
