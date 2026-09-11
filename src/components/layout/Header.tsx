@@ -14,11 +14,14 @@ import {
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { Link } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 
 import { StoreBadge } from '@/components/ui/store-badge'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { ASSETS } from '@/features/home/constant'
+
+// SPA animated link — keeps framer-motion entrance while using clean URLs (no #).
+const MotionLink = motion(Link)
 
 /**
  * Site header with agency-grade responsive mobile sidebar
@@ -28,6 +31,9 @@ export const Header = () => {
   const [resourcesOpen, setResourcesOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const { pathname } = useLocation()
+
+  const isResourcesActive = pathname === '/faq' || pathname === '/help-center' || pathname === '/privacy-trust'
 
   useEffect(() => {
     setMounted(true)
@@ -58,9 +64,9 @@ export const Header = () => {
 
   const desktopNavItems = [
     { to: '/', label: 'Home', end: true },
-    { to: '#how-it-works', label: 'How It Works' },
-    { to: '#', label: 'About Platform' },
-    { to: '#categories', label: 'Categories' },
+    { to: '/how-it-works', label: 'How It Works' },
+    { to: '/about-platform', label: 'About Platform' },
+    { to: '/categories', label: 'Categories' },
   ]
 
   const mobileNavItems = [
@@ -72,21 +78,21 @@ export const Header = () => {
       color: 'bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400',
     },
     {
-      to: '#how-it-works',
+      to: '/how-it-works',
       label: 'How It Works',
       desc: '5-step seamless flow',
       icon: Workflow,
       color: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-950/60 dark:text-emerald-400',
     },
     {
-      to: '#about',
+      to: '/about-platform',
       label: 'About Platform',
       desc: 'Zero phone sharing & trust',
       icon: Sparkles,
       color: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400',
     },
     {
-      to: '#categories',
+      to: '/categories',
       label: 'Categories',
       desc: '30+ verified service domains',
       icon: LayoutGrid,
@@ -96,14 +102,14 @@ export const Header = () => {
 
   const mobileResourceItems = [
     {
-      to: '#faq',
+      to: '/faq',
       label: 'Help Center & FAQs',
       desc: '24/7 answers & support',
       icon: HelpCircle,
       color: 'bg-rose-50 text-rose-600 dark:bg-rose-950/60 dark:text-rose-400',
     },
     {
-      to: '#privacy',
+      to: '/privacy-trust',
       label: 'Privacy & Trust',
       desc: 'Bank-grade encrypted chat',
       icon: ShieldCheck,
@@ -149,24 +155,25 @@ export const Header = () => {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation — clean URLs, no # fragments */}
           <nav aria-label="Primary Navigation" className="hidden items-center gap-2 md:flex lg:gap-4">
-            {desktopNavItems.map((item, index) => {
-              const isHome = index === 0
-              return (
-                <a
-                  key={item.label}
-                  href={item.to}
-                  title={item.label}
-                  className={`relative px-3.5 py-2 text-sm md:text-[15px] font-medium transition-colors ${isHome
-                      ? 'text-brand font-semibold after:absolute after:bottom-0 after:left-3.5 after:right-3.5 after:h-0.5 after:bg-brand after:rounded-full'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-brand'
-                    }`}
-                >
-                  {item.label}
-                </a>
-              )
-            })}
+            {desktopNavItems.map((item) => (
+              <NavLink
+                key={item.label}
+                to={item.to}
+                end={item.to === '/'}
+                title={item.label}
+                aria-label={item.label}
+                className={({ isActive }) =>
+                  `relative px-3.5 py-2 text-sm md:text-[15px] font-medium transition-colors ${isActive
+                    ? 'text-brand font-semibold after:absolute after:bottom-0 after:left-3.5 after:right-3.5 after:h-0.5 after:bg-brand after:rounded-full'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-brand'
+                  }`
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
 
             {/* Resources Dropdown */}
             <div className="relative">
@@ -174,9 +181,10 @@ export const Header = () => {
                 type="button"
                 onClick={() => setResourcesOpen(!resourcesOpen)}
                 onBlur={() => setTimeout(() => setResourcesOpen(false), 200)}
-                className="flex items-center gap-1.5 px-3.5 py-2 text-sm md:text-[15px] font-medium text-slate-600 dark:text-slate-300 transition-colors hover:text-brand"
+                className={`flex items-center gap-1.5 px-3.5 py-2 text-sm md:text-[15px] font-medium transition-colors hover:text-brand ${isResourcesActive ? 'text-brand font-semibold' : 'text-slate-600 dark:text-slate-300'}`}
                 aria-expanded={resourcesOpen}
                 aria-haspopup="true"
+                aria-current={isResourcesActive ? 'page' : undefined}
                 title="View resources"
               >
                 <span>Resources</span>
@@ -184,20 +192,24 @@ export const Header = () => {
               </button>
               {resourcesOpen && (
                 <div className="absolute right-0 mt-2 w-52 rounded-2xl border border-border bg-bg p-2 shadow-xl animate-in fade-in zoom-in-95 z-50">
-                  <a
-                    href="#faq"
+                  <NavLink
+                    to="/faq"
                     title="Help Center and FAQs"
-                    className="block rounded-xl px-3.5 py-2.5 text-sm text-fg/80 hover:bg-surface-2 hover:text-brand transition-colors"
+                    className={({ isActive }) =>
+                      `block rounded-xl px-3.5 py-2.5 text-sm transition-colors ${isActive ? 'bg-surface-2 text-brand font-semibold' : 'text-fg/80 hover:bg-surface-2 hover:text-brand'}`
+                    }
                   >
                     Help Center & FAQs
-                  </a>
-                  <a
-                    href="#privacy"
+                  </NavLink>
+                  <NavLink
+                    to="/privacy-trust"
                     title="Privacy and Trust"
-                    className="block rounded-xl px-3.5 py-2.5 text-sm text-fg/80 hover:bg-surface-2 hover:text-brand transition-colors"
+                    className={({ isActive }) =>
+                      `block rounded-xl px-3.5 py-2.5 text-sm transition-colors ${isActive ? 'bg-surface-2 text-brand font-semibold' : 'text-fg/80 hover:bg-surface-2 hover:text-brand'}`
+                    }
                   >
                     Privacy & Trust
-                  </a>
+                  </NavLink>
                 </div>
               )}
             </div>
@@ -343,16 +355,21 @@ export const Header = () => {
                     <div className="flex flex-col gap-1.5">
                       {mobileNavItems.map((item, idx) => {
                         const Icon = item.icon
+                        const isActive = pathname === item.to
                         return (
-                          <motion.a
+                          <MotionLink
                             key={item.label}
-                            href={item.to}
+                            to={item.to}
                             onClick={() => setMobileMenuOpen(false)}
+                            aria-current={isActive ? 'page' : undefined}
                             initial={{ opacity: 0, x: 16 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.04 + idx * 0.035, duration: 0.25, ease: 'easeOut' }}
                             whileTap={{ scale: 0.98 }}
-                            className="group flex items-center justify-between rounded-2xl border border-transparent p-2.5 transition-all hover:border-brand/20 hover:bg-brand-softer/50 dark:hover:bg-brand-soft/10"
+                            className={`group flex items-center justify-between rounded-2xl border p-2.5 transition-all ${isActive
+                              ? 'border-brand/30 bg-brand-softer/60 dark:bg-brand-soft/15'
+                              : 'border-transparent hover:border-brand/20 hover:bg-brand-softer/50 dark:hover:bg-brand-soft/10'
+                              }`}
                           >
                             <div className="flex items-center gap-3">
                               <div
@@ -361,7 +378,7 @@ export const Header = () => {
                                 <Icon className="h-5 w-5" aria-hidden="true" />
                               </div>
                               <div className="flex flex-col text-left">
-                                <span className="text-sm font-bold text-fg group-hover:text-brand transition-colors">
+                                <span className={`text-sm font-bold transition-colors ${isActive ? 'text-brand' : 'text-fg group-hover:text-brand'}`}>
                                   {item.label}
                                 </span>
                                 <span className="text-[11px] text-muted line-clamp-1">
@@ -371,10 +388,10 @@ export const Header = () => {
                             </div>
 
                             <ChevronRight
-                              className="h-4 w-4 text-muted/60 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-brand"
+                              className={`h-4 w-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-brand ${isActive ? 'text-brand' : 'text-muted/60'}`}
                               aria-hidden="true"
                             />
-                          </motion.a>
+                          </MotionLink>
                         )
                       })}
 
@@ -414,12 +431,16 @@ export const Header = () => {
                               <div className="flex flex-col gap-1 pt-1.5 pl-2">
                                 {mobileResourceItems.map((item) => {
                                   const Icon = item.icon
+                                  const isActive =
+                                    pathname === item.to ||
+                                    (item.to === '/faq' && pathname === '/help-center')
                                   return (
-                                    <a
+                                    <Link
                                       key={item.label}
-                                      href={item.to}
+                                      to={item.to}
                                       onClick={() => setMobileMenuOpen(false)}
-                                      className="group flex items-center justify-between rounded-xl p-2 transition-all hover:bg-surface-2 hover:text-brand"
+                                      aria-current={isActive ? 'page' : undefined}
+                                      className={`group flex items-center justify-between rounded-xl p-2 transition-all hover:bg-surface-2 hover:text-brand ${isActive ? 'bg-surface-2 text-brand' : ''}`}
                                     >
                                       <div className="flex items-center gap-2.5">
                                         <div
@@ -428,17 +449,17 @@ export const Header = () => {
                                           <Icon className="h-4 w-4" aria-hidden="true" />
                                         </div>
                                         <div className="flex flex-col text-left">
-                                          <span className="text-xs font-semibold text-fg group-hover:text-brand">
+                                          <span className={`text-xs font-semibold group-hover:text-brand ${isActive ? 'text-brand' : 'text-fg'}`}>
                                             {item.label}
                                           </span>
                                           <span className="text-[10px] text-muted">{item.desc}</span>
                                         </div>
                                       </div>
                                       <ChevronRight
-                                        className="h-3.5 w-3.5 text-muted/60 transition-transform group-hover:translate-x-0.5 group-hover:text-brand"
+                                        className={`h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:text-brand ${isActive ? 'text-brand' : 'text-muted/60'}`}
                                         aria-hidden="true"
                                       />
-                                    </a>
+                                    </Link>
                                   )
                                 })}
                               </div>

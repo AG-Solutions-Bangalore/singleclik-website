@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowUp, Globe } from 'lucide-react'
 import { ASSETS, FOOTER_SECTIONS } from '@/features/home/constant'
@@ -35,7 +36,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-5 lg:gap-8">
           {/* Brand & Description (full on mobile, 2 cols on desktop) */}
           <div className="flex flex-col items-start lg:col-span-2">
-            <a href="/" title="Single Clik" aria-label="Single Clik Homepage" className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+            <Link to="/" title="Single Clik" aria-label="Single Clik Homepage" className="flex items-center gap-2 sm:gap-2.5 shrink-0">
               <img
                 src={ASSETS.logo}
                 alt="Single Clik Official Logo"
@@ -52,7 +53,7 @@ export const Footer = () => {
               <span className="font-brand-logo text-xl sm:text-2xl font-bold tracking-tight text-white whitespace-nowrap">
                 Single <span className="text-brand">Clik</span>
               </span>
-            </a>
+            </Link>
 
             <p className="mt-3 text-xs leading-relaxed text-slate-300 max-w-sm">
               Connecting people and businesses, getting things done – the smart way.
@@ -90,7 +91,9 @@ export const Footer = () => {
 
               {/* LinkedIn */}
               <a
-                href="#linkedin"
+                href="https://www.linkedin.com/company/singleclik"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="apple-border-shine flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 transition hover:bg-brand hover:text-white"
                 aria-label="Visit Single Clik on LinkedIn"
                 title="LinkedIn"
@@ -112,13 +115,13 @@ export const Footer = () => {
                 <ul className="mt-2.5 space-y-1.5 text-xs">
                   {section.links.map((link) => (
                     <li key={link.label}>
-                      <a
-                        href={link.href}
-                        title={link.href === '#hero' ? 'SingleClik Homepage Hero Section' : link.label}
+                      <Link
+                        to={link.href}
+                        title={link.href === '/' ? 'SingleClik Homepage' : link.label}
                         className="text-slate-400 hover:text-white transition-colors text-[11px] sm:text-xs block"
                       >
                         {link.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

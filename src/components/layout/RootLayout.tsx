@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { PageFallback } from './PageFallback'
@@ -12,6 +12,15 @@ import { DownloadModal } from '@/components/ui/DownloadModal'
  */
 export const RootLayout = () => {
   const [showAutoPopup, setShowAutoPopup] = useState(false)
+  const { pathname } = useLocation()
+
+  // Clean-URL navigation: always start at top on route change.
+  // (Replaces old hash-jump behaviour like /#how-it-works.)
+  useEffect(() => {
+    if (typeof pathname === 'string' && pathname.length >= 0) {
+      window.scrollTo(0, 0)
+    }
+  }, [pathname])
 
   useEffect(() => {
     // Check if user has already seen or dismissed the download popup in this session

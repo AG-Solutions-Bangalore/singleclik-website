@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { LayoutGrid, Briefcase, Settings, ArrowRight } from 'lucide-react'
 import { useCategories } from '../hooks/useCategories'
@@ -200,15 +201,15 @@ export const TopCategoriesSection = () => {
     }
 
     return (
-      <a
+      <Link
         key={`${item.category}-${idx}`}
-        href={`#category-${encodeURIComponent(item.category.toLowerCase())}`}
+        to="/categories"
         title={`Explore verified ${item.category} professionals on Single Clik`}
         aria-label={`Category: ${item.category}${typeLabel ? ` (${typeLabel})` : ''}`}
         className={cardClass}
       >
         {inner}
-      </a>
+      </Link>
     )
   }
 

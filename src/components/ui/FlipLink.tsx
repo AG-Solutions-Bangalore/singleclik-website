@@ -2,7 +2,7 @@
  * FlipLink — animated flip-text link/button
  * On hover: current text slides up, duplicate slides in from below.
  * Usage:
- *   <FlipLink href="#hero">I Need a Service</FlipLink>
+ *   <FlipLink href="/about-platform">I Need a Service</FlipLink>
  *   <FlipLink as="button" onClick={fn}>Click Me</FlipLink>
  */
 

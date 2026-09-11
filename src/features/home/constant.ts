@@ -231,24 +231,24 @@ export const FOOTER_SECTIONS = [
   {
     title: 'Navigation',
     links: [
-      { label: 'Home', href: '#hero' },
-      { label: 'About', href: '#about' },
-      { label: 'Categories', href: '#categories' },
+      { label: 'Home', href: '/' },
+      { label: 'About', href: '/about-platform' },
+      { label: 'Categories', href: '/categories' },
     ],
   },
   {
     title: 'Platform',
     links: [
-      { label: 'How It Works', href: '#how-it-works' },
-      { label: 'Why Choose', href: '#privacy' },
-      { label: 'Review', href: '#testimonials' },
+      { label: 'How It Works', href: '/how-it-works' },
+      { label: 'Why Choose', href: '/privacy-trust' },
+      { label: 'Review', href: '/testimonials' },
     ],
   },
   {
     title: 'Support & Legal',
     links: [
-      { label: 'Join as Business', href: '#cta' },
-      { label: 'FAQ', href: '#faq' },
+      { label: 'Join as Business', href: '/join-as-business' },
+      { label: 'FAQ', href: '/faq' },
       { label: 'Policy', href: '/privacy-policy' },
     ],
   },

@@ -72,7 +72,7 @@ export const NotFoundPage = () => {
                 accentClassName="bg-brand-soft text-brand"
               />
               <QuickLinkCard
-                to="/about"
+                to="/about-platform"
                 label="About"
                 description="Learn more about SingleClik"
                 icon={<Info className="h-5 w-5" aria-hidden="true" />}

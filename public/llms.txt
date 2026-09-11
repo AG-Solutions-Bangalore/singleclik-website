@@ -5,19 +5,19 @@
 ## Key Pages
 
 - [Home](https://singleclik.com/): Discover the platform, browse top categories, and download the mobile app.
-- [About](https://singleclik.com/about): Learn about our mission to bridge people and verified businesses.
-- [Categories](https://singleclik.com/#categories): Explore popular service categories including app development, web development, digital marketing, graphic design, SEO services, and content writing.
-- [How It Works](https://singleclik.com/#how-it-works): Post an enquiry, receive responses from verified businesses, chat securely, and close the deal.
-- [Privacy](https://singleclik.com/#privacy): Understand how we protect your data with no phone number sharing and secure in-app communication.
-- [Testimonials](https://singleclik.com/#testimonials): Read authentic feedback from verified users and business owners.
-- [FAQ](https://singleclik.com/#faq): Find answers to common questions about the platform.
-- [Contact](https://singleclik.com/#contact): Get in touch with the Single Clik team.
+- [About Platform](https://singleclik.com/about-platform): Learn about our mission to bridge people and verified businesses.
+- [Categories](https://singleclik.com/categories): Explore popular service categories including app development, web development, digital marketing, graphic design, SEO services, and content writing.
+- [How It Works](https://singleclik.com/how-it-works): Post an enquiry, receive responses from verified businesses, chat securely, and close the deal.
+- [Privacy & Trust](https://singleclik.com/privacy-trust): Understand how we protect your data with no phone number sharing and secure in-app communication.
+- [Testimonials](https://singleclik.com/testimonials): Read authentic feedback from verified users and business owners.
+- [FAQ](https://singleclik.com/faq): Find answers to common questions about the platform.
+- [Join as Business](https://singleclik.com/join-as-business): Get in touch with the Single Clik team.
 
 ## For Businesses
 
-- [Join as Business](https://singleclik.com/#cta): Register your verified business and start receiving quality enquiries.
-- [Dashboard](https://singleclik.com/#cta): Manage your business profile, enquiries, and customer interactions.
-- [Resources](https://singleclik.com/#resources): Access guides, best practices, and business support materials.
+- [Join as Business](https://singleclik.com/join-as-business): Register your verified business and start receiving quality enquiries.
+- [How It Works](https://singleclik.com/how-it-works): Manage your business profile, enquiries, and customer interactions.
+- [Help Center](https://singleclik.com/faq): Access guides, best practices, and business support materials.
 
 ## Mobile App
 
@@ -26,13 +26,13 @@
 
 ## Company
 
-- [Blog](https://singleclik.com/#blog): Read the latest news, product updates, and industry insights.
-- [Careers](https://singleclik.com/#careers): Explore career opportunities at Single Clik.
-- [Terms of Service](https://singleclik.com/#terms): Review our terms and conditions.
-- [Help Center](https://singleclik.com/#faq): Get support and find answers to common questions.
+- [About Platform](https://singleclik.com/about-platform): Learn about Single Clik's mission and values.
+- [Reviews](https://singleclik.com/testimonials): Read authentic user feedback.
+- [Privacy Policy](https://singleclik.com/privacy-policy): Review our privacy policy.
+- [Help Center](https://singleclik.com/faq): Get support and find answers to common questions.
 
 ## Contact
 
 - Website: https://singleclik.com
 - Email: support@singleclik.com
-- Social: [Facebook](#facebook), [Instagram](#instagram), [LinkedIn](#linkedin), [YouTube](#youtube), [X](#twitter)
+- Social: [Facebook](https://www.facebook.com/profile.php?id=61594009292985), [Instagram](https://www.instagram.com/singleclik_official), [LinkedIn](https://www.linkedin.com/company/singleclik)

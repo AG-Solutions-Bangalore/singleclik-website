@@ -19,7 +19,13 @@ const OUTPUT = join(__dirname, '..', 'public', 'sitemap.xml')
 /** @type {{ path: string; changefreq?: string; priority?: number }[]} */
 const ROUTES = [
   { path: '/', changefreq: 'weekly', priority: 1.0 },
-  { path: '/about', changefreq: 'monthly', priority: 0.7 },
+  { path: '/about-platform', changefreq: 'monthly', priority: 0.8 },
+  { path: '/how-it-works', changefreq: 'monthly', priority: 0.8 },
+  { path: '/categories', changefreq: 'weekly', priority: 0.8 },
+  { path: '/privacy-trust', changefreq: 'monthly', priority: 0.7 },
+  { path: '/faq', changefreq: 'monthly', priority: 0.7 },
+  { path: '/testimonials', changefreq: 'monthly', priority: 0.6 },
+  { path: '/join-as-business', changefreq: 'monthly', priority: 0.7 },
   { path: '/privacy-policy', changefreq: 'monthly', priority: 0.6 },
 ]
 
