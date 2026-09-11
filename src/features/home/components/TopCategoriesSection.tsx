@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { LayoutGrid } from 'lucide-react'
+import { LayoutGrid, Briefcase, Settings, ArrowRight } from 'lucide-react'
 import { useCategories } from '../hooks/useCategories'
 import type { CategoryItem, CategoriesResponse } from '@/types'
 
@@ -39,22 +39,16 @@ const parseCategoryTypeFlags = (raw: CategoryItem['category_type']): Set<string>
 
 const isBusinessCategory = (item: CategoryWithImage): boolean => {
   const flags = parseCategoryTypeFlags(item.category_type)
-  // Unknown / missing type: keep visible in both sections so nothing disappears.
   if (flags.size === 0) return true
   return flags.has('0')
 }
 
 const isServicesCategory = (item: CategoryWithImage): boolean => {
   const flags = parseCategoryTypeFlags(item.category_type)
-  // Unknown / missing type: keep visible in both sections so nothing disappears.
   if (flags.size === 0) return true
   return flags.has('1')
 }
 
-/**
- * Label shown on the second line of each card, replacing the old
- * "Verified Pros" text.
- */
 const getCategoryTypeLabel = (item: CategoryWithImage): string => {
   const flags = parseCategoryTypeFlags(item.category_type)
   const isBusiness = flags.has('0')
@@ -65,11 +59,28 @@ const getCategoryTypeLabel = (item: CategoryWithImage): string => {
   return ''
 }
 
+/**
+ * Pastel 3D-style icon tiles (blue / green / amber / pink / orange / teal only).
+ */
+const ICON_TILES = [
+  'from-[#F9A8D4] to-[#FECDD3]',
+  'from-[#FCD34D] to-[#FEF3C7]',
+  'from-[#7DD3FC] to-[#E0F2FE]',
+  'from-[#6EE7B7] to-[#D1FAE5]',
+  'from-[#FDA4AF] to-[#FCE7F3]',
+  'from-[#93C5FD] to-[#DBEAFE]',
+  'from-[#FDBA74] to-[#FFEDD5]',
+  'from-[#5EEAD4] to-[#CCFBF1]',
+  'from-[#FCA5A5] to-[#FEE2E2]',
+  'from-[#86EFAC] to-[#DCFCE7]',
+  'from-[#FDE68A] to-[#FFFBEB]',
+  'from-[#67E8F9] to-[#ECFEFF]',
+] as const
+
 export const TopCategoriesSection = () => {
   const { data, isPending, isError, refetch } = useCategories()
   const [showAll, setShowAll] = useState(false)
 
-  // Filter out "not in list" entries from API
   const apiCategories = useMemo<CategoryWithImage[]>(() => {
     return (data?.data ?? [])
       .filter((item) => item.category && item.category.trim().toLowerCase() !== 'not in list')
@@ -91,7 +102,6 @@ export const TopCategoriesSection = () => {
     [apiCategories],
   )
 
-  // Categories list for auto-scrolling (includes More Categories tile)
   const scrollCategories = useMemo<CategoryWithImage[]>(() => {
     if (apiCategories.length === 0) return []
     return [
@@ -100,76 +110,79 @@ export const TopCategoriesSection = () => {
     ]
   }, [apiCategories])
 
-  const renderSkeleton = (key: string | number) => (
+  const renderSkeletonCard = (key: string | number) => (
     <div
       key={key}
-      className="flex w-36 sm:w-44 shrink-0 flex-col items-center rounded-2xl border border-border bg-bg p-4 sm:p-5 animate-pulse"
+      className="rounded-xl border border-white/10 bg-[#0E1E38] p-3 animate-pulse"
     >
-      <div className="h-14 w-14 rounded-2xl bg-surface-2" />
-      <div className="mt-3.5 h-3 w-20 rounded bg-surface-2" />
-      <div className="mt-2 h-2.5 w-12 rounded bg-surface-2" />
+      <div className="h-14 w-14 rounded-xl bg-white/10" />
+      <div className="mt-3 flex items-center justify-between gap-2">
+        <div className="h-3 w-16 rounded-full bg-white/10" />
+        <div className="h-7 w-7 rounded-full bg-white/10" />
+      </div>
     </div>
   )
 
-  const renderCategoryTile = (
-    item: CategoryWithImage,
-    idx: number,
-    isMoreTile: boolean = false,
-    isAutoScroll: boolean = false,
-  ) => {
-    const isMore = isMoreTile || item.category === 'more'
+  const renderCategoryCard = (item: CategoryWithImage, idx: number, isMore = false) => {
     const typeLabel = isMore ? 'See All' : getCategoryTypeLabel(item)
+    const tile = ICON_TILES[idx % ICON_TILES.length]
 
-    const tileContent = (
+    const cardClass = isMore
+      ? 'group flex cursor-pointer flex-col rounded-xl border border-[#2563EB]/50 bg-[#2563EB] p-3 text-left transition-all duration-300 hover:-translate-y-1 hover:bg-[#1D4ED8] hover:shadow-[0_16px_32px_-12px_rgba(37,99,235,0.7)]'
+      : 'group flex cursor-pointer flex-col rounded-xl border border-white/[0.07] bg-[#0E1E38] p-3 text-left transition-all duration-300 hover:-translate-y-1 hover:border-[#2563EB]/50 hover:shadow-[0_16px_32px_-12px_rgba(37,99,235,0.45)]'
+
+    const inner = (
       <>
-        <div className="flex h-20 items-center justify-center">
-          {isMore ? (
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand/10 dark:bg-brand/20 text-brand dark:text-brand-light transition-all duration-300 group-hover:scale-110 group-hover:bg-brand group-hover:text-white shadow-sm">
-              <LayoutGrid className="h-7 w-7" aria-hidden="true" />
-            </div>
-          ) : (
-            <div className="flex h-20 w-20 items-center justify-center rounded-2xl p-2.5 transition-transform duration-300 group-hover:scale-110">
-              <img
-                src={item.resolvedImage}
-                alt={
-                  typeLabel
-                    ? `${item.category} ${typeLabel} on Single Clik`
-                    : `${item.category} on Single Clik`
+        {isMore ? (
+          <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white/15 text-white transition-transform duration-300 group-hover:scale-105">
+            <LayoutGrid className="h-7 w-7" aria-hidden="true" />
+          </div>
+        ) : (
+          <div
+            className={`flex h-14 w-14 items-center justify-center rounded-xl bg-grwadient-to-br p-1.5 shadow-inner transition-transform duration-300 group-hover:scale-105 ${tile}`}
+          >
+            <img
+              src={item.resolvedImage}
+              alt={
+                typeLabel
+                  ? `${item.category} ${typeLabel} on Single Clik`
+                  : `${item.category} on Single Clik`
+              }
+              title={item.category}
+              width="112"
+              height="112"
+              loading="lazy"
+              decoding="async"
+              className="h-11 w-11 rounded-full object-contain drop-shadow-sm"
+              onError={(e) => {
+                const target = e.currentTarget
+                const fallback = data?.no_image_url
+                if (fallback && target.src !== fallback) {
+                  target.src = fallback
+                } else {
+                  target.style.display = 'none'
                 }
-                title={item.category}
-                width="128"
-                height="128"
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-contain"
-                onError={(e) => {
-                  const target = e.currentTarget
-                  const fallback = data?.no_image_url
-                  if (fallback && target.src !== fallback) {
-                    target.src = fallback
-                  } else {
-                    target.style.display = 'none'
-                  }
-                }}
-              />
-            </div>
-          )}
-        </div>
+              }}
+            />
+          </div>
+        )}
 
-        <div className="mt-3.5 flex flex-col items-center">
-          <h3 className="text-xs sm:text-[13px] font-bold text-fg group-hover:text-brand transition-colors line-clamp-1">
-            {isMore ? 'More Categories' : item.category}
-          </h3>
-          {typeLabel ? (
-            <span className="mt-1 text-[11px] font-medium text-muted">{typeLabel}</span>
-          ) : null}
+        <div className="mt-3 flex items-center justify-between gap-2">
+          <span className="truncate text-[13px] font-semibold text-white">
+            {isMore ? 'View All' : item.category}
+          </span>
+          <span
+            aria-hidden="true"
+            className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-colors duration-300 ${isMore
+                ? 'bg-white/20 text-white group-hover:bg-white group-hover:text-[#1D4ED8]'
+                : 'bg-[#1A2F52] text-slate-300 group-hover:bg-[#2563EB] group-hover:text-white'
+              }`}
+          >
+            <ArrowRight className="h-3.5 w-3.5" />
+          </span>
         </div>
       </>
     )
-
-    const tileClass = `group flex cursor-pointer flex-col items-center justify-between rounded-2xl border border-slate-100 dark:border-slate-800/80 bg-bg p-4 sm:p-5 text-center shadow-[0_2px_12px_rgba(0,0,0,0.03)] dark:shadow-none transition-all duration-300 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 ${
-      isAutoScroll ? 'w-36 sm:w-44 shrink-0' : ''
-    }`
 
     if (isMore) {
       return (
@@ -179,9 +192,9 @@ export const TopCategoriesSection = () => {
           onClick={() => setShowAll(true)}
           title="View all service categories"
           aria-label="View All Categories"
-          className={tileClass}
+          className={cardClass}
         >
-          {tileContent}
+          {inner}
         </button>
       )
     }
@@ -192,27 +205,34 @@ export const TopCategoriesSection = () => {
         href={`#category-${encodeURIComponent(item.category.toLowerCase())}`}
         title={`Explore verified ${item.category} professionals on Single Clik`}
         aria-label={`Category: ${item.category}${typeLabel ? ` (${typeLabel})` : ''}`}
-        className={tileClass}
+        className={cardClass}
       >
-        {tileContent}
+        {inner}
       </a>
     )
   }
 
-  const renderCategoryGrid = (items: CategoryWithImage[], section: 'business' | 'services') => {
+  const renderGrid = (items: CategoryWithImage[], section: 'business' | 'services') => {
     if (items.length === 0) {
       return (
-        <p className="rounded-2xl border border-dashed border-border bg-surface px-4 py-8 text-center text-sm text-muted">
+        <p className="rounded-xl border border-dashed border-white/15 px-4 py-8 text-center text-sm text-slate-400">
           No {section === 'business' ? 'Business' : 'Services'} categories found.
         </p>
       )
     }
     return (
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-7 lg:gap-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         <AnimatePresence>
-          {items.map((item: CategoryWithImage, idx: number) =>
-            renderCategoryTile(item, idx, false, false),
-          )}
+          {items.map((item, idx) => (
+            <motion.div
+              key={`${section}-${item.category}-${idx}`}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: Math.min(idx * 0.02, 0.3) }}
+            >
+              {renderCategoryCard(item, idx, false)}
+            </motion.div>
+          ))}
         </AnimatePresence>
       </div>
     )
@@ -222,112 +242,159 @@ export const TopCategoriesSection = () => {
     <section
       id="categories"
       aria-label="Top Service Categories"
-      className="py-8 lg:py-10 bg-bg overflow-hidden"
+      className="relative overflow-hidden bg-[#081226] py-12 lg:py-16"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header Bar */}
-        <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <h2 className="text-xl font-bold tracking-tight text-fg sm:text-2xl">
-              Top Categories
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#4D7CFE]">
+              Browse Categories
+            </p>
+            <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-white sm:text-[32px] sm:leading-tight">
+              What do you need <span className="text-[#4D7CFE]">help</span> with?
             </h2>
-            <span className="text-xs sm:text-sm text-muted font-normal">
-              Explore popular services across categories.
-            </span>
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-400">
+              Find trusted businesses and services near you — pick a category to begin.
+            </p>
           </div>
 
           <button
             type="button"
             onClick={() => setShowAll((prev) => !prev)}
-            title={showAll ? 'Show auto scroll' : 'View all service categories'}
-            aria-label={showAll ? 'Show Auto Scroll' : 'View All Categories'}
-            className="self-start rounded-lg border border-brand px-4 py-1.5 text-xs font-bold text-brand-dark transition hover:bg-brand/10 active:scale-95 sm:self-auto dark:text-brand-light cursor-pointer"
+            className="group inline-flex cursor-pointer items-center gap-2 self-start rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-xs font-semibold text-white transition-all hover:border-[#2563EB]/60 hover:bg-[#2563EB]/15 active:scale-95 sm:self-auto"
           >
             {showAll ? 'Show Auto Scroll' : 'View All Categories'}
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white/10 transition-colors group-hover:bg-[#2563EB]">
+              <ArrowRight className="h-3 w-3" aria-hidden="true" />
+            </span>
           </button>
         </div>
 
-        {/* Continuous Auto-Scrolling Row (Default) */}
+        {/* Auto scroll mode */}
         {!showAll && (
           <div className="relative mt-8 overflow-hidden py-2">
-            {/* Edge Fade Gradients for sleek aesthetic */}
-            <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-10 sm:w-20 bg-gradient-to-r from-bg to-transparent" />
-            <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-10 sm:w-20 bg-gradient-to-l from-bg to-transparent" />
-
+            <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-12 bg-gradient-to-r from-[#081226] to-transparent sm:w-24" />
+            <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-12 bg-gradient-to-l from-[#081226] to-transparent sm:w-24" />
             {isPending || isError ? (
-              <div className="flex gap-3 sm:gap-4 overflow-hidden py-2">
-                {Array.from({ length: 8 }).map((_, i) => renderSkeleton(`skel-${i}`))}
+              <div className="flex gap-3 overflow-hidden py-2">
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <div key={i} className="w-40 shrink-0">
+                    {renderSkeletonCard(`skel-${i}`)}
+                  </div>
+                ))}
               </div>
             ) : (
-              <div className="animate-marquee gap-3 sm:gap-4 py-2">
-                {/* Duplicate the array to ensure seamless infinite looping */}
-                {[...scrollCategories, ...scrollCategories].map((item, idx) =>
-                  renderCategoryTile(item, idx, item.category === 'more', true),
-                )}
+              <div className="animate-marquee gap-3 py-2">
+                {[...scrollCategories, ...scrollCategories].map((item, idx) => (
+                  <div key={idx} className="w-40 shrink-0">
+                    {renderCategoryCard(item, idx, item.category === 'more')}
+                  </div>
+                ))}
               </div>
             )}
           </div>
         )}
 
-        {/* Expanded All Categories Grid from API, segregated by type */}
+        {/* Expanded panels like reference */}
         {showAll && (
-          <motion.div
-            layout
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mt-8 space-y-10"
-          >
+          <motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-8 space-y-6">
             {isPending ? (
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-7">
-                {Array.from({ length: 14 }).map((_, i) => renderSkeleton(`all-skel-${i}`))}
-              </div>
+              <>
+                <div className="overflow-hidden rounded-2xl border border-[#1E3A5F]/60 bg-[#0B1B33] p-4 sm:p-5">
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+                    {Array.from({ length: 12 }).map((_, i) => renderSkeletonCard(`b-skel-${i}`))}
+                  </div>
+                </div>
+                <div className="overflow-hidden rounded-2xl border border-emerald-500/20 bg-[#0B1B33] p-4 sm:p-5">
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+                    {Array.from({ length: 12 }).map((_, i) => renderSkeletonCard(`s-skel-${i}`))}
+                  </div>
+                </div>
+              </>
             ) : isError ? (
-              <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-surface px-4 py-10 text-center">
-                <p className="text-sm font-medium text-muted">
+              <div className="flex flex-col items-center gap-3 rounded-2xl border border-white/10 bg-[#0B1B33] px-4 py-10 text-center">
+                <p className="text-sm font-medium text-slate-400">
                   Couldn&apos;t load categories. Please try again.
                 </p>
                 <button
                   type="button"
                   onClick={() => refetch()}
-                  className="rounded-lg border border-brand px-4 py-1.5 text-xs font-bold text-brand-dark transition hover:bg-brand/10 active:scale-95 dark:text-brand-light cursor-pointer"
+                  className="cursor-pointer rounded-full bg-[#2563EB] px-5 py-2 text-xs font-bold text-white transition hover:bg-[#1D4ED8] active:scale-95"
                 >
                   Try Again
                 </button>
               </div>
             ) : (
               <>
-                <div aria-label="Business Categories">
-                  <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <span
-                      aria-hidden="true"
-                      className="h-2.5 w-2.5 rounded-full bg-brand"
-                    />
-                    <h3 className="text-base font-bold tracking-tight text-fg sm:text-lg">
-                      Business
-                    </h3>
-                    <span className="rounded-full bg-brand-softer px-2.5 py-0.5 text-[11px] font-semibold text-brand-dark dark:text-brand-light">
-                      {businessCategories.length}{' '}
-                      {businessCategories.length === 1 ? 'category' : 'categories'}
+                {/* Business panel */}
+                <div
+                  aria-label="Business Categories"
+                  className="relative overflow-hidden rounded-2xl border border-[#1E3A5F]/70 bg-[#0B1B33]"
+                >
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-[#2563EB]/25 via-[#2563EB]/10 to-transparent"
+                  />
+                  <div className="relative flex items-center gap-3 p-4 sm:p-5">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#2563EB] text-white shadow-[0_8px_20px_-8px_rgba(37,99,235,0.9)]">
+                      <Briefcase className="h-5 w-5" aria-hidden="true" />
                     </span>
+                    <div className="min-w-0">
+                      <h3 className="text-lg font-bold tracking-tight text-white">Business</h3>
+                      <p className="truncate text-[13px] text-slate-400">
+                        Explore and connect with local businesses
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setShowAll(true)}
+                      className="group ml-auto inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-xs font-semibold text-white transition-all hover:border-[#2563EB]/60 hover:bg-[#2563EB]/15"
+                    >
+                      View All
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white/10 transition-colors group-hover:bg-[#2563EB]">
+                        <ArrowRight className="h-3 w-3" aria-hidden="true" />
+                      </span>
+                    </button>
                   </div>
-                  {renderCategoryGrid(businessCategories, 'business')}
+                  <div className="relative px-4 pb-4 sm:px-5 sm:pb-5">
+                    {renderGrid(businessCategories, 'business')}
+                  </div>
                 </div>
 
-                <div aria-label="Services Categories">
-                  <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <span
-                      aria-hidden="true"
-                      className="h-2.5 w-2.5 rounded-full bg-accent-green"
-                    />
-                    <h3 className="text-base font-bold tracking-tight text-fg sm:text-lg">
-                      Services
-                    </h3>
-                    <span className="rounded-full bg-accent-green-soft px-2.5 py-0.5 text-[11px] font-semibold text-accent-green">
-                      {servicesCategories.length}{' '}
-                      {servicesCategories.length === 1 ? 'category' : 'categories'}
+                {/* Services panel */}
+                <div
+                  aria-label="Services Categories"
+                  className="relative overflow-hidden rounded-2xl border border-emerald-500/25 bg-[#0B1B33]"
+                >
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-[#10B981]/25 via-[#10B981]/10 to-transparent"
+                  />
+                  <div className="relative flex items-center gap-3 p-4 sm:p-5">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#10B981] text-white shadow-[0_8px_20px_-8px_rgba(16,185,129,0.9)]">
+                      <Settings className="h-5 w-5" aria-hidden="true" />
                     </span>
+                    <div className="min-w-0">
+                      <h3 className="text-lg font-bold tracking-tight text-white">Services</h3>
+                      <p className="truncate text-[13px] text-slate-400">
+                        Everyday experts, one tap away
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setShowAll(true)}
+                      className="group ml-auto inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-xs font-semibold text-white transition-all hover:border-emerald-500/60 hover:bg-emerald-500/15"
+                    >
+                      View All
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white/10 transition-colors group-hover:bg-[#10B981]">
+                        <ArrowRight className="h-3 w-3" aria-hidden="true" />
+                      </span>
+                    </button>
                   </div>
-                  {renderCategoryGrid(servicesCategories, 'services')}
+                  <div className="relative px-4 pb-4 sm:px-5 sm:pb-5">
+                    {renderGrid(servicesCategories, 'services')}
+                  </div>
                 </div>
               </>
             )}
