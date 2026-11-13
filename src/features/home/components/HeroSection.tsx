@@ -184,11 +184,11 @@ export const HeroSection = () => {
                 type="button"
                 onClick={() => openDownload('business')}
                 title="Download Single Clik to join as a verified business"
-                aria-label="I'm a Business"
+                aria-label="I'm running a Business"
                 className="group flex-1 sm:flex-initial rounded-xl px-2.5 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm md:text-base font-semibold bg-white text-slate-900 hover:bg-slate-100 border border-slate-200 shadow-sm transition hover:shadow active:scale-95 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 dark:border-slate-200 whitespace-nowrap h-10 sm:h-12 justify-center gap-1.5 sm:gap-2"
               >
                 <Building2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 text-slate-800 dark:text-slate-900" aria-hidden="true" />
-                <span className="whitespace-nowrap">I'm a Business</span>
+                <span className="whitespace-nowrap">I'm running a Business</span>
               </Button>
             </motion.div>
 

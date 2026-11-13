@@ -17,13 +17,13 @@ export interface ThemeProviderProps {
  */
 export const ThemeProvider = ({
   children,
-  defaultTheme = 'system',
-  storageKey = 'vite-ui-theme',
+  defaultTheme = 'light',
+  storageKey = 'singleclik-theme',
 }: ThemeProviderProps) => (
   <NextThemesProvider
     attribute="class"
     defaultTheme={defaultTheme}
-    enableSystem
+    enableSystem={false}
     storageKey={storageKey}
     disableTransitionOnChange
   >

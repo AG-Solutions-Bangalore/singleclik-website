@@ -161,21 +161,21 @@ export const PRIVACY_POINTS = [
 export const TESTIMONIALS = [
   {
     id: 1,
-    name: 'Rohit Sharma',
+    name: 'Rohit',
     role: 'Business Owner',
     rating: 5,
     quote:
       'Get my website developed exactly how I wanted. The in-app chat made everything so easy and professional.',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80',
+    avatar: '/reviews/rohit-sharma.jpg',
   },
   {
     id: 2,
     name: 'Priya Mehta',
     role: 'Entrepreneur',
-    rating: 5,
+    rating: 4,
     quote:
       'I love how I can connect without sharing my number. Got multiple responses and chose the best one.',
-    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&auto=format&fit=crop&q=80',
+    avatar: '/reviews/priya-mehta.jpg',
   },
   {
     id: 3,
@@ -184,7 +184,7 @@ export const TESTIMONIALS = [
     rating: 5,
     quote:
       'Single Clik is a game changer for freelancers like me. I get quality enquiries every day.',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80',
+    avatar: '/reviews/arjun-dev.jpg',
   },
 ] as const
 

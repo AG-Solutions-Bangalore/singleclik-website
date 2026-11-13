@@ -80,7 +80,7 @@ export const FaqSection = () => {
                         transition={{ duration: 0.25, ease: 'easeInOut' }}
                         className="overflow-hidden"
                       >
-                        <div className="px-5 pb-5 text-xs sm:text-sm text-muted leading-relaxed border-t border-border/40 pt-3">
+                        <div className="px-5 pb-5 text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed border-t border-border/40 pt-3">
                           {faq.answer}
                         </div>
                       </motion.div>
@@ -128,7 +128,7 @@ export const FaqSection = () => {
                         transition={{ duration: 0.25, ease: 'easeInOut' }}
                         className="overflow-hidden"
                       >
-                        <div className="px-5 pb-5 text-xs sm:text-sm text-muted leading-relaxed border-t border-border/40 pt-3">
+                        <div className="px-5 pb-5 text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed border-t border-border/40 pt-3">
                           {faq.answer}
                         </div>
                       </motion.div>
