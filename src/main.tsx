@@ -7,7 +7,7 @@ import { ThemeProvider } from "./components/provider/theme-provider"
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="light" storageKey="singleclik-theme">
       <App />
     </ThemeProvider>
   </StrictMode>,

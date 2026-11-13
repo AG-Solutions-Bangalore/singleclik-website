@@ -20,11 +20,11 @@
     rel="stylesheet" />
 
   <!-- Performance: preconnect to image CDN (saves ~330ms on LCP) -->
-  <link rel="preconnect" href="https://singleclik.com" />
-  <link rel="dns-prefetch" href="https://jsonplaceholder.typicode.com" />
+  <link rel="preconnect" href="https://singleclik.com" crossorigin />
+  <link rel="dns-prefetch" href="https://singleclik.com" />
 
   <!-- LCP hint: preload the hero mobile image so it's discovered immediately -->
-  <link rel="preload" as="image" href="/hero-phones.png" fetchpriority="high" />
+  <link rel="preload" as="image" href="/hero-phones.webp" type="image/webp" fetchpriority="high" />
 
   <!-- Primary meta — overridden per-route by <Seo /> from react-helmet-async -->
   <title>SingleClik – Connect With Trusted Businesses & Professionals</title>

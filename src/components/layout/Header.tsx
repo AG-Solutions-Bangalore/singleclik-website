@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import {
+  Building2,
   ChevronDown,
   ChevronRight,
   HelpCircle,
@@ -33,7 +34,11 @@ export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const { pathname } = useLocation()
 
-  const isResourcesActive = pathname === '/faq' || pathname === '/help-center' || pathname === '/privacy-trust'
+  const isResourcesActive =
+    pathname === '/faq' ||
+    pathname === '/help-center' ||
+    pathname === '/privacy-trust' ||
+    pathname === '/join-as-business'
 
   useEffect(() => {
     setMounted(true)
@@ -102,6 +107,13 @@ export const Header = () => {
 
   const mobileResourceItems = [
     {
+      to: '/join-as-business',
+      label: 'Join as Business',
+      desc: 'Register & grow your business',
+      icon: Building2,
+      color: 'bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400',
+    },
+    {
       to: '/faq',
       label: 'Help Center & FAQs',
       desc: '24/7 answers & support',
@@ -121,28 +133,31 @@ export const Header = () => {
     <>
       <header
         role="banner"
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled
-            ? 'border-b border-border/90 bg-bg/95 backdrop-blur-md shadow-sm dark:shadow-black/20'
-            : 'border-b border-border/60 bg-bg/85 backdrop-blur-md'
-          }`}
+        className="sticky top-2 sm:top-3 z-50 w-full px-3 sm:px-6 lg:px-8 pointer-events-none transition-all duration-300"
       >
-        <div className="mx-auto flex h-20 sm:h-20 md:h-[74px] lg:h-[76px] w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div
+          className={`pointer-events-auto mx-auto flex h-14 sm:h-16 md:h-[66px] w-full max-w-6xl items-center justify-between px-4 sm:px-6 rounded-full border transition-all duration-300 ${
+            isScrolled
+              ? 'border-slate-300/80 bg-white/95 shadow-xl shadow-slate-900/10 backdrop-blur-md dark:border-blue-500/30 dark:bg-[#0B1528]/95 dark:shadow-black/50'
+              : 'border-slate-200/80 bg-white/90 shadow-md shadow-slate-900/5 backdrop-blur-md dark:border-white/15 dark:bg-[#0B1528]/90'
+          }`}
+        >
           {/* Brand Logo */}
           <Link
             to="/"
             title="Single Clik - Homepage"
             aria-label="Single Clik Homepage"
-            className="flex items-center gap-2.5 sm:gap-2.5 shrink-0 transition-transform hover:scale-[1.02]"
+            className="flex items-center gap-2 sm:gap-2.5 shrink-0 transition-transform hover:scale-[1.02]"
           >
             <img
               src={ASSETS.logo}
               alt="Single Clik Official Logo"
               title="Single Clik"
-              width="48"
-              height="48"
+              width="40"
+              height="40"
               loading="eager"
               decoding="async"
-              className="h-10 w-10 sm:h-11 sm:w-11 md:h-11 md:w-11 object-contain drop-shadow-sm shrink-0"
+              className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 object-contain drop-shadow-sm shrink-0"
               onError={(e) => {
                 e.currentTarget.style.display = 'none'
                 const fallback = e.currentTarget.parentElement?.querySelector('.logo-fallback')
@@ -150,13 +165,13 @@ export const Header = () => {
               }}
             />
             <span className="logo-fallback hidden text-base font-bold text-fg">S</span>
-            <span className="font-brand-logo text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-fg whitespace-nowrap">
+            <span className="font-brand-logo text-base sm:text-lg md:text-xl font-bold tracking-tight text-fg whitespace-nowrap">
               Single <span className="text-brand">Clik</span>
             </span>
           </Link>
 
           {/* Desktop Navigation — clean URLs, no # fragments */}
-          <nav aria-label="Primary Navigation" className="hidden items-center gap-2 md:flex lg:gap-4">
+          <nav aria-label="Primary Navigation" className="hidden items-center gap-1 md:flex lg:gap-1.5">
             {desktopNavItems.map((item) => (
               <NavLink
                 key={item.label}
@@ -165,9 +180,10 @@ export const Header = () => {
                 title={item.label}
                 aria-label={item.label}
                 className={({ isActive }) =>
-                  `relative px-3.5 py-2 text-sm md:text-[15px] font-medium transition-colors ${isActive
-                    ? 'text-brand font-semibold after:absolute after:bottom-0 after:left-3.5 after:right-3.5 after:h-0.5 after:bg-brand after:rounded-full'
-                    : 'text-slate-600 dark:text-slate-300 hover:text-brand'
+                  `relative px-3.5 py-1.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-200 ${
+                    isActive
+                      ? 'bg-gradient-to-r from-blue-600 via-blue-500 to-sky-500 text-white shadow-sm shadow-blue-500/30'
+                      : 'text-slate-600 hover:text-brand hover:bg-slate-100/80 dark:text-slate-300 dark:hover:text-white dark:hover:bg-white/10'
                   }`
                 }
               >
@@ -181,17 +197,30 @@ export const Header = () => {
                 type="button"
                 onClick={() => setResourcesOpen(!resourcesOpen)}
                 onBlur={() => setTimeout(() => setResourcesOpen(false), 200)}
-                className={`flex items-center gap-1.5 px-3.5 py-2 text-sm md:text-[15px] font-medium transition-colors hover:text-brand ${isResourcesActive ? 'text-brand font-semibold' : 'text-slate-600 dark:text-slate-300'}`}
+                className={`flex items-center gap-1 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-200 ${
+                  isResourcesActive
+                    ? 'bg-gradient-to-r from-blue-600 via-blue-500 to-sky-500 text-white shadow-sm shadow-blue-500/30'
+                    : 'text-slate-600 hover:text-brand hover:bg-slate-100/80 dark:text-slate-300 dark:hover:text-white dark:hover:bg-white/10'
+                }`}
                 aria-expanded={resourcesOpen}
                 aria-haspopup="true"
                 aria-current={isResourcesActive ? 'page' : undefined}
                 title="View resources"
               >
                 <span>Resources</span>
-                <ChevronDown className="h-4 w-4 text-muted transition-transform duration-200" aria-hidden="true" />
+                <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200" aria-hidden="true" />
               </button>
               {resourcesOpen && (
-                <div className="absolute right-0 mt-2 w-52 rounded-2xl border border-border bg-bg p-2 shadow-xl animate-in fade-in zoom-in-95 z-50">
+                <div className="absolute right-0 mt-2 w-56 rounded-2xl border border-border bg-bg p-2 shadow-xl animate-in fade-in zoom-in-95 z-50">
+                  <NavLink
+                    to="/join-as-business"
+                    title="Register Your Business"
+                    className={({ isActive }) =>
+                      `block rounded-xl px-3.5 py-2.5 text-sm transition-colors ${isActive ? 'bg-surface-2 text-brand font-semibold' : 'text-fg/80 hover:bg-surface-2 hover:text-brand'}`
+                    }
+                  >
+                    Join as Business
+                  </NavLink>
                   <NavLink
                     to="/faq"
                     title="Help Center and FAQs"
